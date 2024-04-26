@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:bit_math/copy_component.dart';
 import 'package:bit_math/screens/playing_page/stages/background/decoration/smoke_stack.dart';
 import 'package:bit_math/screens/playing_page/stages/block/platform.dart';
@@ -19,6 +21,7 @@ import 'package:bit_math/models/screen_status.dart';
 
 class StageManager{
 
+  static final random = Random();
   static List<Component> getStage(ScreenStatus screen){
     switch(screen){
       case ScreenStatus.splash:return splashStage.components.map((e) => e.copyComponent()).toList();
@@ -51,7 +54,8 @@ class StageManager{
     0, 
     background: BackgroundLayer(), 
     backgroundDecorations: BackgroundDecorationLayer([
-      ...[11,12,29,38]
+      ...List.generate(5, (i) => i*10)
+      .map((e) => e + random.nextInt(10))
       .map((e) => SmokeStack(x:e.toDouble(), y:0,))
     ]), 
     problems: ProblemLayer([]), 
@@ -98,8 +102,11 @@ class StageManager{
     0, 
     background: BackgroundLayer(), 
     backgroundDecorations: BackgroundDecorationLayer([
-      ...[4,19,24,44]
-      .map((e) => SmokeStack(x:e.toDouble(),y: 0))
+      ...List.generate(5, (i) => i*10)
+      .map((e) => e + random.nextInt(10))
+      .map((e) => SmokeStack(x:e.toDouble(), y:0,))
+      // ...[4,13,29,44]
+      // .map((e) => SmokeStack(x:e.toDouble(),y: 0))
     ]), 
       problems: ProblemLayer([
         Problem(
@@ -129,15 +136,18 @@ class StageManager{
       
     ]), 
     decorations: DecorationLayer([
-      RandomDecoration(0, 15, w: 50, status: DecorationStatus.grass, prob: 0.2)
+      RandomDecoration(0, 15, w: 50, status: DecorationStatus.grass, prob: 0.25)
     ]));
   
   static final resultStage = StageComponents(
     0, 
     background: BackgroundLayer(), 
     backgroundDecorations: BackgroundDecorationLayer([
-      ...[9,10,23,29,39]
-      .map((e) => SmokeStack(x:e.toDouble(), y:0))
+      ...List.generate(5, (i) => i*10)
+      .map((e) => e + random.nextInt(10))
+      .map((e) => SmokeStack(x:e.toDouble(), y:0,))
+      // ...[9,10,23,29,39]
+      // .map((e) => SmokeStack(x:e.toDouble(), y:0))
     ]), 
     problems: ProblemLayer([]), 
     platforms: PlatformLayer([

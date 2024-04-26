@@ -1,19 +1,22 @@
 
 import 'dart:async';
 
+import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
 import 'package:bit_math/screens/playing_page/stages/block/ridable.dart';
 import 'package:bit_math/screens/playing_page/stages/stage_block.dart';
 import 'package:bit_math/screens/playing_page/stages/stage_object.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
+import 'package:flutter/material.dart';
 
 enum GroundStatus{
   top,bottom,right,left,trCr,tlCr,brCr,blCr,trJt,tlJt,brJt,blJt,trSlope,tlSlope,brSlope,blSlope,deco,normal
 }
 
 class GroundBlock extends SpriteGroupComponent<GroundStatus> 
-with StageBlock implements StageObject,Ridable{
+with StageBlock,CollisionCallbacks implements StageObject,Ridable{
   GroundBlock(double x,double y,{required this.status,this.isSolid=true}):gridPosition=Vector2(x, y),
   super(size: Vector2.all(16));
 
@@ -26,6 +29,8 @@ with StageBlock implements StageObject,Ridable{
   final velocity = Vector2.zero();
 
   bool isSolid;
+
+  bool hasEffect=false;
 
   @override
   FutureOr<void> onLoad() {
@@ -90,6 +95,24 @@ with StageBlock implements StageObject,Ridable{
   void update(double dt) {
     scrollMove(dt);
     super.update(dt);
+  }
+
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    if(status==GroundStatus.top && other is Bitman){
+      if(!hasEffect){
+      hasEffect=true;
+      add(ColorEffect(
+        Colors.black,
+        opacityFrom: 0.0,
+        opacityTo: 0.1,
+       EffectController(
+        duration: 1.0,
+        alternate: true
+      ),onComplete: ()=>hasEffect=false));
+      }
+    }
+    super.onCollision(intersectionPoints, other);
   }
 
 

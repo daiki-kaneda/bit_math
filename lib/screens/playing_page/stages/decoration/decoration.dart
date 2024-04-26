@@ -1,11 +1,14 @@
 import 'dart:async';
+import 'dart:math';
 
 
+import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
 import 'package:bit_math/screens/playing_page/stages/stage_block.dart';
 import 'package:bit_math/screens/playing_page/stages/stage_object.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 
 enum DecorationStatus{
   grass,purpleGrass,cactus,ivy,seedLeaf,purplePlant,deadTree,sTrunk,mTrunk,lTrunk,grave1,grave2,grave3,hSkelton,dSkelton,bone,
@@ -13,7 +16,7 @@ enum DecorationStatus{
 }
 
 class Decoration extends SpriteGroupComponent<DecorationStatus> 
-with StageBlock implements StageObject{
+with StageBlock,CollisionCallbacks implements StageObject{
   Decoration(double x,double y,{required this.status}):gridPosition=Vector2(x, y),
   super(size: Vector2.all(16));
 
@@ -24,6 +27,8 @@ with StageBlock implements StageObject{
 
   @override
   final velocity = Vector2.zero();
+
+  bool shaking = false;
 
   @override
   FutureOr<void> onLoad() {
@@ -50,7 +55,13 @@ with StageBlock implements StageObject{
       DecorationStatus.yellowTorch:getSprite(SpriteSheets.coloredTransparentPacked, 64, 240, 16, 16),
       DecorationStatus.candle:getSprite(SpriteSheets.coloredTransparentPacked, 80, 240, 16, 16),
     };
-    position = Vector2(gridPosition.x*16, gridPosition.y*16);
+    anchor=Anchor.center;
+    position = Vector2(gridPosition.x*16+8, gridPosition.y*16+8);
+    if(status==DecorationStatus.grass){
+      anchor=Anchor.bottomCenter;
+      position=position = Vector2(gridPosition.x*16+8, gridPosition.y*16+16);
+    }
+    add(RectangleHitbox());
     return super.onLoad();
   }
 
@@ -58,6 +69,35 @@ with StageBlock implements StageObject{
   void update(double dt) {
     scrollMove(dt);
     super.update(dt);
+  }
+
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    if(other is Bitman && status==DecorationStatus.grass){
+      if(!shaking){
+        shaking = true;
+        add(SequenceEffect([
+          RotateEffect.by(pi/20,EffectController(
+          duration: 0.3,
+          repeatCount: 1,
+          alternate: true
+        ),),
+        RotateEffect.by(pi/25,EffectController(
+          duration: 0.3,
+          repeatCount: 1,
+          alternate: true
+        ),
+        ),
+        RotateEffect.by(pi/30,EffectController(
+          duration: 0.3,
+          repeatCount: 1,
+          alternate: true
+        ),
+        )
+        ],onComplete: () => shaking=false, ));
+      }
+    }
+    super.onCollision(intersectionPoints, other);
   }
 
 }

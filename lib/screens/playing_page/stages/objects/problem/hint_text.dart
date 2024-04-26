@@ -20,16 +20,19 @@ class HintText extends Component{
   FutureOr<void> onLoad() {
     final TextPaint textPaint = TextPaint(
     style: const TextStyle(
-      color: Color.fromRGBO(207,198,184, 1),fontSize: 16,
+      color: Color.fromRGBO(207,198,184, 1),fontSize: 14,
     //fontFamily:'Jersey 15'
     )
    );
-    final sentence =  TextComponent(
+    final sentence =  
+    // Sentence(gridPosition.x, gridPosition.y, str: 'Hit your head on correct block!'.toUpperCase(), direction: SentenceDirection.horizontal);
+    TextComponent(
       anchor: Anchor.center,
       position: Vector2(gridPosition.x*16, gridPosition.y*16),
       text: 'Hit your head on correct block!',
       textRenderer:textPaint
       );
+
   
     add(
        sentence

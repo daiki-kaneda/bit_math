@@ -33,3 +33,9 @@ flutter:
     - family: DSEG
       fonts:
         - asset: assets/fonts/DSEG7Classic-Regular.ttf
+    - family: Jersey 15
+      fonts:
+        - asset: assets/fonts/Jersey15-Regular.ttf
+    - family: Press Start 2P
+      fonts:
+        - asset: assets/fonts/PressStart2P-Regular.ttf

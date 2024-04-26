@@ -18,8 +18,9 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData.from(colorScheme: ColorScheme.fromSeed(seedColor:const Color.fromRGBO(71, 45, 60,1))),
       home: Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor:Colors.black ,
         body: //SafeArea(child: 
       LayoutBuilder(
         builder:(context, constraints) {

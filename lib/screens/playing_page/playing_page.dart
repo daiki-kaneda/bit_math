@@ -14,6 +14,7 @@ import 'package:bit_math/screens/playing_page/HUD/score.dart';
 import 'package:bit_math/screens/playing_page/HUD/time.dart';
 import 'package:bit_math/screens/playing_page/playing_state.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
+import 'package:bit_math/screens/playing_page/stages/objects/problem/hint_text.dart';
 import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
@@ -64,6 +65,8 @@ class PlayingPage extends Component with HasGameRef<BitmanMath>{
     final jumpButton = JumpButton(bitman);
     //final timeRemaining = RemainingTime(300);
     //final attackButton = AttackButton(bitman);
+
+    final hint = HintText(x: 25, y: 2.5);
     final lifes = [
       Life(2,position: Vector2(16*4, 16),size: Vector2.all(16)),
       Life(4,position: Vector2(16*5, 16),size: Vector2.all(16)),
@@ -73,6 +76,7 @@ class PlayingPage extends Component with HasGameRef<BitmanMath>{
     await cameraComponent.viewport.addAll([
       joystick,
       jumpButton,
+      hint,
       //attackButton,
       //timeRemaining,
       BackButton(position: Vector2(2*16, 1*16),size: Vector2.all(20)),

@@ -47,9 +47,12 @@ const _$BitmanWeaponEnumMap = {
 
 const _$BitmanHelmetEnumMap = {
   BitmanHelmet.none: 'none',
+  BitmanHelmet.strawHat: 'strawHat',
+  BitmanHelmet.cape: 'cape',
   BitmanHelmet.hardHat: 'hardHat',
   BitmanHelmet.helmet: 'helmet',
   BitmanHelmet.armor: 'armor',
+  BitmanHelmet.ring: 'ring',
 };
 
 const _$BitmanColorEnumMap = {

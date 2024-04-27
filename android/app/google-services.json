@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "900557872438",
+    "project_id": "bit-math-dbfb2",
+    "storage_bucket": "bit-math-dbfb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:900557872438:android:f26366f378261873442797",
+        "android_client_info": {
+          "package_name": "com.daikikaneda.bit_math"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-P5lUj9OviSqK9XESXpGkOZdv8oDzoi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

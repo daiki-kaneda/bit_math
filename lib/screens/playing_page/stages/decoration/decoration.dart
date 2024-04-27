@@ -77,18 +77,18 @@ with StageBlock,CollisionCallbacks implements StageObject{
       if(!shaking){
         shaking = true;
         add(SequenceEffect([
-          RotateEffect.by(pi/20,EffectController(
+          RotateEffect.by(pi/30,EffectController(
           duration: 0.3,
           repeatCount: 1,
           alternate: true
         ),),
-        RotateEffect.by(pi/25,EffectController(
+        RotateEffect.by(pi/35,EffectController(
           duration: 0.3,
           repeatCount: 1,
           alternate: true
         ),
         ),
-        RotateEffect.by(pi/30,EffectController(
+        RotateEffect.by(pi/40,EffectController(
           duration: 0.3,
           repeatCount: 1,
           alternate: true

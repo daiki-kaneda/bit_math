@@ -14,7 +14,7 @@ import 'package:bit_math/screens/playing_page/HUD/score.dart';
 import 'package:bit_math/screens/playing_page/HUD/time.dart';
 import 'package:bit_math/screens/playing_page/playing_state.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
-import 'package:bit_math/screens/playing_page/stages/objects/problem/hint_text.dart';
+import 'package:bit_math/screens/playing_page/HUD/hint_text.dart';
 import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';

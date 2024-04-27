@@ -48,5 +48,16 @@ class BlackBoard extends PositionComponent implements StageObject{
     return super.onLoad();
   }
 
+  void colorEffect(
+    Color color,double duration,int repeatCount,
+  ){
+    children.forEach((element) {
+      element.add(ColorEffect(color, EffectController(
+        duration: duration,alternate: true,
+        repeatCount: repeatCount),));
+    });
+    
+  }
+
   
 }

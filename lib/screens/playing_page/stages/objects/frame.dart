@@ -1,5 +1,6 @@
 
 import 'dart:async';
+import 'dart:developer';
 
 
 import 'package:bit_math/screens/playing_page/stages/objects/problem/problem.dart';
@@ -43,16 +44,16 @@ class FrameTile extends SpriteGroupComponent<FrameDirection> with StageBlock imp
   ),opacityTo: 0.1);
 
   final failureEffect = ColorEffect(Colors.red,EffectController(
-    duration: 1.0,
+    duration: 0.2,
     alternate: true,
-    infinite: true
-  ),opacityFrom: 0.4);
+    infinite: false
+  ),opacityTo: 0.75);
 
   final successEffect = ColorEffect(Colors.blue,EffectController(
-    duration: 1.0,
+    duration: 0.2,
     alternate: true,
-    infinite: true
-  ),opacityFrom: 0.4);
+    infinite: false
+  ),opacityTo: 0.75);
   @override
   FutureOr<void> onLoad() {
     current = direction;
@@ -110,34 +111,30 @@ class FrameTile extends SpriteGroupComponent<FrameDirection> with StageBlock imp
   void update(double dt) {
     scrollMove(dt);
      final status = findParent<Problem>()!.status;
-    if(status==ProblemStatus.initial){
-      if(!children.contains(initialEffect)){
-        removeAll(
-          children.where((c) => [failureEffect,successEffect].contains(c))
-        );
-        add(initialEffect);
-      }
+     final hasEffect = false;
+     //children.whereType<ColorEffect>().isNotEmpty;
+    // if(status==ProblemStatus.initial){
+    //   if(!children.contains(initialEffect)){
+    //     removeAll(
+    //       children.where((c) => [failureEffect,successEffect].contains(c))
+    //     );
+    //     add(initialEffect);
+    //   }
+    // }
+    
+    if(status==ProblemStatus.failure&&!hasEffect){
+      add(failureEffect);
+      log('added failure effect');
     }
 
-    if(status==ProblemStatus.failure){
-      if(!children.contains(failureEffect)){
-        removeAll(
-          children.where((c) => [initialEffect,successEffect].contains(c))
-        );
-        add(failureEffect);
-      }
-    }
-
-    if(status==ProblemStatus.success){
-      if(!children.contains(successEffect)){
-        removeAll(
-          children.where((c) => [failureEffect,initialEffect].contains(c))
-        );
-        add(successEffect);
-      }
+    if(status==ProblemStatus.success&&!hasEffect){
+      add(successEffect);
+      log('added sucess effect');
     }
 
     super.update(dt);
   }
+
+
 
 }

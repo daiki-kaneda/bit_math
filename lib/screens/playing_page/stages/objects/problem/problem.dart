@@ -13,6 +13,7 @@ import 'package:bit_math/screens/playing_page/stages/objects/problem/problem_tim
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
@@ -36,6 +37,7 @@ class Problem extends Component with HasGameRef<BitmanMath>{
   bool generative;
   final int maxLength;
   late ProblemTimer timer;
+  late BlackBoard blackBoard;
 
   ProblemStatus status;
   List<Component> problem;
@@ -53,6 +55,9 @@ class Problem extends Component with HasGameRef<BitmanMath>{
     await addAll(problem);
     timer = ProblemTimer(x: 23, y: 4);
     await add(timer);
+
+    blackBoard = BlackBoard(20, 5, 10, 3, status: FrameStatus.soft);
+    await add(blackBoard);
 
     return super.onLoad();
   }
@@ -82,6 +87,7 @@ class Problem extends Component with HasGameRef<BitmanMath>{
       // reset problem
 
       if(status==ProblemStatus.success){
+        //blackBoard.colorEffect(const Color.fromRGBO(60,172,215,1.0),0.7,1);
         if(playState!=null){
           game.gameState.score+=gameState.level*20+timer.time;
           resetProblem(gameState.level);
@@ -91,6 +97,12 @@ class Problem extends Component with HasGameRef<BitmanMath>{
       if(status==ProblemStatus.failure){
         HapticFeedback.lightImpact();
         if(playState!=null){
+          // blackBoard.colorEffect(
+          //   const Color.fromRGBO(230,72,46,1.0),0.7,1,
+          //  );
+          // Future.delayed(const Duration(milliseconds: 700))
+          // .whenComplete(() =>playState.lives-=1);
+
           playState.lives-=1;
           bitman.add(
           OpacityEffect.fadeOut(
@@ -105,8 +117,11 @@ class Problem extends Component with HasGameRef<BitmanMath>{
         resetTimer();
       }
       if(status==ProblemStatus.timeup){
+        //blackBoard.colorEffect(const Color.fromRGBO(230,72,46,1.0),0.7,1);
         HapticFeedback.lightImpact();
         if(playState!=null){
+          // Future.delayed(const Duration(milliseconds: 700))
+          // .whenComplete(() =>playState.lives-=1);
           playState.lives-=1;
           bitman.add(
           OpacityEffect.fadeOut(
@@ -138,7 +153,6 @@ class Problem extends Component with HasGameRef<BitmanMath>{
       answer = [probData.answer];
       log('probData.choices.length:${probData.choices.length}');
       problem = [
-        BlackBoard(20, 5, 10, 3, status: FrameStatus.soft),
         Sentence(21, 6,
             str: probData.sentence, direction: SentenceDirection.horizontal),
         for(var i=0;i<probData.choices.length;i++)

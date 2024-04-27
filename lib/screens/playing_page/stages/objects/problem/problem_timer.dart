@@ -62,9 +62,5 @@ class ProblemTimer extends PositionComponent{
 
    addAll([sandglass,timelimit]);
   }
-
-  void resetTimer(){
-    time = 5;
-  }
   
 }

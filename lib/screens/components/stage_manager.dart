@@ -7,6 +7,8 @@ import 'package:bit_math/screens/playing_page/stages/block/platform.dart';
 import 'package:bit_math/screens/playing_page/stages/block/template_grounds.dart';
 import 'package:bit_math/screens/playing_page/stages/decoration/decoration.dart';
 import 'package:bit_math/screens/playing_page/stages/decoration/random_decoration.dart';
+import 'package:bit_math/screens/playing_page/stages/objects/frame.dart';
+import 'package:bit_math/screens/playing_page/stages/objects/problem/blackboard.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/problem.dart';
 import 'package:bit_math/screens/playing_page/stages/stages_manager/stages/layer/background_decoration_layer.dart';
 import 'package:bit_math/screens/playing_page/stages/stages_manager/stages/layer/background_layer.dart';

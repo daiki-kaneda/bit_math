@@ -40,7 +40,7 @@ class RankingPage extends Component with HasGameRef<BitmanMath>{
     world.add(bitman);
 
     cameraComponent.viewport.addAll([
-      Sentence(7, 1, str: 'GLOBAL TOP SCORE', direction: SentenceDirection.horizontal),
+      Sentence(7, 1, str: 'cGLOBAL TOP SCOREc', direction: SentenceDirection.horizontal),
       for(var i=0;i<5;i++)
       Sentence(13, 4+2*i.toDouble(), str: '${i+1}. ${
         topScores.elementAtOrNull(i)==null ? ''.padLeft(12,'-')

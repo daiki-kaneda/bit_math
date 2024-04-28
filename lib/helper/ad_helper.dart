@@ -12,8 +12,9 @@ class AdHelper extends ChangeNotifier{
 
   final bool isDebug;
 
-
   BannerAd? bannerAd;
+
+  // TODO: connectivity_plusを使って、オフラインからオンラインになったときにバナー広告を再読み込みする
 
   Future<void> init()async{
     await MobileAds.instance.initialize();

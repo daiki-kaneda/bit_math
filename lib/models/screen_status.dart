@@ -11,5 +11,6 @@ enum ScreenStatus {
   //skinSelect,
   playing,
   //pause,
-  result
+  result,
+  ranking,
 }

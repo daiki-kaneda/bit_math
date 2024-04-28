@@ -22,6 +22,10 @@ class ResultPage extends Component with HasGameRef<BitmanMath>{
       final saveDataApi = game.saveData;
       saveDataApi.scoreData = saveDataApi.scoreData.copyWith(
         bestScore:game.gameState.score);
+
+      game.backendData.updateUserData(
+        game.backendData.userData.copyWith(bestScore: game.gameState.score)
+      );
     }
 
     final world = World();

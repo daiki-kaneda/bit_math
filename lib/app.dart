@@ -2,6 +2,7 @@
 import 'dart:developer';
 
 import 'package:bit_math/game.dart';
+import 'package:bit_math/helper/data_repository.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:bit_math/banner_ad_widget.dart';
 import 'package:bit_math/utils/screen_size.dart';
@@ -12,9 +13,11 @@ class MyApp extends StatelessWidget{
 
   const MyApp({
     super.key,
-    required this.saveDataHelper});
+    required this.saveDataHelper,
+    required this.backendDataRepository});
 
   final SaveDataHelper saveDataHelper;
+  final BackendDataRepository backendDataRepository;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,7 +42,9 @@ class MyApp extends StatelessWidget{
           ),
           ),
           Expanded(
-            child: GameWidget(game: BitmanMath(saveData: saveDataHelper)),
+            child: GameWidget(game: BitmanMath(
+              saveData: saveDataHelper,
+              backendData: backendDataRepository)),
           )
         ],
       );

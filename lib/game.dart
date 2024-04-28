@@ -25,6 +25,7 @@
 import 'dart:async';
 
 import 'package:bit_math/game_state.dart';
+import 'package:bit_math/helper/data_repository.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/screens/home_page/home_page.dart';
@@ -36,9 +37,11 @@ import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 
 class BitmanMath extends FlameGame with HasCollisionDetection {
-  BitmanMath({required this.saveData});
+  BitmanMath({required this.saveData,required this.backendData});
   // saveData
-  late final SaveDataHelper saveData;
+  final SaveDataHelper saveData;
+
+  final BackendDataRepository backendData;
 
   // router
   late RouterComponent router;

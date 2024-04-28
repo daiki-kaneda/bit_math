@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/screens/components/sentence_button/push_play_route_button.dart';
 import 'package:bit_math/screens/components/stage_manager.dart';
-import 'package:bit_math/screens/home_page/ui/achievement_button.dart';
+import 'package:bit_math/screens/home_page/ui/ranking_button.dart';
 import 'package:bit_math/screens/home_page/ui/game_start_button.dart';
 import 'package:bit_math/screens/home_page/ui/shop_button.dart';
 import 'package:bit_math/screens/playing_page/HUD/joystick.dart';
@@ -34,7 +34,7 @@ class HomePage extends Component{
       );
     cameraComponet.viewport.addAll(
       [
-        //AchievementButton(position: Vector2(16*3, 16*3),size: Vector2.all(24)),
+        RankingButton(position: Vector2(16*3, 16*3),size: Vector2.all(24)),
         //ShopButton(position: Vector2(16*6, 16*3),size: Vector2.all(24)),
         PushPlayRouteButton(gridPosition: Vector2(21, 10),
          str: 'S T A R T')

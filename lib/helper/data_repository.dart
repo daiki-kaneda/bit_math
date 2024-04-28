@@ -19,9 +19,10 @@ class BackendDataRepository extends ChangeNotifier{
   final SaveDataHelper saveDataHelper;
   
   UserData userData = UserData(
-    deviceId: '', 
+    deviceId: null, 
     name: 'Unnamed', 
     bestScore: 0);
+
   Future<void> init()async{
     try{
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -36,18 +37,34 @@ class BackendDataRepository extends ChangeNotifier{
         name: 'Unnamed', 
         bestScore: bestScore);
 
-      // TODO: check server and 
-      //if data matched deviceId exisits : update userData
-      // else create new userData document that has name automatically generated and
-      // device id as value
-
+      //if isSignedInBefore is false: create user document
+      //if isSignedInBefor is true and savedata dont exist:restore score
+      // if isSignedInBefor is true and savedata exist: savedata have top priority
       log('isSignedInBefore:${await isSignedInBefore(deviceId)}');
       if(!(await isSignedInBefore(deviceId))){
         _createUserDataDocument(userData);
+      }else{
+        final backUpUserData = (await getUserData(userData.deviceId!));
+        final localScoreData = (saveDataHelper.getData(SaveDataStatus.scoreData) as ScoreData?);
+        if(localScoreData?.bestScore==0){
+          if(backUpUserData!=null){
+            _restoreSaveData(backUpUserData);
+            log('restore savedata');
+             }
+        }
+
+        // if local scoredata is begger than server scoreData
+        // update sever scoreData
+        if(
+          backUpUserData!=null&&
+          localScoreData!=null&&
+          backUpUserData.bestScore<localScoreData.bestScore){
+            updateUserData(userData);
+          }
       }
 
       // test
-      log('global top scores:${await getTopGlobalScore()}');
+      // log('global top scores:${await getTopGlobalScore()}');
     }
 
     }catch(e){
@@ -55,16 +72,34 @@ class BackendDataRepository extends ChangeNotifier{
     }
   }
 
-  Future<void> updateUserData(UserData userData)async{
+  Future<void> updateUserData(UserData data)async{
+    if(userData.deviceId!=null){
+    log(userData.deviceId!);
     final snapshots = await userCollection.where(
       'deviceId',
       isEqualTo: userData.deviceId
       ).get();
     
-    if(!snapshots.docs.isNotEmpty){
-      userCollection
-      .doc(snapshots.docs.first.id).update(userData.toFirestore(),);
+
+    if(snapshots.docs.isNotEmpty){
+      await userCollection
+      .doc(snapshots.docs.first.id).set(
+        data.toFirestore(),
+        SetOptions(merge: true));
+      log('data updated');
+    }else{
+      log('snapshots.docs.isNotEmpty:false');
     }
+    }
+  }
+
+  Future<UserData?> getUserData(String deviceId)async{
+    final snapshots = await userCollection.where(
+      'deviceId',
+      isEqualTo: deviceId
+      ).get();
+    final data = snapshots.docs.first.data() as Map<String,dynamic>?;
+    return data!=null ? UserData.fromMap(data):null;
   }
 
   Future<List<int>> getTopGlobalScore()async{
@@ -94,6 +129,16 @@ class BackendDataRepository extends ChangeNotifier{
     }else{
       return true;
     }
+  }
+
+  Future<void> _restoreSaveData(
+    UserData userData
+  )async{
+    // when local save data don't exist and backend data exist
+    // this function only restore bestScore
+      saveDataHelper.scoreData = saveDataHelper.scoreData.copyWith(
+        bestScore: userData.bestScore
+      );
   }
 
   FirebaseFirestore get db => FirebaseFirestore.instance;

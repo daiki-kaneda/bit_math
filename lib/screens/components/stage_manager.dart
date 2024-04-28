@@ -8,6 +8,7 @@ import 'package:bit_math/screens/playing_page/stages/block/template_grounds.dart
 import 'package:bit_math/screens/playing_page/stages/decoration/decoration.dart';
 import 'package:bit_math/screens/playing_page/stages/decoration/random_decoration.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/frame.dart';
+import 'package:bit_math/screens/playing_page/stages/objects/goal_block.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/blackboard.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/problem.dart';
 import 'package:bit_math/screens/playing_page/stages/stages_manager/stages/layer/background_decoration_layer.dart';
@@ -33,6 +34,7 @@ class StageManager{
       case ScreenStatus.playingModeConfigure:return playConfigureStage.components.map((e) => e.copyComponent()).toList();
       case ScreenStatus.playing:return playingStage.components.map((e) => e.copyComponent()).toList();
       case ScreenStatus.result:return resultStage.components.map((e) => e.copyComponent()).toList();
+      case ScreenStatus.ranking:return rankingStage.components.map((e) => e.copyComponent()).toList();
       default: return []; // splash
     }
   }
@@ -157,6 +159,31 @@ class StageManager{
     ]), 
     enemies: EnemyLayer([]), 
     objects: ObjectLayer([]), 
+    decorations: DecorationLayer([]));
+
+    static final rankingStage = StageComponents(
+    0, 
+    background: BackgroundLayer(), 
+    backgroundDecorations: BackgroundDecorationLayer([
+      ...List.generate(5, (i) => i*10)
+      .map((e) => e + random.nextInt(10))
+      .map((e) => SmokeStack(x:e.toDouble(), y:0,))
+      // ...[9,10,23,29,39]
+      // .map((e) => SmokeStack(x:e.toDouble(), y:0))
+    ]), 
+    problems: ProblemLayer([]), 
+    platforms: PlatformLayer([
+      Grnd(status: GrndStatus.rectangle, gridPoints: [
+          Vector2(33, 19),
+          Vector2(33, 10),
+          Vector2(39, 10),
+          Vector2(39, 19)
+      ])
+    ]), 
+    enemies: EnemyLayer([]), 
+    objects: ObjectLayer([
+      GoalBlock(37, 9, stageIndex: 0)
+    ]), 
     decorations: DecorationLayer([]));
 }
 

@@ -34,7 +34,7 @@ class HomePage extends Component{
       );
     cameraComponet.viewport.addAll(
       [
-        RankingButton(position: Vector2(16*3, 16*3),size: Vector2.all(24)),
+        RankingButton(position: Vector2(16*4, 16*3),size: Vector2.all(24)),
         //ShopButton(position: Vector2(16*6, 16*3),size: Vector2.all(24)),
         PushPlayRouteButton(gridPosition: Vector2(21, 10),
          str: 'S T A R T')

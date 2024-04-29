@@ -41,11 +41,13 @@ class MyApp extends StatelessWidget{
             )
           ),
           ),
+          
           Expanded(
             child: GameWidget(game: BitmanMath(
               saveData: saveDataHelper,
               backendData: backendDataRepository)),
           )
+          
         ],
       );
         },)

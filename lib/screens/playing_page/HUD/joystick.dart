@@ -18,5 +18,5 @@ class JoyStick extends JoystickComponent {
         SpriteSheets.uiSprites, 1, 592, 160, 160
         )
     ),
-    margin:const EdgeInsets.only(left: 50, bottom: 2) );
+    margin:const EdgeInsets.only(left: 55, bottom: 2) );
 }

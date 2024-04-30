@@ -1,10 +1,13 @@
 
 
+import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:bit_math/models/ad_status.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class AdHelper extends ChangeNotifier{
@@ -14,10 +17,45 @@ class AdHelper extends ChangeNotifier{
 
   BannerAd? bannerAd;
 
-  // TODO: connectivity_plusを使って、オフラインからオンラインになったときにバナー広告を再読み込みする
+  // connectivity_plusを使って、オフラインからオンラインになったときにバナー広告を再読み込みする
+  List<ConnectivityResult> _connectionStatus = [ConnectivityResult.none];
+  final Connectivity _connectivity = Connectivity();
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
 
   Future<void> init()async{
     await MobileAds.instance.initialize();
+
+    initConnectivity();
+    _connectivitySubscription =
+    _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+  }
+
+  Future<void> initConnectivity() async {
+    late List<ConnectivityResult> result;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      result = await _connectivity.checkConnectivity();
+    } on PlatformException catch (e) {
+      log('Couldn\'t check connectivity status', error: e);
+      return;
+    }
+
+    return _updateConnectionStatus(result);
+  }
+
+  bool isOnline(List<ConnectivityResult> list){
+    return list.contains(ConnectivityResult.mobile)
+      ||list.contains(ConnectivityResult.wifi);
+  }
+
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> result) async {
+    // if offline->online => banner ad reload
+    if(!isOnline(_connectionStatus)&&isOnline(result)){
+      loadBannerAd();
+    }
+    _connectionStatus = result;
+    notifyListeners();
+    log('Connectivity changed: $_connectionStatus');
   }
 
   Future<void> loadBannerAd() async {

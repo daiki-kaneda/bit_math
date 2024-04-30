@@ -1,26 +1,8 @@
 
 
-// TODO: implement BitmanMath class that is child of FlameGame
+// TODO: add myScorePage(best 5)
 
-// TODO: add routers
-/*
-- splash page
-- home page
-- achivement page
-- setting page
-- license page
-- shop page(skin)
-- playing mode configure page
-- playing page 
-- pause dialog
-- result page
-- score board dialog
-- skin select dialog(unlock by score or money)
-*/
-
-/*
-
-*/
+// TODO: add flexible joystick
 
 import 'dart:async';
 
@@ -35,6 +17,7 @@ import 'package:bit_math/screens/splash_page/splash_page.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 class BitmanMath extends FlameGame with HasCollisionDetection {
   BitmanMath({required this.saveData,required this.backendData});
@@ -52,6 +35,7 @@ class BitmanMath extends FlameGame with HasCollisionDetection {
   @override
   FutureOr<void> onLoad() async{
     //load assets
+    //load sprites
     await images.loadAll(
       [
         'colored_packed.png',
@@ -69,6 +53,14 @@ class BitmanMath extends FlameGame with HasCollisionDetection {
         'chimney.png'
       ]
     );
+    // load audio
+    await FlameAudio.audioCache.loadAll([
+      'jingles_NES00.ogg',
+      'jingles_NES13.ogg',
+      'jingles_NES14.ogg',
+      'jingles_NES15.ogg',
+      'jingles_NES16.ogg'
+    ]);
     // router
     router = RouterComponent(
         routes: {

@@ -13,6 +13,7 @@ import 'package:bit_math/screens/playing_page/stages/objects/problem/problem_tim
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -89,12 +90,19 @@ class Problem extends Component with HasGameRef<BitmanMath>{
       if(status==ProblemStatus.success){
         //blackBoard.colorEffect(const Color.fromRGBO(60,172,215,1.0),0.7,1);
         if(playState!=null){
+          
+          FlameAudio.play('jingles_NES14.ogg');
           game.gameState.score+=gameState.level*20+timer.time;
           resetProblem(gameState.level);
         }
         resetTimer();
       }
       if(status==ProblemStatus.failure){
+        if(playState?.lives==1){
+          FlameAudio.play('jingles_NES00.ogg');
+        }else{
+          FlameAudio.play('jingles_NES15.ogg');
+        }
         HapticFeedback.lightImpact();
         if(playState!=null){
           // blackBoard.colorEffect(
@@ -117,6 +125,11 @@ class Problem extends Component with HasGameRef<BitmanMath>{
         resetTimer();
       }
       if(status==ProblemStatus.timeup){
+        if(playState?.lives==1){
+          FlameAudio.play('jingles_NES00.ogg');
+        }else{
+          FlameAudio.play('jingles_NES15.ogg');
+        }
         //blackBoard.colorEffect(const Color.fromRGBO(230,72,46,1.0),0.7,1);
         HapticFeedback.lightImpact();
         if(playState!=null){

@@ -8,6 +8,7 @@ import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 // onPressedを渡して柔軟なボタンを実装したいが、不具合が出る
 class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameRef<BitmanMath>{
@@ -33,6 +34,7 @@ class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameRe
   @override
   void onTapDown(TapDownEvent event) {
     log('tapped');
+    FlameAudio.play('jingles_NES16.ogg');
     game.router.popUntilNamed(ScreenStatus.splash.name);
     game.router.pushRoute(PlayingRoute(PlayingPage()));
     super.onTapDown(event);

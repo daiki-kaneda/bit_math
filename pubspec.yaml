@@ -20,6 +20,7 @@ dependencies:
   device_info_plus: ^10.1.0
   flame_audio: ^2.10.1
   connectivity_plus: ^6.0.3
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
@@ -44,3 +45,11 @@ flutter:
     - family: Press Start 2P
       fonts:
         - asset: assets/fonts/PressStart2P-Regular.ttf
+
+flutter_icons:
+  ios: true
+  image_path: "assets/icons/icon.png"
+  remove_alpha_ios: true
+  android: true
+  adaptive_icon_background: "assets/icons/icon_bg.png"
+  adaptive_icon_foreground: "assets/icons/icon_foreground.png"

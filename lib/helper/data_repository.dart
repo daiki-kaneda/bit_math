@@ -42,6 +42,7 @@ class BackendDataRepository extends ChangeNotifier{
       // if isSignedInBefor is true and savedata exist: savedata have top priority
       log('isSignedInBefore:${await isSignedInBefore(deviceId)}');
       if(!(await isSignedInBefore(deviceId))){
+        log('$userData');
         _createUserDataDocument(userData);
       }else{
         final backUpUserData = (await getUserData(userData.deviceId!));

@@ -26,22 +26,22 @@ class GameState{
     }
   }
 
-// level1:15s
-// level2:10s
-// level3:8s
-// level4:7s
-// level5:6s
+// level1:8s
+// level2:7s
+// level3:6s
+// level4:5s
+// level5:4s
   int get time {
     if (level < 2) {
-      return 15;
-    } else if (level < 3) {
-      return 10;
-    } else if (level < 4) {
       return 8;
-    } else if (level < 5) {
+    } else if (level < 3) {
       return 7;
-    } else{
+    } else if (level < 4) {
       return 6;
+    } else if (level < 5) {
+      return 5;
+    } else{
+      return 4;
     }
   }
 }

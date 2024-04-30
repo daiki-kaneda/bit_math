@@ -12,6 +12,7 @@ import 'package:bit_math/screens/playing_page/HUD/jump_button.dart';
 import 'package:bit_math/screens/playing_page/HUD/life.dart';
 import 'package:bit_math/screens/playing_page/HUD/score.dart';
 import 'package:bit_math/screens/playing_page/HUD/time.dart';
+import 'package:bit_math/screens/playing_page/HUD/touch_detector.dart';
 import 'package:bit_math/screens/playing_page/playing_state.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
 import 'package:bit_math/screens/playing_page/HUD/hint_text.dart';
@@ -40,6 +41,8 @@ class PlayingPage extends Component with HasGameRef<BitmanMath>{
   PlayingState state = PlayingState();
 
   late Bitman bitman;
+
+  late CameraComponent camera;
   
   @override
   FutureOr<void> onLoad() async{
@@ -48,12 +51,12 @@ class PlayingPage extends Component with HasGameRef<BitmanMath>{
 
     final world = World();
 
-    final cameraComponent = CameraComponent.withFixedResolution(
+    camera = CameraComponent.withFixedResolution(
       world: world,
       width: gameWidth, height: gameHeight);
 
-    cameraComponent.viewfinder.anchor=Anchor.topLeft;
-    await addAll([world,cameraComponent]);
+    camera.viewfinder.anchor=Anchor.topLeft;
+    await addAll([world,camera]);
     //stage
     await world.addAll(StageManager.getStage(ScreenStatus.playing));
     // hud,bitman
@@ -73,7 +76,8 @@ class PlayingPage extends Component with HasGameRef<BitmanMath>{
       Life(6,position: Vector2(16*6, 16),size: Vector2.all(16)),
     ];
 
-    await cameraComponent.viewport.addAll([
+    await camera.viewport.addAll([
+      //TouchDetector(),
       joystick,
       jumpButton,
       hint,

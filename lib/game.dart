@@ -1,7 +1,7 @@
 
 
 // TODO: add myScorePage(best 5)
-
+// TODO: add pause dialog?
 // TODO: add flexible joystick
 
 import 'dart:async';
@@ -15,11 +15,12 @@ import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/result_page/result_page.dart';
 import 'package:bit_math/screens/splash_page/splash_page.dart';
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
 
-class BitmanMath extends FlameGame with HasCollisionDetection {
+class BitmanMath extends FlameGame with HasCollisionDetection{
   BitmanMath({required this.saveData,required this.backendData});
   // saveData
   final SaveDataHelper saveData;

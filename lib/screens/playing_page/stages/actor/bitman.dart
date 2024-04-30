@@ -384,8 +384,12 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
       current = BitmanStatus.normal;
       velocity.x = 0;
       case JoystickDirection.up:current = BitmanStatus.jumping;
-      case JoystickDirection.upLeft:current = BitmanStatus.jumping;
-      case JoystickDirection.upRight:current = BitmanStatus.jumping;
+      case JoystickDirection.upLeft:
+      current = BitmanStatus.jumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
+      case JoystickDirection.upRight:
+      current = BitmanStatus.jumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
       case JoystickDirection.left:
       current = BitmanStatus.walking;
       velocity.x = maxSpeed * joystick.relativeDelta.x;
@@ -393,8 +397,12 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
       current = BitmanStatus.walking;
       velocity.x = maxSpeed * joystick.relativeDelta.x;
       case JoystickDirection.down:current = BitmanStatus.jumping;
-      case JoystickDirection.downLeft:current = BitmanStatus.jumping;
-      case JoystickDirection.downRight:current = BitmanStatus.jumping;
+      case JoystickDirection.downLeft:
+      current = BitmanStatus.jumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
+      case JoystickDirection.downRight:
+      current = BitmanStatus.jumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
     }
       }
       case BitmanColor.speedYellow:{
@@ -403,8 +411,11 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
       current = BitmanStatus.yellowNormal;
       velocity.x = 0;
       case JoystickDirection.up:current = BitmanStatus.yellowJumping;
-      case JoystickDirection.upLeft:current = BitmanStatus.yellowJumping;
+      case JoystickDirection.upLeft:
+      current = BitmanStatus.yellowJumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
       case JoystickDirection.upRight:current = BitmanStatus.yellowJumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
       case JoystickDirection.left:
       current = BitmanStatus.yellowWalking;
       velocity.x = maxSpeed * joystick.relativeDelta.x;
@@ -412,8 +423,12 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
       current = BitmanStatus.yellowWalking;
       velocity.x = maxSpeed * joystick.relativeDelta.x;
       case JoystickDirection.down:current = BitmanStatus.yellowJumping;
-      case JoystickDirection.downLeft:current = BitmanStatus.yellowJumping;
-      case JoystickDirection.downRight:current = BitmanStatus.yellowJumping;
+      case JoystickDirection.downLeft:
+      current = BitmanStatus.yellowJumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
+      case JoystickDirection.downRight:
+      current = BitmanStatus.yellowJumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
     }
       }
       case BitmanColor.floatGreen:{
@@ -422,8 +437,12 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
       current = BitmanStatus.greenNormal;
       velocity.x = 0;
       case JoystickDirection.up:current = BitmanStatus.greenJumping;
-      case JoystickDirection.upLeft:current = BitmanStatus.greenJumping;
-      case JoystickDirection.upRight:current = BitmanStatus.greenJumping;
+      case JoystickDirection.upLeft:
+      current = BitmanStatus.greenJumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
+      case JoystickDirection.upRight:
+      current = BitmanStatus.greenJumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
       case JoystickDirection.left:
       current = BitmanStatus.greenWalking;
       velocity.x = maxSpeed * joystick.relativeDelta.x;
@@ -431,8 +450,12 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
       current = BitmanStatus.greenWalking;
       velocity.x = maxSpeed * joystick.relativeDelta.x;
       case JoystickDirection.down:current = BitmanStatus.greenJumping;
-      case JoystickDirection.downLeft:current = BitmanStatus.greenJumping;
-      case JoystickDirection.downRight:current = BitmanStatus.greenJumping;
+      case JoystickDirection.downLeft:
+      current = BitmanStatus.greenJumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
+      case JoystickDirection.downRight:
+      current = BitmanStatus.greenJumping;
+      velocity.x = maxSpeed * joystick.relativeDelta.x;
     }
       }
     }

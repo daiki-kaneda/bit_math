@@ -1,9 +1,4 @@
 
-
-// TODO: add myScorePage(best 5)
-// TODO: add pause dialog?
-// TODO: add flexible joystick
-
 import 'dart:async';
 
 import 'package:bit_math/game_state.dart';

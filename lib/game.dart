@@ -53,11 +53,11 @@ class BitmanMath extends FlameGame with HasCollisionDetection{
     );
     // load audio
     await FlameAudio.audioCache.loadAll([
-      'jingles_NES00.ogg',
-      'jingles_NES13.ogg',
-      'jingles_NES14.ogg',
-      'jingles_NES15.ogg',
-      'jingles_NES16.ogg'
+      'jingles_NES00.mp3',
+      'jingles_NES13.mp3',
+      'jingles_NES14.mp3',
+      'jingles_NES15.mp3',
+      'jingles_NES16.mp3'
     ]);
     // router
     router = RouterComponent(

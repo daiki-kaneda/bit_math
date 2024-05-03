@@ -17,6 +17,8 @@ class ResultPage extends Component with HasGameRef<BitmanMath>{
 
   @override
   FutureOr<void> onLoad() async{
+    // this page has ad
+    game.appStateManager.enableAd();
     // save score if score is best
     if(game.gameState.score>game.saveData.scoreData.bestScore){
       final saveDataApi = game.saveData;

@@ -1,6 +1,7 @@
 
 import 'dart:async';
 
+import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/screens/components/sentence_button/push_play_route_button.dart';
 import 'package:bit_math/screens/components/stage_manager.dart';
@@ -13,10 +14,13 @@ import 'package:bit_math/screens/playing_page/stages/background/decoration/smoke
 import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
 
-class HomePage extends Component{
+class HomePage extends Component with HasGameRef<BitmanMath>{
 
   @override
   FutureOr<void> onLoad() {
+    // this page has not ad
+    game.appStateManager.disableAd();
+    
     final world = World();
     final cameraComponet = CameraComponent.withFixedResolution(
       width: gameWidth, 

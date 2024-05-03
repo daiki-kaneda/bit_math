@@ -24,11 +24,13 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
     final bannerAd = context.select<AdHelper,BannerAd?>(
       (value) => value.bannerAd
       );
+    // 
+    
     if(bannerAd!=null){
       return SizedBox(
         width: bannerAd.size.width.toDouble(),
         height: bannerAd.size.height.toDouble(),
-        //child: AdWidget(ad: bannerAd),
+        child: AdWidget(ad: bannerAd),
       );
     }else{
       return const SizedBox(

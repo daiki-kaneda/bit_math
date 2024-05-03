@@ -2,12 +2,14 @@
 import 'dart:developer';
 
 import 'package:bit_math/game.dart';
+import 'package:bit_math/helper/app_state_manager.dart';
 import 'package:bit_math/helper/data_repository.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:bit_math/banner_ad_widget.dart';
 import 'package:bit_math/utils/screen_size.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget{
 
@@ -46,7 +48,8 @@ class MyApp extends StatelessWidget{
           Expanded(
             child: GameWidget(game: BitmanMath(
               saveData: saveDataHelper,
-              backendData: backendDataRepository)),
+              backendData: backendDataRepository,
+              appStateManager: context.read<AppStateManager>())),
           )
           
         ],

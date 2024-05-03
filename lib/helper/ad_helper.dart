@@ -6,6 +6,7 @@ import 'dart:io';
 
 import 'package:bit_math/models/ad_status.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -29,7 +30,7 @@ class AdHelper extends ChangeNotifier{
     _connectivitySubscription =
     _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
   }
-
+  
   Future<void> initConnectivity() async {
     late List<ConnectivityResult> result;
     // Platform messages may fail, so we use a try/catch PlatformException.

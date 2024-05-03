@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bit_math/app.dart';
 import 'package:bit_math/game.dart';
 import 'package:bit_math/helper/ad_helper.dart';
+import 'package:bit_math/helper/app_state_manager.dart';
 import 'package:bit_math/helper/data_repository.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:bit_math/utils/device_util.dart';
@@ -26,14 +27,17 @@ Future<void> main() async{
   final adHelper = AdHelper(isDebug: true);
   await adHelper.init();
 
+  final appStateManager = AppStateManager();
+
   final dataRepository = BackendDataRepository(saveDataHelper);
   await dataRepository.init();
 
   runApp(
-    ChangeNotifierProvider(
-      create: (_)=>adHelper,
-      child: MyApp(saveDataHelper: saveDataHelper
-      ,backendDataRepository:dataRepository ,),)
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (_)=>adHelper),
+      ChangeNotifierProvider(create: (_)=>appStateManager),
+    ],
+    child: MyApp(saveDataHelper: saveDataHelper, backendDataRepository: dataRepository),)
   );
 }
 

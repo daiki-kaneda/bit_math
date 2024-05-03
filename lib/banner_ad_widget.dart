@@ -29,11 +29,13 @@ class _BannerAdWidgetState extends State<BannerAdWidget> {
   }
   @override
   Widget build(BuildContext context) {
-    // this widget only rebuild when bannerAd changed or isPlaying changed
+    // this widget only rebuild when bannerAd changed or showingAd changed
     final bannerAd = context.select<AdHelper,BannerAd?>(
       (value) => value.bannerAd
       );
-    if(bannerAd!=null){
+    final showingAd = context.select<AppStateManager,bool>((value) => value.showingAd);
+
+    if(bannerAd!=null && showingAd){
       return SizedBox(
         width: bannerAd.size.width.toDouble(),
         height: bannerAd.size.height.toDouble(),

@@ -1,5 +1,6 @@
 
 import 'dart:async';
+import 'dart:math';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/save_data_status.dart';
@@ -17,8 +18,12 @@ class ResultPage extends Component with HasGameRef<BitmanMath>{
 
   @override
   FutureOr<void> onLoad() async{
-    // this page has ad
-    game.appStateManager.enableAd();
+    // this page has ad by in 40%
+    if(Random().nextDouble()<0.4){
+      game.appStateManager.enableAd();
+    }else{
+      game.appStateManager.disableAd();
+    }
     // save score if score is best
     if(game.gameState.score>game.saveData.scoreData.bestScore){
       final saveDataApi = game.saveData;

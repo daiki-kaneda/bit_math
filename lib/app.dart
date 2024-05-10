@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget{
             child: GameWidget(game: BitmanMath(
               saveData: saveDataHelper,
               backendData: backendDataRepository,
-              appStateManager: context.read<AppStateManager>())),
+              appStateManager: context.watch<AppStateManager>())),
           )
           
         ],

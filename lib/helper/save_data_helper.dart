@@ -90,7 +90,7 @@ class SaveDataHelper{
         return Setting.fromJson(jsonMap);
       }
       case SaveDataStatus.iapData:{
-        return Setting.fromJson(jsonMap);
+        return IAPData.fromJson(jsonMap);
       }
     }
   }

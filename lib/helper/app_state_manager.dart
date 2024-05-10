@@ -15,13 +15,6 @@ class AppStateManager extends ChangeNotifier {
   bool showingAd = false;
 
   // 各ページが読み込まれる前に、(onloadやinitState)showingAdを適切に変更する
-  _removeAd(){
-    final isRemoveAd = saveDataHelper.iapData.isRemovedAd;
-    if(isRemoveAd==true){
-      showingAd=false;
-      notifyListeners();
-    }
-  }
 
   setShowingAd(bool isShow){
     final isRemoveAd = saveDataHelper.iapData.isRemovedAd;

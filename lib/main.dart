@@ -23,7 +23,9 @@ Future<void> main() async{
   final adHelper = AdHelper(isDebug: true);
   await adHelper.init();
 
-  final appStateManager = AppStateManager();
+  final appStateManager = AppStateManager(
+    saveDataHelper: saveDataHelper
+  );
 
   final dataRepository = BackendDataRepository(saveDataHelper);
   await dataRepository.init();

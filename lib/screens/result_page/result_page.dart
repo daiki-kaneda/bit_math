@@ -20,9 +20,9 @@ class ResultPage extends Component with HasGameRef<BitmanMath>{
   FutureOr<void> onLoad() async{
     // this page has ad by in 40%
     if(Random().nextDouble()<0.4){
-      game.appStateManager.enableAd();
+      game.appStateManager.setShowingAd(true);
     }else{
-      game.appStateManager.disableAd();
+      game.appStateManager.setShowingAd(false);
     }
     // save score if score is best
     if(game.gameState.score>game.saveData.scoreData.bestScore){

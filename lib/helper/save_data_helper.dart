@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:bit_math/models/iap_data.dart';
 import 'package:bit_math/models/save_data_status.dart';
 import 'package:bit_math/models/score_data.dart';
 import 'package:bit_math/models/setting.dart';
@@ -45,15 +46,27 @@ class SaveDataHelper{
     _saveData(SaveDataStatus.scoreData,newScoreData);
   }
 
+    // intial scoredata
+  IAPData _iapData = const IAPData(
+    isRemovedAd: false
+  );
+  IAPData get iapData => _iapData;
+  set iapData(IAPData newIapData){
+    _iapData= newIapData;
+    _saveData(SaveDataStatus.iapData,newIapData);
+  }
+
   Future<void> loadData()async{
     final savedSetting = getData(SaveDataStatus.setting) as Setting?;
     final savedScore = getData(SaveDataStatus.scoreData) as ScoreData?;
+    final savedIap = getData(SaveDataStatus.iapData) as IAPData?;
     setting = savedSetting ?? setting;
     scoreData = savedScore ?? scoreData;
+    iapData = savedIap ?? iapData;
   }
 
   Future<void> _saveData(SaveDataStatus status,Object data)async{
-    if (data is ScoreData || data is Setting) {
+    if (data is ScoreData || data is Setting || data is IAPData) {
       final jsonString = jsonEncode(data);
       await preference.setString(status.key, jsonString);
       log('saved ${status.name}');
@@ -74,6 +87,9 @@ class SaveDataHelper{
         return ScoreData.fromJson(jsonMap);
       }
       case SaveDataStatus.setting:{
+        return Setting.fromJson(jsonMap);
+      }
+      case SaveDataStatus.iapData:{
         return Setting.fromJson(jsonMap);
       }
     }

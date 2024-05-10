@@ -20,7 +20,7 @@ class RankingPage extends Component with HasGameRef<BitmanMath>{
   @override
   FutureOr<void> onLoad() async{
     // this page has ad
-    game.appStateManager.enableAd();
+    game.appStateManager.setShowingAd(true);
     final world = World();
     final cameraComponent = CameraComponent.withFixedResolution(
       width: gameWidth,height: gameHeight,world: world

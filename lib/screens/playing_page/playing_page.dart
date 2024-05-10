@@ -47,7 +47,7 @@ class PlayingPage extends Component with HasGameRef<BitmanMath>{
   @override
   FutureOr<void> onLoad() async{
     // this page has not ad
-    game.appStateManager.disableAd();
+    game.appStateManager.setShowingAd(false);
     
     // intialize score
     game.gameState.reset();

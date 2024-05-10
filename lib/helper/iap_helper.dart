@@ -16,11 +16,9 @@ class IAPHelper{
 
   const IAPHelper({
     required this.saveDataHelper,
-    required this.appState,
   });
 
   final SaveDataHelper saveDataHelper;
-  final AppStateManager appState;
 
   Future<void> init()async{
   

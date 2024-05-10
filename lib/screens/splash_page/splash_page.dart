@@ -18,7 +18,7 @@ class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>{
    @override
   FutureOr<void> onLoad() {
     // this page has not ad
-    game.appStateManager.disableAd();
+    game.appStateManager.setShowingAd(false);
     final world = World();
     final cameraComponet = CameraComponent.withFixedResolution(
       width: gameWidth, 

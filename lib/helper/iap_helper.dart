@@ -1,3 +1,5 @@
+import 'package:bit_math/helper/app_state_manager.dart';
+import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
 
@@ -12,9 +14,27 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 */
 class IAPHelper{
 
-  
-  Future<void> init()async{
+  const IAPHelper({
+    required this.saveDataHelper,
+    required this.appState,
+  });
 
+  final SaveDataHelper saveDataHelper;
+  final AppStateManager appState;
+
+  Future<void> init()async{
+  
   }
 
+  
+
+}
+
+
+enum PurchaseItem{
+  removeAd('');
+
+  const PurchaseItem(this.productId);
+
+  final String productId;
 }

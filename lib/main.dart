@@ -33,7 +33,10 @@ Future<void> main() async{
       ChangeNotifierProvider(create: (_)=>adHelper),
       ChangeNotifierProvider(create: (_)=>appStateManager),
     ],
-    child: MyApp(saveDataHelper: saveDataHelper, backendDataRepository: dataRepository),)
+    child: MyApp(
+      saveDataHelper: saveDataHelper, 
+      backendDataRepository: dataRepository,
+      appStateManager:appStateManager),)
   );
 }
 

@@ -8,16 +8,18 @@ class AppStateManager extends ChangeNotifier {
   bool showingAd = false;
 
   enableAd() {
-    // 依存性を減らすためにcontext.readで実行できるようにする（現在の状態に全くよらない処理)
+    if(!showingAd){
     log('showingAd:$showingAd');
     showingAd = true;
     notifyListeners();
+    }
   }
 
   disableAd() {
-    // 依存性を減らすためにcontext.readで実行できるようにする（現在の状態に全くよらない処理)
+    if(showingAd){
     log('showingAd:$showingAd');
     showingAd = false;
     notifyListeners();
+    }
   }
 }

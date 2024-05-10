@@ -16,10 +16,12 @@ class MyApp extends StatelessWidget{
   const MyApp({
     super.key,
     required this.saveDataHelper,
-    required this.backendDataRepository});
+    required this.backendDataRepository,
+    required this.appStateManager});
 
   final SaveDataHelper saveDataHelper;
   final BackendDataRepository backendDataRepository;
+  final AppStateManager appStateManager;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -49,7 +51,7 @@ class MyApp extends StatelessWidget{
             child: GameWidget(game: BitmanMath(
               saveData: saveDataHelper,
               backendData: backendDataRepository,
-              appStateManager: context.read<AppStateManager>())),
+              appStateManager: appStateManager)),
           )
           
         ],

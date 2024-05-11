@@ -4,6 +4,7 @@ import 'package:bit_math/app.dart';
 import 'package:bit_math/helper/ad_helper.dart';
 import 'package:bit_math/helper/app_state_manager.dart';
 import 'package:bit_math/helper/data_repository.dart';
+import 'package:bit_math/helper/iap_manager.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,6 +24,9 @@ Future<void> main() async{
   final adHelper = AdHelper(isDebug: true);
   await adHelper.init();
 
+  final iapManager = InAppPurchaseManager(saveDataHelper: saveDataHelper);
+  await iapManager.initialize();
+
   final appStateManager = AppStateManager(
     saveDataHelper: saveDataHelper
   );
@@ -38,7 +42,8 @@ Future<void> main() async{
     child: MyApp(
       saveDataHelper: saveDataHelper, 
       backendDataRepository: dataRepository,
-      appStateManager:appStateManager),)
+      appStateManager:appStateManager,
+      inAppPurchaseManager: iapManager,),)
   );
 }
 

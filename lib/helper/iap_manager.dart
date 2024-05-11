@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bit_math/helper/app_state_manager.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
 
 /*
@@ -54,6 +55,7 @@ class InAppPurchaseManager {
       return;
     }
     for (var productDetail in response.productDetails) {
+      log('product title:${productDetail.title}');
       final item = PurchaseItem.values.firstWhere((item) => item.productId == productDetail.id);
       _products[item] = productDetail;
     }
@@ -61,6 +63,10 @@ class InAppPurchaseManager {
 
   // 購入処理
   Future<void> purchase(PurchaseItem item) async {
+    if(_products[item]==null){
+      log('no such product');
+      return;
+    }
     switch(item.status){
       case ProductItemStatus.nonConsumable:{
         final PurchaseParam purchaseParam = PurchaseParam(productDetails: _products[item]!);
@@ -80,7 +86,12 @@ class InAppPurchaseManager {
 
   // 復元処理
   Future<void> restorePurchases() async {
-    await _inAppPurchase.restorePurchases();
+    try{
+      log('restore start');
+      await _inAppPurchase.restorePurchases();
+    }catch(e){
+      log(e.toString());
+    }
   }
 
   // ストリームに渡される購入情報の処理
@@ -92,12 +103,14 @@ class InAppPurchaseManager {
           break;
         case PurchaseStatus.purchased:{
           // 購入成功
+          log('purchased');
           final item = PurchaseItem.values.firstWhere(
             (item) => item.productId == purchaseDetails.productID,);
           purchasedOrRestored(item);
         }
         case PurchaseStatus.restored:{
           // 購入復元成功
+          log('restored');
           final item = PurchaseItem.values.firstWhere(
             (item) => item.productId == purchaseDetails.productID,);
           purchasedOrRestored(item);
@@ -122,7 +135,7 @@ class InAppPurchaseManager {
       case PurchaseItem.removeAd:{
         final iapData = saveDataHelper.iapData;
         if(iapData.isRemovedAd==true){
-          log('already purchased. this should not be occur!');
+          log('already purchased. this should not be occur!,you should check iapData.isRemovedAd==true before purchase');
           return;
         }
         saveDataHelper.iapData = saveDataHelper.iapData.copyWith(
@@ -135,7 +148,7 @@ class InAppPurchaseManager {
 
 
 enum PurchaseItem{
-  removeAd('',ProductItemStatus.nonConsumable);
+  removeAd('bitmath_remove_ad',ProductItemStatus.nonConsumable);
 
   const PurchaseItem(this.productId,this.status);
 

@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:bit_math/game_state.dart';
 import 'package:bit_math/helper/app_state_manager.dart';
 import 'package:bit_math/helper/data_repository.dart';
+import 'package:bit_math/helper/iap_manager.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/screens/home_page/home_page.dart';
@@ -15,6 +16,7 @@ import 'package:flame/events.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/game.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
 // import 'package:flutter/material.dart' hide Route;
 
 class BitmanMath extends FlameGame with HasCollisionDetection{
@@ -26,6 +28,7 @@ class BitmanMath extends FlameGame with HasCollisionDetection{
   final BackendDataRepository backendData;
 
   final AppStateManager appStateManager;
+
 
   // router
   late RouterComponent router;

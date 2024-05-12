@@ -1,12 +1,9 @@
-
-
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
 import 'package:bit_math/models/ad_status.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';

@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:bit_math/helper/app_state_manager.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 
@@ -15,11 +16,13 @@ import 'package:in_app_purchase/in_app_purchase.dart';
 */
 class InAppPurchaseManager {
   InAppPurchaseManager({
-    required this.saveDataHelper
+    required this.saveDataHelper,
+    required this.appStateManager,
   });
 
   //購入情報をアプリに保存するためのもの
   final SaveDataHelper saveDataHelper;
+  final AppStateManager appStateManager;
 
   // 商品情報を取得するためのインスタンス
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
@@ -131,6 +134,10 @@ class InAppPurchaseManager {
   Future<void> purchasedOrRestored(PurchaseItem item)async{
     switch(item){
       case PurchaseItem.removeAd:{
+        // if current page has ad ,remove it
+        appStateManager.setShowingAd(false);
+
+        // save remove-ad data
         final iapData = saveDataHelper.iapData;
         if(iapData.isRemovedAd==true){
           log('already purchased. this should not be occur!,you should check iapData.isRemovedAd==true before purchase');

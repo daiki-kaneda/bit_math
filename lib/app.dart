@@ -9,6 +9,7 @@ import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:bit_math/widgets/banner_ad_widget.dart';
 import 'package:bit_math/utils/screen_size.dart';
 import 'package:bit_math/widgets/dialog_button/dialog_button.dart';
+import 'package:bit_math/widgets/dialog_button/remove_ad_button.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 
@@ -51,31 +52,32 @@ class MyApp extends StatelessWidget{
             )
           ),
           ),
-          if(saveDataHelper.iapData.isRemovedAd!=true)
-          Align(
-            alignment: Alignment.bottomRight,
-            child: 
-            Padding(padding: const EdgeInsets.only(top: 10,right: 10),
-            child: DialogButton(
-              context: context, 
-              title: 'remove ad?', 
-              subtitle: '', 
-              icon: const Icon(Icons.close), 
-              primaryLabel: 'restore', 
-              secondaryLabel: 'yes', 
-              tertiaryLabel: 'no',
-              primaryAction: (){
-                inAppPurchaseManager.restorePurchases();
-                 Navigator.pop(context);
-              }, 
-              secondaryAction: (){
-                inAppPurchaseManager.purchase(PurchaseItem.removeAd);
-                Navigator.pop(context);
-              },
-              tertiaryAction: () {
-                Navigator.pop(context);
-              },) ,)
-              )
+          RemoveAdButton(inAppPurchaseManager: inAppPurchaseManager),
+          // if(saveDataHelper.iapData.isRemovedAd!=true)
+          // Align(
+          //   alignment: Alignment.bottomRight,
+          //   child: 
+          //   Padding(padding: const EdgeInsets.only(top: 10,right: 10),
+          //   child: DialogButton(
+          //     context: context, 
+          //     title: 'remove ad?', 
+          //     subtitle: '', 
+          //     icon: const Icon(Icons.close), 
+          //     primaryLabel: 'restore', 
+          //     secondaryLabel: 'yes', 
+          //     tertiaryLabel: 'no',
+          //     primaryAction: (){
+          //       inAppPurchaseManager.restorePurchases();
+          //        Navigator.pop(context);
+          //     }, 
+          //     secondaryAction: (){
+          //       inAppPurchaseManager.purchase(PurchaseItem.removeAd);
+          //       Navigator.pop(context);
+          //     },
+          //     tertiaryAction: () {
+          //       Navigator.pop(context);
+          //     },) ,)
+          //     )
             ],
           ),
           

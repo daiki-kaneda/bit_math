@@ -23,12 +23,15 @@ Future<void> main() async{
   final adHelper = AdHelper(isDebug: true);
   await adHelper.init();
 
-  final iapManager = InAppPurchaseManager(saveDataHelper: saveDataHelper);
-  await iapManager.initialize();
-
   final appStateManager = AppStateManager(
     saveDataHelper: saveDataHelper
   );
+
+  final iapManager = InAppPurchaseManager(
+    saveDataHelper: saveDataHelper,
+    appStateManager: appStateManager);
+    
+  await iapManager.initialize();
 
   final dataRepository = BackendDataRepository(saveDataHelper);
   await dataRepository.init();

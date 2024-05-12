@@ -34,7 +34,7 @@ class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameRe
   @override
   void onTapDown(TapDownEvent event) {
     log('tapped');
-    FlameAudio.play('jingles_NES16.mp3');
+    if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES16.mp3');
     game.router.popUntilNamed(ScreenStatus.splash.name);
     game.router.pushRoute(PlayingRoute(PlayingPage()));
     super.onTapDown(event);

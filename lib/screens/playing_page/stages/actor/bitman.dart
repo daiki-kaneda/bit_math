@@ -57,7 +57,7 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
 
 
   //properties
-  int maxSpeed = 100; //100
+  int maxSpeed = 50; //100
   int gravity = 200; //200
   final terminalVelocity = 40;
   final jumpSpeed = 130.0; //130

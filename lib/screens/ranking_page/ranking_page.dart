@@ -47,6 +47,7 @@ class RankingPage extends Component with HasGameRef<BitmanMath>{
       Sentence(13, 4+2*i.toDouble(), str: '${i+1}. ${
         topScores.elementAtOrNull(i)==null ? ''.padLeft(12,'-')
         :topScores.elementAtOrNull(i).toString().padLeft(12,'0')} ', direction: SentenceDirection.horizontal),
+      Sentence(12, 14, str: 'YOU:${game.saveData.scoreData.bestScore.toString().padLeft(12,'0')}', direction: SentenceDirection.horizontal),
       PushHomeRouteButton(gridPosition: Vector2(22, 18), str: '@HOME')
     ]);
     

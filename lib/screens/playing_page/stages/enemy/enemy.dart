@@ -1,9 +1,7 @@
-import 'dart:async';
 import 'dart:math';
 
 
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
-import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flutter/material.dart';

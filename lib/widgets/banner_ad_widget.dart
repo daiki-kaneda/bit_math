@@ -1,5 +1,4 @@
 
-import 'dart:developer';
 
 import 'package:bit_math/helper/ad_helper.dart';
 import 'package:bit_math/helper/app_state_manager.dart';

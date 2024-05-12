@@ -20,9 +20,4 @@ class JoyStick extends JoystickComponent {
     ),
     margin:const EdgeInsets.only(left: 55, bottom: 1) );
 
-  @override
-  void update(double dt) {
-    
-    super.update(dt);
-  }
 }

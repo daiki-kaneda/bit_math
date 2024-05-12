@@ -7,7 +7,6 @@ import 'package:bit_math/utils/sprite_util.dart';
 
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:flame/effects.dart';
 
 //Parent of LockedBlock must be Problem Component
 class EnemyLockedBlock extends SpriteComponent with StageBlock implements StageObject,Ridable {

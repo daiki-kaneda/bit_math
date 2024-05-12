@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math';
 
 
 import 'package:bit_math/game.dart';
@@ -16,7 +15,6 @@ import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
-import 'package:flame/geometry.dart';
 import 'package:flutter/material.dart';
 
 

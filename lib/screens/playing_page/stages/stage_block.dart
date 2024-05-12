@@ -2,7 +2,6 @@
 //ステージ内のブロック（PlayingPageのobjectSpeedに従って、移動し、removeされた時には、位置を元に戻す）
 
 
-import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/stage_object.dart';
 import 'package:flame/components.dart';
 

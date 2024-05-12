@@ -5,7 +5,6 @@ import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
-import 'package:flutter/widgets.dart';
 
 class JumpButton extends ButtonComponent {
   JumpButton(this.bitman):super(

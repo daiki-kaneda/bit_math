@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:bit_math/app.dart';
 import 'package:bit_math/helper/ad_helper.dart';

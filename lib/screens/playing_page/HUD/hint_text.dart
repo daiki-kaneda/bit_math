@@ -1,11 +1,8 @@
 
 import 'dart:async';
 
-import 'package:bit_math/screens/playing_page/playing_page.dart';
-import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class HintText extends Component{

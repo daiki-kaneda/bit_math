@@ -13,6 +13,7 @@ class ReferencePoint extends PositionComponent with StageBlock implements StageO
   @override
   final Vector2 gridPosition;
 
+  @override
   final velocity = Vector2.zero();
 
   @override

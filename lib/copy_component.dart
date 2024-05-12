@@ -1,5 +1,4 @@
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
-import 'package:bit_math/screens/playing_page/stages/actor/ride/ride.dart';
 import 'package:bit_math/screens/playing_page/stages/background/decoration/chimney.dart';
 import 'package:bit_math/screens/playing_page/stages/background/decoration/chimney_block.dart';
 import 'package:bit_math/screens/playing_page/stages/background/decoration/smoke_stack.dart';

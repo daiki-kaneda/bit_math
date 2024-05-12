@@ -1,6 +1,5 @@
 
 import 'dart:async';
-import 'dart:math';
 
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
 import 'package:bit_math/screens/playing_page/stages/enemy/common/projectile.dart';

@@ -5,7 +5,6 @@ import 'package:bit_math/screens/playing_page/stages/objects/border.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/letter.dart';
 import 'package:bit_math/screens/playing_page/stages/stage_block.dart';
 import 'package:bit_math/screens/playing_page/stages/stage_object.dart';
-import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
 //InputBlock 's Parent must be Problem

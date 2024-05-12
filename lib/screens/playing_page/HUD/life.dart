@@ -4,8 +4,6 @@ import 'dart:async';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
-import 'package:flame/input.dart';
-import 'package:flutter/material.dart';
 
 enum LifeStatus{
   full,lost,half

@@ -1,9 +1,7 @@
 import 'dart:developer';
 
-import 'package:bit_math/helper/app_state_manager.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
-import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 
 
 /*
@@ -27,10 +25,10 @@ class InAppPurchaseManager {
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
 
   // 購入情報を格納する変数
-  Map<PurchaseItem, ProductDetails> _products = {};
+  final Map<PurchaseItem, ProductDetails> _products = {};
 
   // 購入状態を格納する変数
-  Map<PurchaseItem, bool> _purchases = {};
+  final Map<PurchaseItem, bool> _purchases = {};
 
   // 初期化
   Future<void> initialize() async {

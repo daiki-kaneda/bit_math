@@ -3,15 +3,11 @@ import 'dart:async';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
-import 'package:bit_math/screens/components/stage_manager.dart';
-import 'package:bit_math/screens/home_page/home_page.dart';
-import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/utils/constants.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
-import 'package:flame/flame.dart';
 
 //Powered by Flameなど書くべきかも？
 class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>{

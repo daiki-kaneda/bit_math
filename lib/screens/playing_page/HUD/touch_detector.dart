@@ -25,7 +25,7 @@ class TouchDetector extends PositionComponent with DragCallbacks{
       hasJoystick=true;
       final viewPort = findParent<PlayingPage>()!.camera.viewport;
       joyStick = JoyStick()
-      ..margin=EdgeInsets.all(100);
+      ..margin=const EdgeInsets.all(100);
       viewPort.add(joyStick);
     }
     super.onDragStart(event);

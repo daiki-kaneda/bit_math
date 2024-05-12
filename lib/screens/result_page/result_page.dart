@@ -3,7 +3,6 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:bit_math/game.dart';
-import 'package:bit_math/models/save_data_status.dart';
 import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/screens/components/sentence_button/push_home_route_button.dart';
 import 'package:bit_math/screens/components/sentence_button/push_play_route_button.dart';

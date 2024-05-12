@@ -3,9 +3,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bit_math/game.dart';
-import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/screens/home_page/home_page.dart';
-import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -39,15 +37,7 @@ class PushHomeRouteButton extends PositionComponent with TapCallbacks, HasGameRe
     super.onTapDown(event);
   }
 
-  @override
-  void onTapCancel(TapCancelEvent event) {
-    super.onTapCancel(event);
-  }
 
-  @override
-  void onTapUp(TapUpEvent event) {
-    super.onTapUp(event);
-  }
 
   @override
   bool containsLocalPoint(Vector2 point) {

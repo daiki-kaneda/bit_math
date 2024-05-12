@@ -4,7 +4,6 @@ import 'package:bit_math/game.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
-import 'package:flutter/widgets.dart';
 
 class PauseButton extends ButtonComponent with HasGameRef<BitmanMath>{
   PauseButton():super(

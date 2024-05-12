@@ -6,16 +6,12 @@ import 'package:bit_math/helper/problem_generator.dart';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/frame.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/blackboard.dart';
-import 'package:bit_math/screens/playing_page/HUD/hint_text.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/input_block.dart';
-import 'package:bit_math/screens/playing_page/stages/objects/problem/input_field.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/problem_timer.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame_audio/flame_audio.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 enum ProblemStatus {

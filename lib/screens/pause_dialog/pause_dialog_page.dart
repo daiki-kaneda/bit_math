@@ -1,11 +1,13 @@
 
 
 import 'package:bit_math/game.dart';
+import 'package:bit_math/screens/home_page/home_page.dart';
 import 'package:bit_math/screens/pause_dialog/sound_toggle.dart';
+import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
+import 'package:flame/game.dart';
 import 'package:flame/input.dart';
-import 'package:flame/widgets.dart';
 
 
 /*
@@ -21,52 +23,59 @@ import 'package:flame/widgets.dart';
 
 class PauseDialogPage extends Component with HasGameRef<BitmanMath>{
 
+  late final ButtonComponent menuButton;
+  late final ButtonComponent resumeButton;
+  late final ButtonComponent retryButton;
   
   @override
   Future<void> onLoad() async{
     //restartボタン欲しい
-    final menuButton = ButtonComponent(
+    menuButton = ButtonComponent(
         button: SpriteComponent(
           sprite: getSprite(SpriteSheets.uiSprites, 669, 315, 48, 48)),
         onPressed: () {
-          // TODO: proper animation
+          //menuButton.scale = Vector2.all(0.5);
         },
         onReleased: () {
-          // TODO: push home route
+          game.router.pushReplacement(Route(() => HomePage()));
         },
         onCancelled: () {
-          // TOdO: proper animation
+          //menuButton.scale = Vector2.all(1.0);
         },
+        //anchor: Anchor.center,
         );
 
-    final resumeButton = ButtonComponent(
+    resumeButton = ButtonComponent(
         button: SpriteComponent(
           sprite: getSprite(SpriteSheets.uiSprites, 101, 101, 48, 48)),
         onPressed: () {
-          // TODO: proper animation
+          //menuButton.scale = Vector2.all(0.5);
         },
         onReleased: () {
-          // TODO: pop dialog
+          game.router.pop();
         },
         onCancelled: () {
-          // TOdO: proper animation
+          //menuButton.scale = Vector2.all(1.0);
         },
+        //anchor: Anchor.center
         );
         
-    final retryButton = ButtonComponent(
+    retryButton = ButtonComponent(
         button: SpriteComponent(
           sprite: getSprite(SpriteSheets.uiSprites, 487, 101, 48, 48),
           anchor: Anchor.center,
           scale: Vector2(-1, 1)),
         onPressed: () {
-          // TODO: proper animation
+         
         },
         onReleased: () {
-          // TODO: push playing page
+          game.router.pop();
+          game.router.pushReplacement(Route(() => PlayingPage()));
         },
         onCancelled: () {
-          // TOdO: proper animation
+          
         },
+        //anchor: Anchor.center
         );
      
     

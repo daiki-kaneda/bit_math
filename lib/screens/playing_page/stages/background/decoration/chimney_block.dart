@@ -7,7 +7,6 @@ import 'package:bit_math/screens/playing_page/stages/block/ridable.dart';
 import 'package:bit_math/screens/playing_page/stages/stage_block.dart';
 import 'package:bit_math/screens/playing_page/stages/stage_object.dart';
 import 'package:bit_math/utils/sprite_util.dart';
-import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
 enum ChimneyBlockStatus{

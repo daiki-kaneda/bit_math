@@ -1,10 +1,7 @@
 
 import 'dart:async';
 
-import 'package:bit_math/screens/playing_page/stages/objects/letter.dart';
-import 'package:bit_math/screens/playing_page/stages/objects/problem/problem.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
-import 'package:bit_math/screens/playing_page/stages/stage_object.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';

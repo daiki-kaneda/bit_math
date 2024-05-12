@@ -111,7 +111,7 @@ class FrameTile extends SpriteGroupComponent<FrameDirection> with StageBlock imp
   void update(double dt) {
     scrollMove(dt);
      final status = findParent<Problem>()!.status;
-     final hasEffect = false;
+     const hasEffect = false;
      //children.whereType<ColorEffect>().isNotEmpty;
     // if(status==ProblemStatus.initial){
     //   if(!children.contains(initialEffect)){

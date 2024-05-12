@@ -11,8 +11,6 @@ import 'package:bit_math/utils/screen_size.dart';
 import 'package:bit_math/widgets/dialog_button/dialog_button.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
-import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget{
 

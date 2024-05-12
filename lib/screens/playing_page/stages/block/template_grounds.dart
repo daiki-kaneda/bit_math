@@ -5,7 +5,6 @@ import 'dart:math';
 import 'package:bit_math/screens/playing_page/stages/block/ground_block.dart';
 import 'package:bit_math/screens/playing_page/stages/block/grounds.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/material.dart';
 
 
 
@@ -85,7 +84,7 @@ class Grnd extends PositionComponent{
     }else if(gridPoints.length==3){
       switch(status){
         case GrndStatus.leftCorner:{
-         add(Grounds(gridPoints[1].x,gridPoints[1].y, str: '['+'l'*(gridPoints[0].y-gridPoints[1].y).toInt(), direction: GroundsDirection.vertical,
+         add(Grounds(gridPoints[1].x,gridPoints[1].y, str: '[${'l'*(gridPoints[0].y-gridPoints[1].y).toInt()}', direction: GroundsDirection.vertical,
          isSolid: isSolid));
          add(Grounds(gridPoints[1].x+1,gridPoints[1].y, str: 't'*(gridPoints[2].x-gridPoints[1].x).toInt(), direction: GroundsDirection.horizontal,
           isSolid: isSolid));
@@ -93,7 +92,7 @@ class Grnd extends PositionComponent{
         case GrndStatus.rightCorner:{
         add(Grounds(gridPoints[0].x,gridPoints[0].y, str: 't'*(gridPoints[1].x-gridPoints[0].x).toInt(), direction: GroundsDirection.horizontal,
          isSolid: isSolid));
-         add(Grounds(gridPoints[1].x,gridPoints[1].y, str: ']'+'r'*(gridPoints[2].y-gridPoints[1].y).toInt(), direction: GroundsDirection.vertical,
+         add(Grounds(gridPoints[1].x,gridPoints[1].y, str: ']${'r'*(gridPoints[2].y-gridPoints[1].y).toInt()}', direction: GroundsDirection.vertical,
           isSolid: isSolid));
         }
         default:
@@ -101,11 +100,11 @@ class Grnd extends PositionComponent{
     }else if(gridPoints.length ==4){
       switch(status){
         case GrndStatus.rectangle:{
-         add(Grounds(gridPoints[1].x,gridPoints[1].y, str: '['+'l'*(gridPoints[0].y-gridPoints[1].y).toInt(), direction: GroundsDirection.vertical,
+         add(Grounds(gridPoints[1].x,gridPoints[1].y, str: '[${'l'*(gridPoints[0].y-gridPoints[1].y).toInt()}', direction: GroundsDirection.vertical,
           isSolid: isSolid));
           add(Grounds(gridPoints[1].x+1,gridPoints[1].y, str: 't'*(gridPoints[2].x-gridPoints[1].x-1).toInt(), direction: GroundsDirection.horizontal,
            isSolid: isSolid));
-          add(Grounds(gridPoints[2].x,gridPoints[2].y, str: ']'+'r'*(gridPoints[3].y-gridPoints[2].y).toInt(), direction: GroundsDirection.vertical,
+          add(Grounds(gridPoints[2].x,gridPoints[2].y, str: ']${'r'*(gridPoints[3].y-gridPoints[2].y).toInt()}', direction: GroundsDirection.vertical,
            isSolid: isSolid));
           //deco
           final random = Random();
@@ -122,11 +121,11 @@ class Grnd extends PositionComponent{
         }
         }
         case GrndStatus.invertedRect:{
-          add(Grounds(gridPoints[0].x,gridPoints[0].y, str: 'l'*(gridPoints[1].y-gridPoints[0].y).toInt()+'{', direction: GroundsDirection.vertical,
+          add(Grounds(gridPoints[0].x,gridPoints[0].y, str: '${'l'*(gridPoints[1].y-gridPoints[0].y).toInt()}{', direction: GroundsDirection.vertical,
            isSolid: isSolid));
           add(Grounds(gridPoints[1].x+1,gridPoints[1].y, str: 'b'*(gridPoints[2].x-gridPoints[1].x-1).toInt(), direction: GroundsDirection.horizontal,
            isSolid: isSolid));
-          add(Grounds(gridPoints[3].x,gridPoints[3].y, str: 'r'*(gridPoints[2].y-gridPoints[3].y).toInt()+'}', direction: GroundsDirection.vertical,
+          add(Grounds(gridPoints[3].x,gridPoints[3].y, str: '${'r'*(gridPoints[2].y-gridPoints[3].y).toInt()}}', direction: GroundsDirection.vertical,
            isSolid: isSolid));
           //deco
           final random = Random();

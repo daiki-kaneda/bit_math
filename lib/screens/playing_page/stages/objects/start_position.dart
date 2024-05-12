@@ -12,6 +12,7 @@ class StartPosition extends PositionComponent with StageBlock implements StageOb
   @override
   final Vector2 gridPosition;
 
+  @override
   final velocity = Vector2.zero();
 
   @override

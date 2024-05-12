@@ -5,7 +5,6 @@ import 'package:bit_math/firebase_options.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:bit_math/models/save_data_status.dart';
 import 'package:bit_math/models/score_data.dart';
-import 'package:bit_math/models/setting.dart';
 import 'package:bit_math/models/user_data.dart';
 import 'package:bit_math/utils/device_util.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

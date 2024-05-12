@@ -3,7 +3,6 @@
 
 
 import 'package:bit_math/copy_component.dart';
-import 'package:bit_math/screens/playing_page/stages/stages_manager/stages/stages.dart';
 import 'package:flame/components.dart';
 
 class Stage {

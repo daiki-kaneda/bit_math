@@ -9,7 +9,6 @@ import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/input.dart';
-import 'package:flutter/material.dart';
 
 
 class AttackButton extends ButtonComponent{

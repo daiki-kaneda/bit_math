@@ -6,11 +6,8 @@ import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/screens/components/sentence_button/push_play_route_button.dart';
 import 'package:bit_math/screens/components/stage_manager.dart';
 import 'package:bit_math/screens/home_page/ui/ranking_button.dart';
-import 'package:bit_math/screens/home_page/ui/game_start_button.dart';
-import 'package:bit_math/screens/home_page/ui/shop_button.dart';
 import 'package:bit_math/screens/playing_page/HUD/joystick.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
-import 'package:bit_math/screens/playing_page/stages/background/decoration/smoke_stack.dart';
 import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
 

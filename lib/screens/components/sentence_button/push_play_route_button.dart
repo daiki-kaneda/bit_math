@@ -40,15 +40,7 @@ class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameRe
     super.onTapDown(event);
   }
 
-  @override
-  void onTapCancel(TapCancelEvent event) {
-    super.onTapCancel(event);
-  }
 
-  @override
-  void onTapUp(TapUpEvent event) {
-    super.onTapUp(event);
-  }
 
   @override
   bool containsLocalPoint(Vector2 point) {

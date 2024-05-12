@@ -1,11 +1,9 @@
 import 'dart:async';
-import 'dart:math';
 
 
 import 'package:bit_math/screens/playing_page/stages/objects/problem/locked_block.dart';
 import 'package:bit_math/screens/playing_page/stages/stage_object.dart';
 import 'package:flame/components.dart';
-import 'package:flutter/material.dart';
 
 
 

@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:bit_math/game.dart';
-import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/screens/ranking_page/ranking_page.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';

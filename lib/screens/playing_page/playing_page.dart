@@ -20,6 +20,8 @@ import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 
+
+// TODO: sound off when setting.isSound == false
 class PlayingRoute extends Route with HasGameRef<BitmanMath>{
   PlayingRoute(this.page):super(
     ()=>page,

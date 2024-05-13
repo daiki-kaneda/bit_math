@@ -24,7 +24,7 @@ class ResumeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallba
             fontSize: 16,
             color: Colors.grey)
         ),
-        position: Vector2(game.canvasSize.x/2,game.canvasSize.y*2/3),
+        position: Vector2(game.canvasSize.x/2,game.canvasSize.y*1/5),
         anchor: Anchor.center,
         );
     anchor = Anchor.center;

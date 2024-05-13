@@ -19,7 +19,7 @@ class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>
             fontSize: 16,
             color: Colors.grey)
         ),
-        position: Vector2(game.canvasSize.x/2,game.canvasSize.y*2/3),
+        position: Vector2(game.canvasSize.x/2,game.canvasSize.y*1/5),
         anchor: Anchor.center,
         );
     current = game.saveData.setting.isSound;
@@ -48,7 +48,7 @@ class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>
   @override
   void onTapUp(TapUpEvent event) {
     hint.removeFromParent();
-    
+
     scale = Vector2.all(1);
     if(current!){
        current = false;

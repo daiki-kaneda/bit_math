@@ -19,13 +19,13 @@ class HomeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallback
   @override
   FutureOr<void> onLoad() {
     hint = TextComponent(
-        text: 'back to start page',
+        text: 'back to start page(current score will be lost)',
         textRenderer: TextPaint(
           style:const TextStyle(
             fontSize: 16,
             color: Colors.grey)
         ),
-        position: Vector2(game.canvasSize.x/2,game.canvasSize.y*2/3),
+        position: Vector2(game.canvasSize.x/2,game.canvasSize.y*1/5),
         anchor: Anchor.center,
         );
 

@@ -81,7 +81,7 @@ class SimpleMoveEnemy extends SpriteGroupComponent<SimpleMoveEnemyStatus> with S
     switch(status){
      case  SimpleMoveEnemyStatus.aligator:{
        add(MoveEffect.by(Vector2(16*interval.toDouble(), 0),EffectController(
-      duration: 10,
+      duration: 10+Random().nextInt(5).toDouble(),
       alternate: true,
       infinite: true,
       onMax: flipHorizontally,
@@ -178,6 +178,8 @@ class SimpleMoveEnemy extends SpriteGroupComponent<SimpleMoveEnemyStatus> with S
     }
 
     position = Vector2(gridPosition.x*16 +8, gridPosition.y*16+8);
+
+    // TODO: adjust hitbox for each enemy
     add(CircleHitbox(collisionType: CollisionType.passive));
     setConditionDecoration();
 

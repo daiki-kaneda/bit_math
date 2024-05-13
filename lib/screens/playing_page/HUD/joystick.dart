@@ -2,7 +2,9 @@
 
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
+import 'package:flame/src/events/messages/drag_update_event.dart';
 import 'package:flutter/painting.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 class JoyStick extends JoystickComponent {
   JoyStick():super(
@@ -19,5 +21,11 @@ class JoyStick extends JoystickComponent {
         )
     ),
     margin:const EdgeInsets.only(left: 55, bottom: 1) );
+
+  @override 
+  bool onDragUpdate(DragUpdateEvent event) {
+    if(event.renderingTrace.isEmpty) return false;
+    return super.onDragUpdate(event);
+  }
 
 }

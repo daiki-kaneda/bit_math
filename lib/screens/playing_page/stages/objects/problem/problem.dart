@@ -165,7 +165,7 @@ class Problem extends Component with HasGameRef<BitmanMath>{
         Sentence(21, 6,
             str: probData.sentence, direction: SentenceDirection.horizontal),
         for(var i=0;i<probData.choices.length;i++)
-        InputBlock(20+i+(96/(5*16))*(i+1), 9, inputText: probData.choices[i]),
+        InputBlock(20+i+(96/(5*16))*(i+1), 9.3, inputText: probData.choices[i]),
       ];
       await addAll(problem);
   }

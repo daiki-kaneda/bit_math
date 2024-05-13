@@ -5,10 +5,16 @@
 class GameState{
   GameState();
 
+  static const int aligatorLimit = 10;
   int score=0;
+
+  int numbersOfAligator = 0;
+
+  
 
   void reset(){
     score=0;
+    numbersOfAligator=0;
   }
   int get level {
     if (score < 1000) {
@@ -26,22 +32,22 @@ class GameState{
     }
   }
 
-// level1:8s
-// level2:7s
-// level3:6s
-// level4:5s
-// level5:4s
+// level1:10s
+// level2:9s
+// level3:8s
+// level4:7s
+// level5:6s
   int get time {
     if (level < 2) {
-      return 8;
+      return 10;
     } else if (level < 3) {
-      return 7;
+      return 9;
     } else if (level < 4) {
-      return 6;
+      return 8;
     } else if (level < 5) {
-      return 5;
+      return 7;
     } else{
-      return 4;
+      return 6;
     }
   }
 }

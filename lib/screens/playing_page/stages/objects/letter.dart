@@ -72,7 +72,8 @@ enum LetterStatus {
   undo,
   colon,
   home,
-  crown;
+  crown,
+  aligator;
 
   static List<String> get supportedCher=>[
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
@@ -81,7 +82,7 @@ enum LetterStatus {
     'o', 'x', '(', ')', '{', '}', 'u',
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
     'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-    '@', ':','c'
+    '@', ':','c','a'
   ];
 }
 
@@ -336,6 +337,9 @@ class LetterTile extends SpriteComponent
       case LetterStatus.crown:
         sprite = getSprite(
             SpriteSheets.coloredTransparentPacked, 43 * 16, 2 * 16, 16, 16);
+      case LetterStatus.aligator:
+        sprite = getSprite(
+            SpriteSheets.coloredTransparentPacked, 29 * 16, 8 * 16, 16, 16);
     }
     if (path != null) {
       add(MoveAlongPathEffect(
@@ -548,6 +552,8 @@ class LetterTile extends SpriteComponent
         status = LetterStatus.colon;
       case 'c':
         status = LetterStatus.crown;
+      case 'a':
+        status = LetterStatus.aligator;
       default:
         status = LetterStatus.dig0;
     }

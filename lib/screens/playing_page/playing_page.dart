@@ -1,10 +1,13 @@
 
 import 'dart:async';
 import 'dart:developer';
+import 'dart:math' hide log;
+
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/screens/components/stage_manager.dart';
+import 'package:bit_math/screens/playing_page/HUD/aligator_number.dart';
 import 'package:bit_math/screens/playing_page/HUD/back_button.dart';
 import 'package:bit_math/screens/playing_page/HUD/joystick.dart';
 import 'package:bit_math/screens/playing_page/HUD/jump_button.dart';
@@ -13,12 +16,14 @@ import 'package:bit_math/screens/playing_page/HUD/score.dart';
 import 'package:bit_math/screens/playing_page/playing_state.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
 import 'package:bit_math/screens/playing_page/HUD/hint_text.dart';
+import 'package:bit_math/screens/playing_page/stages/enemy/common/simple_move_enemy.dart';
+import 'package:bit_math/screens/playing_page/stages/item/heal_item.dart';
 import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
+import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';
 
 
-// TODO: sound off when setting.isSound == false
 class PlayingRoute extends Route with HasGameRef<BitmanMath>{
   PlayingRoute(this.page):super(
     ()=>page,
@@ -87,9 +92,38 @@ class PlayingPage extends Component with HasGameRef<BitmanMath>{
       //timeRemaining,
       BackButton(position: Vector2(2*16, 1*16),size: Vector2.all(20)),
       Score(),
+      AligatorNumber(),
       ...lifes
     ]);
     world.add(bitman);
+
+    // spawner
+    final aligatorSpawner = SpawnComponent(
+      factory: (n){
+        const limit =9;
+        if(n<=limit){
+        game.gameState.numbersOfAligator += 1;
+        log('aligator number ${game.gameState.numbersOfAligator}');
+        return SimpleMoveEnemy(
+        0, 15, status: SimpleMoveEnemyStatus.aligator, interval: 50);
+        }else{
+          return PositionComponent();
+        }
+      }
+        ,period: 20,
+        area:Rectangle.fromLTWH(16*0, 16*15, 16, 16) );
+
+    final appleSpawner = SpawnComponent(
+      factory: (n){
+        log('apple number $n');
+        return HealItem(Random().nextInt(50).toDouble(), 15, status: HealItemStatus.apple);
+      }
+        ,period: 20,
+        area:Rectangle.fromLTWH(16*0, 16*15, 16, 16) );
+    world.addAll([
+        aligatorSpawner,
+        appleSpawner,
+        ]);
     log('game start');
     return super.onLoad();
   }

@@ -1,3 +1,4 @@
+
 import 'dart:async';
 
 import 'package:bit_math/game.dart';
@@ -5,15 +6,15 @@ import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
-class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>,TapCallbacks{
+class UIButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks{
 
+  UIButton({
+    super.sprite,
+    required this.onPressed});
+
+  void Function() onPressed;
   @override
   FutureOr<void> onLoad() {
-    current = game.saveData.setting.isSound;
-    sprites = {
-      true: getSprite(SpriteSheets.uiSprites, 767, 51, 48, 48),
-      false:getSprite(SpriteSheets.uiSprites, 51, 101, 48, 48)
-    };
     anchor = Anchor.center;
     return super.onLoad();
   }
@@ -33,17 +34,7 @@ class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>
   @override
   void onTapUp(TapUpEvent event) {
     scale = Vector2.all(1);
-    if(current!){
-       current = false;
-       game.saveData.setting = game.saveData.setting.copyWith(
-        isSound: false
-       );
-    }else{
-      current = true;
-      game.saveData.setting = game.saveData.setting.copyWith(
-        isSound: true
-       );
-    }
+    onPressed;
     super.onTapUp(event);
   }
 }

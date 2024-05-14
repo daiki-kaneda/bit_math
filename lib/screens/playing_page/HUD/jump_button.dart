@@ -40,7 +40,7 @@ class JumpButton extends ButtonComponent {
     //     style:const TextStyle(
     //       fontSize: 16,
     //       color: Color.fromRGBO(0, 0, 0, 0.5)
-    //     )
+    //     
     //   ))
     // ..anchor=Anchor.bottomRight
     // ..position=Vector2(6*16,6*16)

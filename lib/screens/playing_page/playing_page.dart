@@ -105,7 +105,7 @@ class PlayingPage extends Component with HasGameRef<BitmanMath>{
         game.gameState.numbersOfAligator += 1;
         log('aligator number ${game.gameState.numbersOfAligator}');
         return SimpleMoveEnemy(
-        0, 15, status: SimpleMoveEnemyStatus.aligator, interval: 50);
+        0, 15, status: SimpleMoveEnemyStatus.aligator, interval: 49);
         }else{
           return PositionComponent();
         }

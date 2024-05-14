@@ -25,7 +25,9 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 enum BitmanStatus{
   normal,walking,jumping,dead,
@@ -260,6 +262,12 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
         hitEnemy = true;
         condition = other.abnormalStatus;
         if(other.power>0){
+        HapticFeedback.lightImpact();
+        if(findParent<PlayingPage>()!.state.lives==1){
+          if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES00.mp3');
+        }else{
+          if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES15.mp3');
+        }
         findParent<PlayingPage>()!.state.lives -= other.power;
         add(
           OpacityEffect.fadeOut(

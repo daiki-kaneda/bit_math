@@ -5,6 +5,7 @@ import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
+import 'package:flutter/material.dart';
 
 class JumpButton extends ButtonComponent {
   JumpButton(this.bitman):super(
@@ -22,6 +23,8 @@ class JumpButton extends ButtonComponent {
 
     final Bitman bitman;
 
+    //late TextComponent buttonCountHint;
+
   @override
   FutureOr<void> onLoad() {
     onPressed =  (){
@@ -31,8 +34,35 @@ class JumpButton extends ButtonComponent {
       bitman.isOnGround = false;
       bitman.jumpCount++;
       bitman.velocity.y = -bitman.jumpSpeed;
-
     };
+    // buttonCountHint = TextComponent(
+    //   text: '2/2',textRenderer: TextPaint(
+    //     style:const TextStyle(
+    //       fontSize: 16,
+    //       color: Color.fromRGBO(0, 0, 0, 0.5)
+    //     )
+    //   ))
+    // ..anchor=Anchor.bottomRight
+    // ..position=Vector2(6*16,6*16)
+    // ..priority=button!.priority+1;
+    //add(buttonCountHint);
     return super.onLoad();
+  }
+
+  @override
+  void update(double dt) {
+    if(bitman.jumpCount==2){
+      (button as SpriteComponent).paint.colorFilter = const ColorFilter.mode(Color.fromRGBO(255, 0, 0, 0.15), BlendMode.srcATop);
+      //buttonCountHint.text='0/2';
+    }else if(bitman.jumpCount==1){
+      (button as SpriteComponent).paint.colorFilter = const ColorFilter.mode(Color.fromRGBO(0, 0, 255, 0), BlendMode.srcATop);
+      //(button as SpriteComponent).paint.colorFilter = const ColorFilter.mode(Color.fromRGBO(244, 230, 79, 0.15), BlendMode.srcATop);
+      //buttonCountHint.text='1/2';
+    }else{
+      (button as SpriteComponent).paint.colorFilter = const ColorFilter.mode(Color.fromRGBO(0, 0, 255, 0), BlendMode.srcATop);
+      //(button as SpriteComponent).paint.colorFilter = const ColorFilter.mode(Color.fromRGBO(0, 0, 255, 0.15), BlendMode.srcATop);
+      //buttonCountHint.text='2/2';
+    }
+    super.update(dt);
   }
 }

@@ -10,6 +10,7 @@ part 'score_data.g.dart';
 
 @freezed
 class ScoreData with _$ScoreData {
+  @JsonSerializable(includeIfNull: false)
   const factory ScoreData({
     required int bestScore,
     required int numbersToSolveAddition,

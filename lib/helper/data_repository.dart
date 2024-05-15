@@ -84,7 +84,7 @@ class BackendDataRepository extends ChangeNotifier{
     if(snapshots.docs.isNotEmpty){
       await userCollection
       .doc(snapshots.docs.first.id).set(
-        data.toFirestore(),
+        data.toJson(),
         SetOptions(merge: true));
       log('data updated');
     }else{
@@ -99,7 +99,7 @@ class BackendDataRepository extends ChangeNotifier{
       isEqualTo: deviceId
       ).get();
     final data = snapshots.docs.first.data() as Map<String,dynamic>?;
-    return data!=null ? UserData.fromMap(data):null;
+    return data!=null ? UserData.fromJson(data):null;
   }
 
   Future<List<int>> getTopGlobalScore()async{
@@ -107,14 +107,14 @@ class BackendDataRepository extends ChangeNotifier{
       'bestScore',descending: true).limit(5).get();
 
     return snapshots.docs.map((d) => d.data() as Map<String,dynamic>)
-    .map((e) => UserData.fromMap(e).bestScore).toList();
+    .map((e) => UserData.fromJson(e).bestScore).toList();
   }
 
   Future<void> _createUserDataDocument(UserData data)async{
     final docRef = userCollection
     .withConverter(
-      fromFirestore:(snapshot, options) => UserData.fromFirestore(snapshot),
-      toFirestore: (UserData data, options) => data.toFirestore(),
+      fromFirestore:(snapshot, options) => UserData.fromJson(snapshot.data()!),
+      toFirestore: (UserData data, options) => data.toJson(),
     ).doc();
     await docRef.set(data);
   }

@@ -2,7 +2,6 @@
 import 'dart:async';
 
 import 'package:bit_math/game.dart';
-import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 

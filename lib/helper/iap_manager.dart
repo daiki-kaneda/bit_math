@@ -12,7 +12,7 @@ import 'package:in_app_purchase/in_app_purchase.dart';
      そして、InAppPurchaseのインスタンスのpurchaseStreamをリッスンして、購入、復元、エラー処理を実装した_handlePurchaseコールバックを渡す
   - 購入時,購入復元時の処理ではsave_data_helperにおける適切な処理をする
   - バッグエンドを使わないために、非消費型、サブスクリプション、記録の必要のない消費型のみを扱い、それらはenum型などでidとともに管理する
-  
+
 */
 class InAppPurchaseManager {
   InAppPurchaseManager({
@@ -116,7 +116,7 @@ class InAppPurchaseManager {
             (item) => item.productId == purchaseDetails.productID,);
           purchasedOrRestored(item);
         }
-          
+
         case PurchaseStatus.error:
           log('purchase failed');
           break;

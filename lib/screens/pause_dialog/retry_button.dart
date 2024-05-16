@@ -2,10 +2,8 @@
 import 'dart:async';
 
 import 'package:bit_math/game.dart';
-import 'package:bit_math/screens/home_page/home_page.dart';
 import 'package:bit_math/screens/pause_dialog/pause_dialog_page.dart';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
-import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';

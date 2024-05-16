@@ -17,7 +17,7 @@ class BackendDataRepository extends ChangeNotifier{
 
   final SaveDataHelper saveDataHelper;
   
-  UserData userData = UserData(
+  UserData userData = const UserData(
     deviceId: null, 
     name: 'Unnamed', 
     bestScore: 0);

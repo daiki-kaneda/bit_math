@@ -4,7 +4,6 @@ import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/src/events/messages/drag_update_event.dart';
 import 'package:flutter/painting.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 class JoyStick extends JoystickComponent {
   JoyStick():super(

@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 class RemoveAdButton extends StatelessWidget{
 
-  RemoveAdButton({
+  const RemoveAdButton({
     super.key,
     required this.inAppPurchaseManager});
   final InAppPurchaseManager inAppPurchaseManager;

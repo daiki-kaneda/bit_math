@@ -1,19 +1,13 @@
 
 
-import 'dart:developer';
 
 import 'package:bit_math/game.dart';
-import 'package:bit_math/screens/components/ui_button.dart';
-import 'package:bit_math/screens/home_page/home_page.dart';
 import 'package:bit_math/screens/pause_dialog/home_button.dart';
 import 'package:bit_math/screens/pause_dialog/resume_button.dart';
 import 'package:bit_math/screens/pause_dialog/retry_button.dart';
 import 'package:bit_math/screens/pause_dialog/sound_toggle.dart';
-import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
-import 'package:flame/game.dart';
-import 'package:flame/input.dart';
 
 
 /*

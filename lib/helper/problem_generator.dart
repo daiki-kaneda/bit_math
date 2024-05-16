@@ -62,7 +62,7 @@ class ProbGen {
       ("${m+n}-$m","$n"),
     ];
     }
-    
+
     final expr = exprs[random.nextInt(exprs.length)];
 
     final stringLength = expr.$1.length+expr.$2.length;
@@ -70,8 +70,8 @@ class ProbGen {
     if(randomIndex<expr.$1.length){
       final answer = expr.$1[randomIndex];
       return ProbData(
-      level, 
-      answer: answer, 
+      level,
+      answer: answer,
       sentence: "${expr.$1.replaceRange(randomIndex, randomIndex+1, "#")} = ${expr.$2}",
       choices: [
         if(['+','-','*','/'].contains(answer))
@@ -88,8 +88,8 @@ class ProbGen {
     }else{
       final answer = expr.$2[randomIndex-expr.$1.length];
       return ProbData(
-      level, 
-      answer: answer, 
+      level,
+      answer: answer,
       sentence: "${expr.$1} = ${expr.$2.replaceRange(randomIndex-expr.$1.length, randomIndex-expr.$1.length+1, '#')}",
       choices: [
         if(['+','-','*','/'].contains(answer))

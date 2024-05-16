@@ -8,7 +8,6 @@ import 'package:bit_math/helper/iap_manager.dart';
 import 'package:bit_math/helper/save_data_helper.dart';
 import 'package:bit_math/widgets/banner_ad_widget.dart';
 import 'package:bit_math/utils/screen_size.dart';
-import 'package:bit_math/widgets/dialog_button/dialog_button.dart';
 import 'package:bit_math/widgets/dialog_button/remove_ad_button.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';

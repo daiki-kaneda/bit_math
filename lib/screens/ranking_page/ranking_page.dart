@@ -29,7 +29,7 @@ class RankingPage extends Component with HasGameRef<BitmanMath>{
     cameraComponent.viewfinder.anchor=Anchor.topLeft;
 
     try{
-      topScores = await game.backendData.getTopGlobalScore();
+      // topScores = await game.backendData.getTopGlobalScore();
       log('topScores:$topScores');
     }catch(e){
       log(e.toString());

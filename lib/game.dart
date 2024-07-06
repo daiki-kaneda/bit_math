@@ -16,11 +16,10 @@ import 'package:flame_audio/flame_audio.dart';
 
 class BitmanMath extends FlameGame with HasCollisionDetection{
   BitmanMath({
-    required this.saveData,required this.backendData,required this.appStateManager});
+    required this.saveData,required this.appStateManager});
   // saveData
   final SaveDataHelper saveData;
 
-  final BackendDataRepository backendData;
 
   final AppStateManager appStateManager;
 

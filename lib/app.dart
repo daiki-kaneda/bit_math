@@ -17,12 +17,10 @@ class MyApp extends StatelessWidget{
   const MyApp({
     super.key,
     required this.saveDataHelper,
-    required this.backendDataRepository,
     required this.appStateManager,
     required this.inAppPurchaseManager});
 
   final SaveDataHelper saveDataHelper;
-  final BackendDataRepository backendDataRepository;
   final AppStateManager appStateManager;
   final InAppPurchaseManager inAppPurchaseManager;
   @override
@@ -83,7 +81,6 @@ class MyApp extends StatelessWidget{
           Expanded(
             child: GameWidget(game: BitmanMath(
               saveData: saveDataHelper,
-              backendData: backendDataRepository,
               appStateManager: appStateManager,)),
           )
           

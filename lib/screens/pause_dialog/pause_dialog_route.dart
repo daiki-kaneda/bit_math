@@ -36,9 +36,9 @@ class PauseDialogRoute extends Route with HasGameRef<BitmanMath>{
       saveDataApi.scoreData = saveDataApi.scoreData.copyWith(
         bestScore:game.gameState.score);
 
-      game.backendData.updateUserData(
-        game.backendData.userData.copyWith(bestScore: game.gameState.score)
-      );
+      // game.backendData.updateUserData(
+      //   game.backendData.userData.copyWith(bestScore: game.gameState.score)
+      // );
     }
     
     // game.state = game.state.copyWith(

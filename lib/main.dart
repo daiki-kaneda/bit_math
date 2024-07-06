@@ -33,17 +33,13 @@ Future<void> main() async{
     
   await iapManager.initialize();
 
-  final dataRepository = BackendDataRepository(saveDataHelper);
-  await dataRepository.init();
-
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider(create: (_)=>adHelper),
       ChangeNotifierProvider(create: (_)=>appStateManager),
     ],
     child: MyApp(
-      saveDataHelper: saveDataHelper, 
-      backendDataRepository: dataRepository,
+      saveDataHelper: saveDataHelper,
       appStateManager:appStateManager,
       inAppPurchaseManager: iapManager,),)
   );

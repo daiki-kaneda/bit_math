@@ -1,8 +1,10 @@
 import 'package:bit_math/game.dart';
+import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/screens/pause_dialog/pause_dialog_page.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/rendering.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 
 
 
@@ -18,28 +20,16 @@ import 'package:flame/rendering.dart';
             disable ad
   
 */
-class PauseDialogRoute extends Route with HasGameRef<BitmanMath>{
+class PauseDialogRoute extends Route with HasGameRef<BitmanMath>,RiverpodComponentMixin{
   PauseDialogRoute():super(PauseDialogPage.new,transparent: true);
 
    @override
   void onPush(Route? previousRoute) {
-  
-    game.appStateManager.setShowingAd(true);
     previousRoute!
     ..stopTime()
     ..addRenderEffect(
         PaintDecorator.grayscale(opacity: 0.5)..addBlur(3.0),
       );
-    
-    if(game.gameState.score>game.saveData.scoreData.bestScore){
-      final saveDataApi = game.saveData;
-      saveDataApi.scoreData = saveDataApi.scoreData.copyWith(
-        bestScore:game.gameState.score);
-
-      // game.backendData.updateUserData(
-      //   game.backendData.userData.copyWith(bestScore: game.gameState.score)
-      // );
-    }
     
     // game.state = game.state.copyWith(
     //     timeSpeed: 0
@@ -48,7 +38,6 @@ class PauseDialogRoute extends Route with HasGameRef<BitmanMath>{
 
   @override
   void onPop(Route nextRoute) {
-    game.appStateManager.setShowingAd(false);
     nextRoute
     ..removeRenderEffect()
     ..resumeTime();

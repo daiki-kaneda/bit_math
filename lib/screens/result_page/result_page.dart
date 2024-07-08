@@ -1,38 +1,31 @@
 
 import 'dart:async';
-import 'dart:math';
+import 'dart:developer';
+import 'dart:math' hide log;
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
+import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
+import 'package:bit_math/provider/save_data_provider/save_data_helper_provider.dart';
 import 'package:bit_math/screens/components/sentence_button/push_home_route_button.dart';
 import 'package:bit_math/screens/components/sentence_button/push_play_route_button.dart';
 import 'package:bit_math/screens/components/stage_manager.dart';
 import 'package:bit_math/screens/playing_page/HUD/joystick.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
+import 'package:bit_math/screens/result_page/best_score_sentence.dart';
 import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 
 class ResultPage extends Component with HasGameRef<BitmanMath>{
-
   @override
   FutureOr<void> onLoad() async{
-    // this page has ad by in 40%
-    if(Random().nextDouble()<0.4){
-      game.appStateManager.setShowingAd(true);
-    }else{
-      game.appStateManager.setShowingAd(false);
-    }
-    // save score if score is best
-    if(game.gameState.score>game.saveData.scoreData.bestScore){
-      final saveDataApi = game.saveData;
-      saveDataApi.scoreData = saveDataApi.scoreData.copyWith(
-        bestScore:game.gameState.score);
 
-      // game.backendData.updateUserData(
-      //   game.backendData.userData.copyWith(bestScore: game.gameState.score)
-      // );
-    }
+    //   // game.backendData.updateUserData(
+    //   //   game.backendData.userData.copyWith(bestScore: game.gameState.score)
+    //   // );
+    // }
 
     final world = World();
     final cameraComponent = CameraComponent.withFixedResolution(width: gameWidth, height: gameHeight,world: world);
@@ -51,7 +44,7 @@ class ResultPage extends Component with HasGameRef<BitmanMath>{
     // add score text and home button,retry button
     cameraComponent.viewport.addAll([
       Sentence(19, 8, str: 'SCORE:${game.gameState.score}', direction: SentenceDirection.horizontal),
-      Sentence(18, 14, str: 'BEST SCORE:${game.saveData.scoreData.bestScore}', direction: SentenceDirection.horizontal),
+      BestScoreSentence(),
       PushHomeRouteButton(gridPosition: Vector2(14, 18),
       str: '@HOME'),
       PushPlayRouteButton(gridPosition: Vector2(30, 18),
@@ -60,6 +53,5 @@ class ResultPage extends Component with HasGameRef<BitmanMath>{
 
     return super.onLoad();
   }
-
 
 }

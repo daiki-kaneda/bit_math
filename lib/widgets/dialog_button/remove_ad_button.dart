@@ -1,25 +1,23 @@
 
-import 'package:bit_math/helper/app_state_manager.dart';
-import 'package:bit_math/helper/iap_manager.dart';
+import 'package:bit_math/provider/ad_provider/removed_ad_provider.dart';
+import 'package:bit_math/provider/iap_provider/iap_helper.dart';
+import 'package:bit_math/provider/iap_provider/iap_helper_provider.dart';
 import 'package:bit_math/widgets/dialog_button/dialog_button.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RemoveAdButton extends StatelessWidget{
+class RemoveAdButton extends ConsumerWidget{
 
   const RemoveAdButton({
-    super.key,
-    required this.inAppPurchaseManager});
-  final InAppPurchaseManager inAppPurchaseManager;
+    super.key,});
   @override
-  Widget build(BuildContext context) {
-    final alreadyRemovedAd = context.select<AppStateManager,bool>(
-      (value) => value.saveDataHelper.iapData.isRemovedAd == true
-      );
-    if(alreadyRemovedAd){
-        return const SizedBox(width: 0,height: 0,);
-      }else{
-        return Align(
+  Widget build(BuildContext context,WidgetRef ref) {
+    final removedAd = ref.watch(removedAdProvider);
+    final iapHelper = ref.watch(iapHelperProvider);
+
+    if(removedAd.hasValue&&iapHelper.hasValue
+    &&removedAd.value!=true){
+      return Align(
             alignment: Alignment.bottomRight,
             child: 
             Padding(padding: const EdgeInsets.only(top: 10,right: 10),
@@ -32,18 +30,20 @@ class RemoveAdButton extends StatelessWidget{
               secondaryLabel: 'yes', 
               tertiaryLabel: 'no',
               primaryAction: (){
-                inAppPurchaseManager.restorePurchases();
+                iapHelper.value?.restorePurchases();
                  Navigator.pop(context);
               }, 
               secondaryAction: (){
-                inAppPurchaseManager.purchase(PurchaseItem.removeAd);
+                iapHelper.value?.purchase(PurchaseItem.removeAd);
                 Navigator.pop(context);
               },
               tertiaryAction: () {
                 Navigator.pop(context);
               },) ,)
               );
-      }
+    }else{
+      return const SizedBox();
+    }
     
   }
 }

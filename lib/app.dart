@@ -2,30 +2,24 @@
 import 'dart:developer';
 
 import 'package:bit_math/game.dart';
-import 'package:bit_math/helper/app_state_manager.dart';
-import 'package:bit_math/helper/data_repository.dart';
-import 'package:bit_math/helper/iap_manager.dart';
-import 'package:bit_math/helper/save_data_helper.dart';
+import 'package:bit_math/global_key/game_widget_key.dart';
+import 'package:bit_math/global_key/scaffold_messanger_key.dart';
 import 'package:bit_math/widgets/banner_ad_widget.dart';
 import 'package:bit_math/utils/screen_size.dart';
 import 'package:bit_math/widgets/dialog_button/remove_ad_button.dart';
 import 'package:flame/game.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget{
 
   const MyApp({
-    super.key,
-    required this.saveDataHelper,
-    required this.appStateManager,
-    required this.inAppPurchaseManager});
+    super.key,});
 
-  final SaveDataHelper saveDataHelper;
-  final AppStateManager appStateManager;
-  final InAppPurchaseManager inAppPurchaseManager;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scaffoldMessengerKey: scaffoldMessangerKey,
       debugShowCheckedModeBanner: false,
       theme: ThemeData.from(colorScheme: ColorScheme.fromSeed(seedColor:const Color.fromRGBO(71, 45, 60,1))),
       home: Scaffold(
@@ -49,7 +43,7 @@ class MyApp extends StatelessWidget{
             )
           ),
           ),
-          RemoveAdButton(inAppPurchaseManager: inAppPurchaseManager),
+          const RemoveAdButton(),
           // if(saveDataHelper.iapData.isRemovedAd!=true)
           // Align(
           //   alignment: Alignment.bottomRight,
@@ -79,9 +73,11 @@ class MyApp extends StatelessWidget{
           ),
           
           Expanded(
-            child: GameWidget(game: BitmanMath(
-              saveData: saveDataHelper,
-              appStateManager: appStateManager,)),
+            child:
+             RiverpodAwareGameWidget(
+              key: gameWidgetKey,
+              game: BitmanMath()
+              ),
           )
           
         ],

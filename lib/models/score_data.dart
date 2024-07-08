@@ -12,11 +12,11 @@ part 'score_data.g.dart';
 class ScoreData with _$ScoreData {
   @JsonSerializable(includeIfNull: false)
   const factory ScoreData({
-    required int bestScore,
-    required int numbersToSolveAddition,
-    required int numbersToSolveSubstraction,
-    required int numbersToSolveMultipulation,
-    required int numbersToSolveDivision,
+    required List<int> bestScore,
+    required int numSolveAdd,
+    required int numSolveSub,
+    required int numSolveMul,
+    required int numSolveDiv,
   }) = _ScoreData;
 
   factory ScoreData.fromJson(Map<String, Object?> json)

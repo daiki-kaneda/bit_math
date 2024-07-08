@@ -2,14 +2,16 @@
 import 'dart:async';
 
 import 'package:bit_math/game.dart';
+import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/screens/pause_dialog/pause_dialog_page.dart';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart' hide Route;
 
-class RetryButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks{
+class RetryButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
 
   RetryButton({super.sprite,});
 
@@ -53,6 +55,7 @@ class RetryButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbac
     // retry logic
     game.router.pop();
     game.router.pushReplacement(Route(() => PlayingPage()));
+    ref.read(showingAdNotifierProvider.notifier).disableAd();
     super.onTapUp(event);
   }
 }

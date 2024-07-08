@@ -1,13 +1,8 @@
 enum SaveDataStatus{
   scoreData,
-  setting,
-  iapData;
+  setting;
 
   String get key{
-    switch(this){
-      case scoreData:return "score-data-key";
-      case setting:return "setting-key";
-      case iapData:return "iap-data-key";
-    }
+    return '$name-Key';
   }
 }

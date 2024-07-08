@@ -3,15 +3,17 @@ import 'dart:developer';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/helper/problem_generator.dart';
+import 'package:bit_math/provider/audio_provider/audio_provider.dart';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/frame.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/blackboard.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/input_block.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/problem_timer.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
+import 'package:bit_math/utils/snackbars.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
-import 'package:flame_audio/flame_audio.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/services.dart';
 
 enum ProblemStatus {
@@ -21,7 +23,7 @@ enum ProblemStatus {
   timeup,
 }
 
-class Problem extends Component with HasGameRef<BitmanMath>{
+class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMixin{
   Problem(
       {required this.id,
       this.status = ProblemStatus.initial,
@@ -87,7 +89,7 @@ class Problem extends Component with HasGameRef<BitmanMath>{
         //blackBoard.colorEffect(const Color.fromRGBO(60,172,215,1.0),0.7,1);
         if(playState!=null){
           
-          if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES14.mp3');
+          ref.read(audioPlayerProvider.notifier).play(AudioStatus.solved);
           game.gameState.score+=gameState.level*20+timer.time;
           resetProblem(gameState.level);
         }
@@ -95,9 +97,9 @@ class Problem extends Component with HasGameRef<BitmanMath>{
       }
       if(status==ProblemStatus.failure){
         if(playState?.lives==1){
-          if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES00.mp3');
+          ref.read(audioPlayerProvider.notifier).play(AudioStatus.gameover);
         }else{
-          if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES15.mp3');
+          ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
         }
         HapticFeedback.lightImpact();
         if(playState!=null){
@@ -122,9 +124,9 @@ class Problem extends Component with HasGameRef<BitmanMath>{
       }
       if(status==ProblemStatus.timeup){
         if(playState?.lives==1){
-          if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES00.mp3');
+         ref.read(audioPlayerProvider.notifier).play(AudioStatus.gameover);
         }else{
-          if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES15.mp3');
+          ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
         }
         //blackBoard.colorEffect(const Color.fromRGBO(230,72,46,1.0),0.7,1);
         HapticFeedback.lightImpact();

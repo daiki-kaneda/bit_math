@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
+import 'package:bit_math/provider/audio_provider/audio_provider.dart';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/arms/helmet.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/arms/weapon.dart';
@@ -25,7 +26,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
-import 'package:flame_audio/flame_audio.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -48,7 +49,7 @@ enum BitmanHelmet{
 }
 
 
-class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef<BitmanMath>,CollisionCallbacks,TapCallbacks{
+class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef<BitmanMath>,CollisionCallbacks,TapCallbacks,RiverpodComponentMixin{
   Bitman({
     required this.joystick,
     required this.screenStatus}):super(size: Vector2.all(24),anchor: Anchor.center);
@@ -77,12 +78,13 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
   final fromAbove = Vector2(0, -1);
   final fromBelow = Vector2(0, 1);
 
-
+  
   @override
   FutureOr<void> onLoad() {
-    weapon=game.saveData.setting.selectedWeapon;
-    helmet=game.saveData.setting.selectedHelmet;
-    bitmanColor=game.saveData.setting.color;
+
+    // weapon=game.saveData.setting.selectedWeapon;
+    // helmet=game.saveData.setting.selectedHelmet;
+    // bitmanColor=game.saveData.setting.color;
     
     final bitmanSprite1 = getSprite(SpriteSheets.coloredTransparentPacked, 18*16, 7*16+1, 16, 16);
     final bitmanSprite2 = getSprite(SpriteSheets.coloredTransparentPacked, 19*16, 7*16+1, 16, 16);
@@ -145,6 +147,8 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
     }
     return super.onLoad();
   }
+
+  
 
   
 
@@ -264,9 +268,9 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
         if(other.power>0){
         HapticFeedback.lightImpact();
         if(findParent<PlayingPage>()!.state.lives==1){
-          if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES00.mp3');
+          ref.read(audioPlayerProvider.notifier).play(AudioStatus.gameover);
         }else{
-          if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES15.mp3');
+           ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
         }
         findParent<PlayingPage>()!.state.lives -= other.power;
         add(

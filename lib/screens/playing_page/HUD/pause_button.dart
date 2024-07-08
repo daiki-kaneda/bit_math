@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:bit_math/game.dart';
+import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 
-class PauseButton extends ButtonComponent with HasGameRef<BitmanMath>{
+class PauseButton extends ButtonComponent with HasGameRef<BitmanMath>,RiverpodComponentMixin{
   PauseButton():super(
     button:SpriteComponent(
       sprite: getSprite(SpriteSheets.uiSprites, 1, 101, 48, 48),
@@ -26,6 +28,8 @@ class PauseButton extends ButtonComponent with HasGameRef<BitmanMath>{
       final bitmanGame = (game);
       bitmanGame.router.pushNamed('pause-dialog');
       };
+      // pause page has ad
+      ref.read(showingAdNotifierProvider.notifier).enableAd();
     return super.onLoad();
   }
 

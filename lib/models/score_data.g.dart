@@ -8,20 +8,20 @@ part of 'score_data.dart';
 
 _$ScoreDataImpl _$$ScoreDataImplFromJson(Map<String, dynamic> json) =>
     _$ScoreDataImpl(
-      bestScore: (json['bestScore'] as num).toInt(),
-      numbersToSolveAddition: (json['numbersToSolveAddition'] as num).toInt(),
-      numbersToSolveSubstraction:
-          (json['numbersToSolveSubstraction'] as num).toInt(),
-      numbersToSolveMultipulation:
-          (json['numbersToSolveMultipulation'] as num).toInt(),
-      numbersToSolveDivision: (json['numbersToSolveDivision'] as num).toInt(),
+      bestScore: (json['bestScore'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
+      numSolveAdd: (json['numSolveAdd'] as num).toInt(),
+      numSolveSub: (json['numSolveSub'] as num).toInt(),
+      numSolveMul: (json['numSolveMul'] as num).toInt(),
+      numSolveDiv: (json['numSolveDiv'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ScoreDataImplToJson(_$ScoreDataImpl instance) =>
     <String, dynamic>{
       'bestScore': instance.bestScore,
-      'numbersToSolveAddition': instance.numbersToSolveAddition,
-      'numbersToSolveSubstraction': instance.numbersToSolveSubstraction,
-      'numbersToSolveMultipulation': instance.numbersToSolveMultipulation,
-      'numbersToSolveDivision': instance.numbersToSolveDivision,
+      'numSolveAdd': instance.numSolveAdd,
+      'numSolveSub': instance.numSolveSub,
+      'numSolveMul': instance.numSolveMul,
+      'numSolveDiv': instance.numSolveDiv,
     };

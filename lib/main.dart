@@ -1,48 +1,44 @@
 
 import 'package:bit_math/app.dart';
-import 'package:bit_math/helper/ad_helper.dart';
-import 'package:bit_math/helper/app_state_manager.dart';
-import 'package:bit_math/helper/data_repository.dart';
-import 'package:bit_math/helper/iap_manager.dart';
-import 'package:bit_math/helper/save_data_helper.dart';
+import 'package:bit_math/provider/ad_provider/banner_ad_provider.dart';
+import 'package:bit_math/provider/audio_provider/audio_provider.dart';
+import 'package:bit_math/provider/connectivity_provider/connectivity_provider.dart';
+import 'package:bit_math/provider/iap_provider/iap_helper_provider.dart';
+import 'package:bit_math/provider/save_data_provider/save_data_helper_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,DeviceOrientation.landscapeRight
   ]);
-  final preference = await SharedPreferences.getInstance();
-  final saveDataHelper = SaveDataHelper(preference);
-  await saveDataHelper.loadData();
+  await MobileAds.instance.initialize();
 
-  final adHelper = AdHelper(isDebug: true);
-  await adHelper.init();
-
-  final appStateManager = AppStateManager(
-    saveDataHelper: saveDataHelper
-  );
-
-  final iapManager = InAppPurchaseManager(
-    saveDataHelper: saveDataHelper,
-    appStateManager: appStateManager);
-    
-  await iapManager.initialize();
 
   runApp(
-    MultiProvider(providers: [
-      ChangeNotifierProvider(create: (_)=>adHelper),
-      ChangeNotifierProvider(create: (_)=>appStateManager),
-    ],
-    child: MyApp(
-      saveDataHelper: saveDataHelper,
-      appStateManager:appStateManager,
-      inAppPurchaseManager: iapManager,),)
+    const ProviderScope(child: _EagerInitialization(
+      MyApp()
+    ))
   );
 }
 
+class _EagerInitialization extends ConsumerWidget {
+  const _EagerInitialization(this.child);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(saveDataNotifierProvider);
+    ref.watch(iapHelperProvider);
+    ref.watch(connectivityProvider);
+    ref.watch(bannerAdNotifierProvider);
+    ref.watch(audioPlayerProvider);
+    return child;
+  }
+}
 

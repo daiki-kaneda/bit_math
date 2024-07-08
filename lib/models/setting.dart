@@ -23,6 +23,8 @@ class Setting with _$Setting {
     required BitmanHelmet selectedHelmet,
     required BitmanColor color,
     required String bitmanName,
+    // iap setting
+    required bool removedAd
   }) = _Setting;
 
   factory Setting.fromJson(Map<String, Object?> json)

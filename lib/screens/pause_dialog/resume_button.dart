@@ -2,12 +2,14 @@
 import 'dart:async';
 
 import 'package:bit_math/game.dart';
+import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/screens/pause_dialog/pause_dialog_page.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 
-class ResumeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks{
+class ResumeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
 
   ResumeButton({super.sprite,});
 
@@ -46,6 +48,7 @@ class ResumeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallba
   void onTapUp(TapUpEvent event) {
     hint.removeFromParent();
     scale = Vector2.all(1);
+    ref.read(showingAdNotifierProvider.notifier).disableAd();
     game.router.pop();
     super.onTapUp(event);
   }

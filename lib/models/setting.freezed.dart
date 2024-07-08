@@ -30,7 +30,8 @@ mixin _$Setting {
   BitmanWeapon get selectedWeapon => throw _privateConstructorUsedError;
   BitmanHelmet get selectedHelmet => throw _privateConstructorUsedError;
   BitmanColor get color => throw _privateConstructorUsedError;
-  String get bitmanName => throw _privateConstructorUsedError;
+  String get bitmanName => throw _privateConstructorUsedError; // iap setting
+  bool get removedAd => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +52,8 @@ abstract class $SettingCopyWith<$Res> {
       BitmanWeapon selectedWeapon,
       BitmanHelmet selectedHelmet,
       BitmanColor color,
-      String bitmanName});
+      String bitmanName,
+      bool removedAd});
 }
 
 /// @nodoc
@@ -76,6 +78,7 @@ class _$SettingCopyWithImpl<$Res, $Val extends Setting>
     Object? selectedHelmet = null,
     Object? color = null,
     Object? bitmanName = null,
+    Object? removedAd = null,
   }) {
     return _then(_value.copyWith(
       isSound: null == isSound
@@ -114,6 +117,10 @@ class _$SettingCopyWithImpl<$Res, $Val extends Setting>
           ? _value.bitmanName
           : bitmanName // ignore: cast_nullable_to_non_nullable
               as String,
+      removedAd: null == removedAd
+          ? _value.removedAd
+          : removedAd // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -134,7 +141,8 @@ abstract class _$$SettingImplCopyWith<$Res> implements $SettingCopyWith<$Res> {
       BitmanWeapon selectedWeapon,
       BitmanHelmet selectedHelmet,
       BitmanColor color,
-      String bitmanName});
+      String bitmanName,
+      bool removedAd});
 }
 
 /// @nodoc
@@ -157,6 +165,7 @@ class __$$SettingImplCopyWithImpl<$Res>
     Object? selectedHelmet = null,
     Object? color = null,
     Object? bitmanName = null,
+    Object? removedAd = null,
   }) {
     return _then(_$SettingImpl(
       isSound: null == isSound
@@ -195,6 +204,10 @@ class __$$SettingImplCopyWithImpl<$Res>
           ? _value.bitmanName
           : bitmanName // ignore: cast_nullable_to_non_nullable
               as String,
+      removedAd: null == removedAd
+          ? _value.removedAd
+          : removedAd // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -211,7 +224,8 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
       required this.selectedWeapon,
       required this.selectedHelmet,
       required this.color,
-      required this.bitmanName});
+      required this.bitmanName,
+      required this.removedAd});
 
   factory _$SettingImpl.fromJson(Map<String, dynamic> json) =>
       _$$SettingImplFromJson(json);
@@ -236,10 +250,13 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
   final BitmanColor color;
   @override
   final String bitmanName;
+// iap setting
+  @override
+  final bool removedAd;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Setting(isSound: $isSound, isBGM: $isBGM, isHapticFeedback: $isHapticFeedback, isFixedJoystick: $isFixedJoystick, isLeftJoystick: $isLeftJoystick, selectedWeapon: $selectedWeapon, selectedHelmet: $selectedHelmet, color: $color, bitmanName: $bitmanName)';
+    return 'Setting(isSound: $isSound, isBGM: $isBGM, isHapticFeedback: $isHapticFeedback, isFixedJoystick: $isFixedJoystick, isLeftJoystick: $isLeftJoystick, selectedWeapon: $selectedWeapon, selectedHelmet: $selectedHelmet, color: $color, bitmanName: $bitmanName, removedAd: $removedAd)';
   }
 
   @override
@@ -255,7 +272,8 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
       ..add(DiagnosticsProperty('selectedWeapon', selectedWeapon))
       ..add(DiagnosticsProperty('selectedHelmet', selectedHelmet))
       ..add(DiagnosticsProperty('color', color))
-      ..add(DiagnosticsProperty('bitmanName', bitmanName));
+      ..add(DiagnosticsProperty('bitmanName', bitmanName))
+      ..add(DiagnosticsProperty('removedAd', removedAd));
   }
 
   @override
@@ -277,7 +295,9 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
                 other.selectedHelmet == selectedHelmet) &&
             (identical(other.color, color) || other.color == color) &&
             (identical(other.bitmanName, bitmanName) ||
-                other.bitmanName == bitmanName));
+                other.bitmanName == bitmanName) &&
+            (identical(other.removedAd, removedAd) ||
+                other.removedAd == removedAd));
   }
 
   @JsonKey(ignore: true)
@@ -292,7 +312,8 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
       selectedWeapon,
       selectedHelmet,
       color,
-      bitmanName);
+      bitmanName,
+      removedAd);
 
   @JsonKey(ignore: true)
   @override
@@ -318,7 +339,8 @@ abstract class _Setting implements Setting {
       required final BitmanWeapon selectedWeapon,
       required final BitmanHelmet selectedHelmet,
       required final BitmanColor color,
-      required final String bitmanName}) = _$SettingImpl;
+      required final String bitmanName,
+      required final bool removedAd}) = _$SettingImpl;
 
   factory _Setting.fromJson(Map<String, dynamic> json) = _$SettingImpl.fromJson;
 
@@ -340,6 +362,8 @@ abstract class _Setting implements Setting {
   BitmanColor get color;
   @override
   String get bitmanName;
+  @override // iap setting
+  bool get removedAd;
   @override
   @JsonKey(ignore: true)
   _$$SettingImplCopyWith<_$SettingImpl> get copyWith =>

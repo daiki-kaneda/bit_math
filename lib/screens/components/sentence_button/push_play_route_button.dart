@@ -4,14 +4,16 @@ import 'dart:developer';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
+import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
+import 'package:bit_math/provider/audio_provider/audio_provider.dart';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
-import 'package:flame_audio/flame_audio.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 
 // onPressedを渡して柔軟なボタンを実装したいが、不具合が出る
-class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameRef<BitmanMath>{
+class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameRef<BitmanMath>,RiverpodComponentMixin{
   PushPlayRouteButton({
     required this.gridPosition,
     required this.str,
@@ -34,9 +36,12 @@ class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameRe
   @override
   void onTapDown(TapDownEvent event) {
     log('tapped');
-    if(game.saveData.setting.isSound)FlameAudio.play('jingles_NES16.mp3');
+    
+    ref.read(audioPlayerProvider.notifier).play(AudioStatus.start);
     game.router.popUntilNamed(ScreenStatus.splash.name);
     game.router.pushRoute(PlayingRoute(PlayingPage()));
+    // playing page has not ad
+    ref.read(showingAdNotifierProvider.notifier).disableAd();
     super.onTapDown(event);
   }
 

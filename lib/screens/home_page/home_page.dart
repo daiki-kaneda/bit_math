@@ -3,6 +3,7 @@ import 'dart:async';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
+import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/screens/components/sentence_button/push_play_route_button.dart';
 import 'package:bit_math/screens/components/stage_manager.dart';
 import 'package:bit_math/screens/home_page/ui/ranking_button.dart';
@@ -10,13 +11,12 @@ import 'package:bit_math/screens/playing_page/HUD/joystick.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
 import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 
-class HomePage extends Component with HasGameRef<BitmanMath>{
+class HomePage extends Component with HasGameRef<BitmanMath>,RiverpodComponentMixin{
 
   @override
   FutureOr<void> onLoad() {
-    // this page has not ad
-    game.appStateManager.setShowingAd(false);
     
     final world = World();
     final cameraComponet = CameraComponent.withFixedResolution(

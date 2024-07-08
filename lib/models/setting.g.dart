@@ -19,6 +19,7 @@ _$SettingImpl _$$SettingImplFromJson(Map<String, dynamic> json) =>
           $enumDecode(_$BitmanHelmetEnumMap, json['selectedHelmet']),
       color: $enumDecode(_$BitmanColorEnumMap, json['color']),
       bitmanName: json['bitmanName'] as String,
+      removedAd: json['removedAd'] as bool,
     );
 
 Map<String, dynamic> _$$SettingImplToJson(_$SettingImpl instance) =>
@@ -32,6 +33,7 @@ Map<String, dynamic> _$$SettingImplToJson(_$SettingImpl instance) =>
       'selectedHelmet': _$BitmanHelmetEnumMap[instance.selectedHelmet]!,
       'color': _$BitmanColorEnumMap[instance.color]!,
       'bitmanName': instance.bitmanName,
+      'removedAd': instance.removedAd,
     };
 
 const _$BitmanWeaponEnumMap = {

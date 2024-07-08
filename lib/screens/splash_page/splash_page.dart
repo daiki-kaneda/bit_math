@@ -3,18 +3,19 @@ import 'dart:async';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
+import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/utils/constants.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 
 //Powered by Flameなど書くべきかも？
-class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>{
+class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>,RiverpodComponentMixin{
+
    @override
   FutureOr<void> onLoad() {
-    // this page has not ad
-    game.appStateManager.setShowingAd(false);
     final world = World();
     final cameraComponet = CameraComponent.withFixedResolution(
       width: gameWidth, 
@@ -46,6 +47,8 @@ class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>{
   @override
   void onTapDown(TapDownEvent event) {
      game.router.pushNamed(ScreenStatus.home.name);
+     // homepage has no ad
+     ref.read(showingAdNotifierProvider.notifier).disableAd();
     super.onTapDown(event);
   }
 

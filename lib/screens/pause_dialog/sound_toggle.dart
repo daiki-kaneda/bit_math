@@ -1,17 +1,23 @@
 import 'dart:async';
 
 import 'package:bit_math/game.dart';
+import 'package:bit_math/provider/save_data_provider/save_data_helper.dart';
+import 'package:bit_math/provider/save_data_provider/save_data_helper_provider.dart';
 import 'package:bit_math/screens/pause_dialog/pause_dialog_page.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 
-class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>,TapCallbacks{
+class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
 
   late TextComponent hint;
+
+  bool isSound = false;
+
   @override
-  FutureOr<void> onLoad() {
+  FutureOr<void> onLoad() async{
     hint = hint = TextComponent(
         text: 'mute setting',
         textRenderer: TextPaint(
@@ -22,13 +28,21 @@ class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>
         position: Vector2(game.canvasSize.x/2,game.canvasSize.y*1/5),
         anchor: Anchor.center,
         );
-    current = game.saveData.setting.isSound;
+    current = isSound;
     sprites = {
       true: getSprite(SpriteSheets.uiSprites, 767, 51, 48, 48),
       false:getSprite(SpriteSheets.uiSprites, 51, 101, 48, 48)
     };
     anchor = Anchor.center;
     return super.onLoad();
+  }
+
+  @override
+  void onMount() {
+    addToGameWidgetBuild(()async{
+      isSound = await ref.watch(saveDataNotifierProvider.selectAsync((data) => data.setting.isSound,));
+    });
+    super.onMount();
   }
 
   @override
@@ -52,14 +66,10 @@ class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>
     scale = Vector2.all(1);
     if(current!){
        current = false;
-       game.saveData.setting = game.saveData.setting.copyWith(
-        isSound: false
-       );
+       ref.read(saveDataNotifierProvider.notifier).isSoundToggle();
     }else{
       current = true;
-      game.saveData.setting = game.saveData.setting.copyWith(
-        isSound: true
-       );
+      ref.read(saveDataNotifierProvider.notifier).isSoundToggle();
     }
     super.onTapUp(event);
   }

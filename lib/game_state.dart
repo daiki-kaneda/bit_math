@@ -7,6 +7,10 @@ class GameState{
 
   static const int aligatorLimit = 10;
   int score=0;
+  int numSolveAdd=0;
+  int numSolveSub=0;
+  int numSolveMul=0;
+  int numSolveDiv=0;
 
   int numbersOfAligator = 0;
 

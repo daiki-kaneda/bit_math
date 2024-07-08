@@ -1,15 +1,11 @@
-import 'dart:developer';
 
 import 'package:bit_math/models/ad_status.dart';
-import 'package:bit_math/provider/ad_provider/banner_ad_provider.dart';
-import 'package:bit_math/provider/ad_provider/removed_ad_provider.dart';
 import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/provider/ad_provider/unit_id_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class BannerAdWidget extends ConsumerStatefulWidget {
   const BannerAdWidget({super.key});

@@ -10,7 +10,6 @@ import 'package:bit_math/screens/playing_page/stages/objects/problem/blackboard.
 import 'package:bit_math/screens/playing_page/stages/objects/problem/input_block.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/problem_timer.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
-import 'package:bit_math/utils/snackbars.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';

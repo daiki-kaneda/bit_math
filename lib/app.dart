@@ -7,7 +7,6 @@ import 'package:bit_math/global_key/scaffold_messanger_key.dart';
 import 'package:bit_math/widgets/banner_ad_widget.dart';
 import 'package:bit_math/utils/screen_size.dart';
 import 'package:bit_math/widgets/dialog_button/remove_ad_button.dart';
-import 'package:flame/game.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 

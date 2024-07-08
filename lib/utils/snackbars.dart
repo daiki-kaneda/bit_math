@@ -14,7 +14,7 @@ Future<void> showSnackBar(SnackBarStatus status)async{
         borderRadius: BorderRadius.circular(8)
       ),
       backgroundColor:const Color.fromRGBO(71, 45, 60,1),
-      content: Text(
+      content: const Text(
         'This is test snack bar!',
         style: TextStyle(
           color: Colors.white

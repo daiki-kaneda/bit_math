@@ -1,12 +1,8 @@
 
 import 'dart:async';
-import 'dart:developer';
-import 'dart:math' hide log;
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
-import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
-import 'package:bit_math/provider/save_data_provider/save_data_helper_provider.dart';
 import 'package:bit_math/screens/components/sentence_button/push_home_route_button.dart';
 import 'package:bit_math/screens/components/sentence_button/push_play_route_button.dart';
 import 'package:bit_math/screens/components/stage_manager.dart';
@@ -16,7 +12,6 @@ import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:bit_math/screens/result_page/best_score_sentence.dart';
 import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
-import 'package:flame_riverpod/flame_riverpod.dart';
 
 class ResultPage extends Component with HasGameRef<BitmanMath>{
   @override

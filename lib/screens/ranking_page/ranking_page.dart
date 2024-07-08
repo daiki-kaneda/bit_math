@@ -5,7 +5,6 @@ import 'dart:developer';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
-import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/provider/save_data_provider/save_data_helper_provider.dart';
 import 'package:bit_math/screens/components/sentence_button/push_home_route_button.dart';
 import 'package:bit_math/screens/components/stage_manager.dart';

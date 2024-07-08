@@ -5,7 +5,6 @@ import 'package:bit_math/provider/ad_provider/removed_ad_provider.dart';
 import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/provider/ad_provider/unit_id_provider.dart';
 import 'package:bit_math/provider/connectivity_provider/connectivity_provider.dart';
-import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -17,7 +16,7 @@ class BannerAdNotifier extends _$BannerAdNotifier {
   FutureOr<BannerAd?> build() async {
     // TODO:showingAdが変更された時nullであればloadするように数r
     final removedAd = await ref.watch(removedAdProvider.future);
-    final showingAd = await ref.watch(showingAdNotifierProvider);
+    final showingAd = ref.watch(showingAdNotifierProvider);
     ref.listen(connectivityProvider, (previous, next) {
       if(previous!=null&&previous.value==false&&next.value==true){
         loadBannerAd();

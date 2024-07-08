@@ -1,5 +1,4 @@
 import 'package:bit_math/game.dart';
-import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/screens/pause_dialog/pause_dialog_page.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';

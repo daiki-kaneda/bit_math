@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:bit_math/models/score_data.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:bit_math/provider/save_data_provider/save_data_helper.dart';
 import 'package:shared_preferences/shared_preferences.dart';

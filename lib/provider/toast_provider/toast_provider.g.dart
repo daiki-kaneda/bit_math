@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'iap_helper_provider.dart';
+part of 'toast_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$iapHelperNotifierHash() => r'b55f4e8e62181d376a93d979be848b78c9d4f5ba';
+String _$toastNotifierHash() => r'84a8f99e828e6ddcc7b4cbcbd226927e8aee1fd6';
 
-/// See also [IapHelperNotifier].
-@ProviderFor(IapHelperNotifier)
-final iapHelperNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<IapHelperNotifier, IAPHelper>.internal(
-  IapHelperNotifier.new,
-  name: r'iapHelperNotifierProvider',
+/// See also [ToastNotifier].
+@ProviderFor(ToastNotifier)
+final toastNotifierProvider =
+    AutoDisposeAsyncNotifierProvider<ToastNotifier, FToast>.internal(
+  ToastNotifier.new,
+  name: r'toastNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$iapHelperNotifierHash,
+      : _$toastNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$IapHelperNotifier = AutoDisposeAsyncNotifier<IAPHelper>;
+typedef _$ToastNotifier = AutoDisposeAsyncNotifier<FToast>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

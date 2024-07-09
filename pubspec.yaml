@@ -27,6 +27,7 @@ dependencies:
   riverpod_annotation: ^2.3.5
   riverpod: ^2.5.1
   flame_riverpod: ^5.4.2
+  fluttertoast: ^8.2.6
 
 dev_dependencies:
   flutter_test:

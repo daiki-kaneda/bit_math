@@ -6,6 +6,7 @@ import 'package:bit_math/provider/audio_provider/audio_provider.dart';
 import 'package:bit_math/provider/connectivity_provider/connectivity_provider.dart';
 import 'package:bit_math/provider/iap_provider/iap_helper_provider.dart';
 import 'package:bit_math/provider/save_data_provider/save_data_helper_provider.dart';
+import 'package:bit_math/provider/toast_provider/toast_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';

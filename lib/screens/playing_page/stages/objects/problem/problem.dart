@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:bit_math/game.dart';
 import 'package:bit_math/helper/problem_generator.dart';
 import 'package:bit_math/provider/audio_provider/audio_provider.dart';
+import 'package:bit_math/provider/toast_provider/toast_provider.dart';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/frame.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/blackboard.dart';
@@ -99,6 +100,7 @@ class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMix
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.gameover);
         }else{
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
+          ref.read(toastNotifierProvider.notifier).showBuilderToast();
         }
         HapticFeedback.lightImpact();
         if(playState!=null){

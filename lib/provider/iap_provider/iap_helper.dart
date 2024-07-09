@@ -23,14 +23,14 @@ enum PurchaseItem {
   localDataManagerプロパティやpurchasedOrRestorePurchaseメソッド以外は再利用可能
 */
 class IAPHelper{
-  IAPHelper(this.saveDataHelper);
+  IAPHelper(this.saveDataHelper,{required this.purchasedOrRestored});
 
   final SaveDataHelper saveDataHelper;
   final _iapInstance = InAppPurchase.instance;
   late final StreamSubscription _iapPurchaseSubscription;
   final Map<PurchaseItem, ProductDetails> _products = {};
 
-  BuildContext? homeScaffoldContext;
+  Future<void>Function(PurchaseItem) purchasedOrRestored;
 
   Future<void> init() async {
     if (await _iapInstance.isAvailable()) {
@@ -119,13 +119,13 @@ class IAPHelper{
           case PurchaseStatus.purchased:
             {
               log('purchased');
-              await _purchasedOrRestored(item);
+              await purchasedOrRestored(item);
               _completePurchase(purchaseDetails);
             }
           case PurchaseStatus.restored:
             {
               log('restored');
-              await _purchasedOrRestored(item);
+              await purchasedOrRestored(item);
               _completePurchase(purchaseDetails);
             }
           case PurchaseStatus.error:
@@ -151,18 +151,18 @@ class IAPHelper{
     }
   }
 
-  Future<void> _purchasedOrRestored(PurchaseItem item) async {
-    switch (item) {
-      case PurchaseItem.removeAd:
-        {
-          saveDataHelper.setting =
-              saveDataHelper.setting.copyWith(removedAd: true);
-        //               ScaffoldMessenger.of(homeScaffoldContext!).
-        // showSnackBar(
-        //   SnackBar(content: Text(AppLocalizations.of(homeScaffoldContext!)!.supportedMessage))
-        // );
-        }
+  // Future<void> purchasedOrRestored(PurchaseItem item) async {
+  //   switch (item) {
+  //     case PurchaseItem.removeAd:
+  //       {
+  //         saveDataHelper.setting =
+  //             saveDataHelper.setting.copyWith(removedAd: true);
+  //       //               ScaffoldMessenger.of(homeScaffoldContext!).
+  //       // showSnackBar(
+  //       //   SnackBar(content: Text(AppLocalizations.of(homeScaffoldContext!)!.supportedMessage))
+  //       // );
+  //       }
 
-    }
-  }
+  //   }
+  // }
 }

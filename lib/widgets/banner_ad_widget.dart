@@ -1,5 +1,6 @@
 
 import 'package:bit_math/models/ad_status.dart';
+import 'package:bit_math/provider/ad_provider/removed_ad_provider.dart';
 import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/provider/ad_provider/unit_id_provider.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,7 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // final removeAd = ref.watch(removedAdProvider).value ?? true;
+    final removeAd = ref.watch(removedAdNotifierProvider).value ?? true;
     final showingAd = ref.watch(showingAdNotifierProvider);
   
     return Stack(
@@ -64,7 +65,7 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
           height: 50,
         ),
         if(_bannerReady&&showingAd
-        //&&!removeAd
+        &&!removeAd
         )
         SizedBox(
           width: _bannerAd!.size.width.toDouble(),

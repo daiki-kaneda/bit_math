@@ -15,7 +15,7 @@ class BannerAdNotifier extends _$BannerAdNotifier {
   @override
   FutureOr<BannerAd?> build() async {
     // TODO:showingAdが変更された時nullであればloadするように数r
-    final removedAd = await ref.watch(removedAdProvider.future);
+    final removedAd = await ref.watch(removedAdNotifierProvider.future);
     final showingAd = ref.watch(showingAdNotifierProvider);
     ref.listen(connectivityProvider, (previous, next) {
       if(previous!=null&&previous.value==false&&next.value==true){

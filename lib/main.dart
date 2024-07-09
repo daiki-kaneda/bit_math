@@ -1,6 +1,7 @@
 
 import 'package:bit_math/app.dart';
 import 'package:bit_math/provider/ad_provider/banner_ad_provider.dart';
+import 'package:bit_math/provider/ad_provider/removed_ad_provider.dart';
 import 'package:bit_math/provider/audio_provider/audio_provider.dart';
 import 'package:bit_math/provider/connectivity_provider/connectivity_provider.dart';
 import 'package:bit_math/provider/iap_provider/iap_helper_provider.dart';
@@ -34,10 +35,11 @@ class _EagerInitialization extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.watch(saveDataNotifierProvider);
-    ref.watch(iapHelperProvider);
+    ref.watch(iapHelperNotifierProvider);
     ref.watch(connectivityProvider);
     ref.watch(bannerAdNotifierProvider);
     ref.watch(audioPlayerProvider);
+    ref.watch(removedAdNotifierProvider);
     return child;
   }
 }

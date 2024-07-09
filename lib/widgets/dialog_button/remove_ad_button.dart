@@ -12,10 +12,10 @@ class RemoveAdButton extends ConsumerWidget{
     super.key,});
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    final removedAd = ref.watch(removedAdProvider);
-    final iapHelper = ref.watch(iapHelperProvider);
+    final removedAd = ref.watch(removedAdNotifierProvider);
+    // final iapHelper = ref.watch(iapHelperNotifierProvider);
 
-    if(removedAd.hasValue&&iapHelper.hasValue
+    if(removedAd.hasValue
     &&removedAd.value!=true){
       return Align(
             alignment: Alignment.bottomRight,
@@ -30,11 +30,11 @@ class RemoveAdButton extends ConsumerWidget{
               secondaryLabel: 'yes', 
               tertiaryLabel: 'no',
               primaryAction: (){
-                iapHelper.value?.restorePurchases();
+               ref.read(iapHelperNotifierProvider.notifier).restore();
                  Navigator.pop(context);
               }, 
               secondaryAction: (){
-                iapHelper.value?.purchase(PurchaseItem.removeAd);
+                ref.read(iapHelperNotifierProvider.notifier).purchase(PurchaseItem.removeAd);
                 Navigator.pop(context);
               },
               tertiaryAction: () {

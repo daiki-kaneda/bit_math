@@ -20,7 +20,7 @@ class ProbData{
 
     for (var char in sentence.characters) {
       spans.add(TextSpan(
-        text: char == '#' ? answer:LetterStatus.convertNormalChar(char),
+        text: char == '#' ? LetterStatus.convertNormalChar(answer):LetterStatus.convertNormalChar(char),
         style: TextStyle(
           color: char == '#' ? Colors.white : Colors.black,
           fontWeight: char == '#' ? FontWeight.bold:FontWeight.normal

@@ -56,7 +56,7 @@ class Sentence extends PositionComponent implements StageObject,HasPathEffect{
         // this is coveneint for problem sentence
         add(InputField(nextPosition(i).x, nextPosition(i).y));
       }
-      if(LetterStatus.supportedCher.contains(str[i])){
+      if(LetterStatus.supportedChar.contains(str[i])){
       add(LetterTile.fromChar(nextPosition(i).x, nextPosition(i).y, char: str[i]));
       }
       //    path: path,pathAlternate: pathAlternate,pathDuration: pathDuration));

@@ -22,22 +22,27 @@ class ToastNotifier extends _$ToastNotifier {
 
   Future<void> showBuilderToast(ToastStatus status) async{
     final previousState = await future;
+    previousState.removeCustomToast();
     late Widget toast;
+    Duration duration=const Duration();
     if(status is CorrectToast){
       toast = const ToastWidget(
         color: Colors.greenAccent,
         icon: Icons.check,
         iconTextPadding: 0,);
+      duration = const Duration(milliseconds: 750);
     }else if(status is FailedToast){
-      toast = const ToastWidget(
+      toast = ToastWidget(
         color: Colors.redAccent,
         icon: Icons.close,
-        iconTextPadding: 0,);
+        iconTextPadding: status.probData==null ? 0.0:12.0,
+        text:status.probData?.buildColoredAnswerText(),);
+      duration = const Duration(milliseconds: 1250);
     }
     previousState.showToast(
         child: toast,
         gravity: ToastGravity.NONE,
-        toastDuration: const Duration(milliseconds: 800),
+        toastDuration: duration,
         positionedToastBuilder: (context, child) {
           return Positioned(
             top: getPaddingHeight(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height)+16,

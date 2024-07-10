@@ -6,6 +6,8 @@
 
 */
 
+import 'package:bit_math/models/prob_data.dart';
+
 abstract class ToastStatus{
   const ToastStatus();
 }
@@ -15,5 +17,6 @@ class CorrectToast extends ToastStatus{
 }
 
 class FailedToast extends ToastStatus{
-
+  const FailedToast(this.probData);
+  final ProbData? probData;
 }

@@ -113,7 +113,9 @@ class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMix
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.gameover);
         }else{
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
-          ref.read(toastNotifierProvider.notifier).showBuilderToast(FailedToast());
+          ref.read(toastNotifierProvider.notifier).showBuilderToast(FailedToast(
+            gameState.currentProbData
+          ));
         }
         HapticFeedback.lightImpact();
         if(playState!=null){

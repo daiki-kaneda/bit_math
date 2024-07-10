@@ -60,7 +60,7 @@ class ToastWidget extends StatelessWidget {
 
   final Color color;
   final IconData? icon;
-  final String? text;
+  final Widget? text;
   final double? iconTextPadding;
 
   @override
@@ -82,7 +82,7 @@ class ToastWidget extends StatelessWidget {
           width: iconTextPadding ?? 12.0,
         ),
         if(text!=null)
-        Text(text!),
+        text!,
       ],
     ),
   );

@@ -75,7 +75,7 @@ enum LetterStatus {
   crown,
   aligator;
 
-  static List<String> get supportedCher=>[
+  static List<String> get supportedChar=>[
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
     '+', '-', '*', '/', '=', '~', '.', '!', '?',
     '>', '<', '%', 'X', 'Y', 'Z', '→', '↓', '←', '↑',
@@ -84,6 +84,17 @@ enum LetterStatus {
     'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
     '@', ':','c','a'
   ];
+
+  static String convertNormalChar(String char){
+    if(!supportedChar.contains(char)) return char;
+    switch(char){
+      case '*':return '×';
+      case '/':return '÷';
+      case 'o':return '⚪︎';
+      case 'x':return '×';
+      default:return char;
+    }
+  }
 }
 
 class LetterTile extends SpriteComponent

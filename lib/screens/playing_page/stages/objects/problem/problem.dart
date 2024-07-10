@@ -98,15 +98,18 @@ class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMix
         if(playState!=null){
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.solved);
           // update gameState
+          final newStreak = gameState.currentStreak+1;
           game.gameState=gameState.copyWith(
             score: gameState.score + gameState.level*20+timer.time,
             numSolved: gameState.numSolved+1,
-            streak: gameState.streak+1
+            currentStreak: newStreak,
+            maxStreak: newStreak>=gameState.maxStreak?
+            newStreak:gameState.maxStreak
           );
 
-          if(gameState.streak+1>=2){
+          if(gameState.currentStreak+1>=2){
             ref.read(toastNotifierProvider.notifier).showBuilderToast(
-              StreakToast(gameState.streak+1)
+              StreakToast(gameState.currentStreak+1)
               );
           }else{
           ref.read(toastNotifierProvider.notifier).showBuilderToast(CorrectToast());
@@ -123,7 +126,7 @@ class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMix
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
           //update gameState
           game.gameState=gameState.copyWith(
-            streak: 0
+            currentStreak: 0
           );
           ref.read(toastNotifierProvider.notifier).showBuilderToast(FailedToast(
             gameState.currentProbData
@@ -157,7 +160,7 @@ class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMix
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
           //update gameState
           game.gameState=gameState.copyWith(
-            streak: 0
+            currentStreak: 0
           );
         }
         //blackBoard.colorEffect(const Color.fromRGBO(230,72,46,1.0),0.7,1);

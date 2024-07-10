@@ -13,7 +13,8 @@ class GameState {
   int numSolveSub;
   int numSolveMul;
   int numSolveDiv;
-  int streak;
+  int currentStreak;
+  int maxStreak;
   int numSolved;
   ProbData? currentProbData;
 
@@ -24,7 +25,8 @@ class GameState {
     this.numSolveSub = 0,
     this.numSolveMul = 0,
     this.numSolveDiv = 0,
-    this.streak = 0,
+    this.currentStreak = 0,
+    this.maxStreak=0,
     this.numSolved = 0,
     this.currentProbData,
   });
@@ -36,7 +38,8 @@ class GameState {
     int? numSolveSub,
     int? numSolveMul,
     int? numSolveDiv,
-    int? streak,
+    int? currentStreak,
+    int? maxStreak,
     int? numSolved,
     ProbData? currentProbData,
   }) {
@@ -47,7 +50,8 @@ class GameState {
       numSolveSub: numSolveSub ?? this.numSolveSub,
       numSolveMul: numSolveMul ?? this.numSolveMul,
       numSolveDiv: numSolveDiv ?? this.numSolveDiv,
-      streak: streak ?? this.streak,
+      currentStreak: currentStreak ?? this.currentStreak,
+      maxStreak: maxStreak ?? this.maxStreak,
       numSolved: numSolved ?? this.numSolved,
       currentProbData: currentProbData ?? this.currentProbData,
     );
@@ -60,7 +64,7 @@ class GameState {
     numSolveSub = 0;
     numSolveMul = 0;
     numSolveDiv = 0;
-    streak = 0;
+    currentStreak = 0;
     numSolved = 0;
     currentProbData = null;
   }

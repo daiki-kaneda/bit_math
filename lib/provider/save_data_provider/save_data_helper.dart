@@ -36,10 +36,7 @@ class SaveDataHelper{
   // intial scoredata
   ScoreData _scoreData = const ScoreData(
     bestScore: [], 
-    numSolveAdd: 0, 
-    numSolveSub: 0, 
-    numSolveMul: 0, 
-    numSolveDiv: 0);
+    maxStreak: 0);
   ScoreData get scoreData => _scoreData;
   set scoreData(ScoreData newScoreData){
     _scoreData = newScoreData;

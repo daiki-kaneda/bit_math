@@ -21,10 +21,7 @@ ScoreData _$ScoreDataFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ScoreData {
   List<int> get bestScore => throw _privateConstructorUsedError;
-  int get numSolveAdd => throw _privateConstructorUsedError;
-  int get numSolveSub => throw _privateConstructorUsedError;
-  int get numSolveMul => throw _privateConstructorUsedError;
-  int get numSolveDiv => throw _privateConstructorUsedError;
+  int get maxStreak => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,12 +34,7 @@ abstract class $ScoreDataCopyWith<$Res> {
   factory $ScoreDataCopyWith(ScoreData value, $Res Function(ScoreData) then) =
       _$ScoreDataCopyWithImpl<$Res, ScoreData>;
   @useResult
-  $Res call(
-      {List<int> bestScore,
-      int numSolveAdd,
-      int numSolveSub,
-      int numSolveMul,
-      int numSolveDiv});
+  $Res call({List<int> bestScore, int maxStreak});
 }
 
 /// @nodoc
@@ -59,31 +51,16 @@ class _$ScoreDataCopyWithImpl<$Res, $Val extends ScoreData>
   @override
   $Res call({
     Object? bestScore = null,
-    Object? numSolveAdd = null,
-    Object? numSolveSub = null,
-    Object? numSolveMul = null,
-    Object? numSolveDiv = null,
+    Object? maxStreak = null,
   }) {
     return _then(_value.copyWith(
       bestScore: null == bestScore
           ? _value.bestScore
           : bestScore // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      numSolveAdd: null == numSolveAdd
-          ? _value.numSolveAdd
-          : numSolveAdd // ignore: cast_nullable_to_non_nullable
-              as int,
-      numSolveSub: null == numSolveSub
-          ? _value.numSolveSub
-          : numSolveSub // ignore: cast_nullable_to_non_nullable
-              as int,
-      numSolveMul: null == numSolveMul
-          ? _value.numSolveMul
-          : numSolveMul // ignore: cast_nullable_to_non_nullable
-              as int,
-      numSolveDiv: null == numSolveDiv
-          ? _value.numSolveDiv
-          : numSolveDiv // ignore: cast_nullable_to_non_nullable
+      maxStreak: null == maxStreak
+          ? _value.maxStreak
+          : maxStreak // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -97,12 +74,7 @@ abstract class _$$ScoreDataImplCopyWith<$Res>
       __$$ScoreDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<int> bestScore,
-      int numSolveAdd,
-      int numSolveSub,
-      int numSolveMul,
-      int numSolveDiv});
+  $Res call({List<int> bestScore, int maxStreak});
 }
 
 /// @nodoc
@@ -117,31 +89,16 @@ class __$$ScoreDataImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? bestScore = null,
-    Object? numSolveAdd = null,
-    Object? numSolveSub = null,
-    Object? numSolveMul = null,
-    Object? numSolveDiv = null,
+    Object? maxStreak = null,
   }) {
     return _then(_$ScoreDataImpl(
       bestScore: null == bestScore
           ? _value._bestScore
           : bestScore // ignore: cast_nullable_to_non_nullable
               as List<int>,
-      numSolveAdd: null == numSolveAdd
-          ? _value.numSolveAdd
-          : numSolveAdd // ignore: cast_nullable_to_non_nullable
-              as int,
-      numSolveSub: null == numSolveSub
-          ? _value.numSolveSub
-          : numSolveSub // ignore: cast_nullable_to_non_nullable
-              as int,
-      numSolveMul: null == numSolveMul
-          ? _value.numSolveMul
-          : numSolveMul // ignore: cast_nullable_to_non_nullable
-              as int,
-      numSolveDiv: null == numSolveDiv
-          ? _value.numSolveDiv
-          : numSolveDiv // ignore: cast_nullable_to_non_nullable
+      maxStreak: null == maxStreak
+          ? _value.maxStreak
+          : maxStreak // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -152,11 +109,7 @@ class __$$ScoreDataImplCopyWithImpl<$Res>
 @JsonSerializable(includeIfNull: false)
 class _$ScoreDataImpl with DiagnosticableTreeMixin implements _ScoreData {
   const _$ScoreDataImpl(
-      {required final List<int> bestScore,
-      required this.numSolveAdd,
-      required this.numSolveSub,
-      required this.numSolveMul,
-      required this.numSolveDiv})
+      {required final List<int> bestScore, required this.maxStreak})
       : _bestScore = bestScore;
 
   factory _$ScoreDataImpl.fromJson(Map<String, dynamic> json) =>
@@ -171,17 +124,11 @@ class _$ScoreDataImpl with DiagnosticableTreeMixin implements _ScoreData {
   }
 
   @override
-  final int numSolveAdd;
-  @override
-  final int numSolveSub;
-  @override
-  final int numSolveMul;
-  @override
-  final int numSolveDiv;
+  final int maxStreak;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ScoreData(bestScore: $bestScore, numSolveAdd: $numSolveAdd, numSolveSub: $numSolveSub, numSolveMul: $numSolveMul, numSolveDiv: $numSolveDiv)';
+    return 'ScoreData(bestScore: $bestScore, maxStreak: $maxStreak)';
   }
 
   @override
@@ -190,10 +137,7 @@ class _$ScoreDataImpl with DiagnosticableTreeMixin implements _ScoreData {
     properties
       ..add(DiagnosticsProperty('type', 'ScoreData'))
       ..add(DiagnosticsProperty('bestScore', bestScore))
-      ..add(DiagnosticsProperty('numSolveAdd', numSolveAdd))
-      ..add(DiagnosticsProperty('numSolveSub', numSolveSub))
-      ..add(DiagnosticsProperty('numSolveMul', numSolveMul))
-      ..add(DiagnosticsProperty('numSolveDiv', numSolveDiv));
+      ..add(DiagnosticsProperty('maxStreak', maxStreak));
   }
 
   @override
@@ -203,25 +147,14 @@ class _$ScoreDataImpl with DiagnosticableTreeMixin implements _ScoreData {
             other is _$ScoreDataImpl &&
             const DeepCollectionEquality()
                 .equals(other._bestScore, _bestScore) &&
-            (identical(other.numSolveAdd, numSolveAdd) ||
-                other.numSolveAdd == numSolveAdd) &&
-            (identical(other.numSolveSub, numSolveSub) ||
-                other.numSolveSub == numSolveSub) &&
-            (identical(other.numSolveMul, numSolveMul) ||
-                other.numSolveMul == numSolveMul) &&
-            (identical(other.numSolveDiv, numSolveDiv) ||
-                other.numSolveDiv == numSolveDiv));
+            (identical(other.maxStreak, maxStreak) ||
+                other.maxStreak == maxStreak));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_bestScore),
-      numSolveAdd,
-      numSolveSub,
-      numSolveMul,
-      numSolveDiv);
+      runtimeType, const DeepCollectionEquality().hash(_bestScore), maxStreak);
 
   @JsonKey(ignore: true)
   @override
@@ -240,10 +173,7 @@ class _$ScoreDataImpl with DiagnosticableTreeMixin implements _ScoreData {
 abstract class _ScoreData implements ScoreData {
   const factory _ScoreData(
       {required final List<int> bestScore,
-      required final int numSolveAdd,
-      required final int numSolveSub,
-      required final int numSolveMul,
-      required final int numSolveDiv}) = _$ScoreDataImpl;
+      required final int maxStreak}) = _$ScoreDataImpl;
 
   factory _ScoreData.fromJson(Map<String, dynamic> json) =
       _$ScoreDataImpl.fromJson;
@@ -251,13 +181,7 @@ abstract class _ScoreData implements ScoreData {
   @override
   List<int> get bestScore;
   @override
-  int get numSolveAdd;
-  @override
-  int get numSolveSub;
-  @override
-  int get numSolveMul;
-  @override
-  int get numSolveDiv;
+  int get maxStreak;
   @override
   @JsonKey(ignore: true)
   _$$ScoreDataImplCopyWith<_$ScoreDataImpl> get copyWith =>

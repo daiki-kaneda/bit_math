@@ -134,10 +134,7 @@ class PlayingPage extends Component
         ref.read(saveDataNotifierProvider.notifier)
         .updateScoreData(
           gs.score, 
-          gs.numSolveAdd, 
-          gs.numSolveSub, 
-          gs.numSolveMul, 
-          gs.numSolveDiv);
+          gs.maxStreak);
         if (Random().nextDouble() < 0.4) {
           ref.read(showingAdNotifierProvider.notifier).enableAd();
         } else {

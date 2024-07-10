@@ -13,10 +13,7 @@ class ScoreData with _$ScoreData {
   @JsonSerializable(includeIfNull: false)
   const factory ScoreData({
     required List<int> bestScore,
-    required int numSolveAdd,
-    required int numSolveSub,
-    required int numSolveMul,
-    required int numSolveDiv,
+    required int maxStreak,
   }) = _ScoreData;
 
   factory ScoreData.fromJson(Map<String, Object?> json)

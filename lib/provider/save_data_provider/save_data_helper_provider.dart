@@ -19,21 +19,18 @@ class SaveDataNotifier extends _$SaveDataNotifier {
   // update score data logic
   Future<void> updateScoreData(
     int newScore,
-    int numSolveAdd,
-    int numSolveSub,
-    int numSolveMul,
-    int numSolveDiv)async{
+    int maxStreak)async{
     final previousState = (await future);
     final preScore = previousState.scoreData;
     log('preScore:$preScore');
     final newBestScores = ([...previousState.scoreData.bestScore,newScore])
     ..sort((a,b)=>b.compareTo(a));
+
+    final int newMaxStreak = maxStreak>preScore.maxStreak?maxStreak:preScore.maxStreak;
+    
     previousState.scoreData = preScore.copyWith(
       bestScore: newBestScores,
-      numSolveAdd: preScore.numSolveAdd+numSolveAdd,
-      numSolveSub: preScore.numSolveSub+numSolveSub,
-      numSolveMul: preScore.numSolveMul+numSolveMul,
-      numSolveDiv: preScore.numSolveDiv+numSolveDiv);
+      maxStreak: newMaxStreak);
   }
 
   // isSound toggle logic

@@ -11,17 +11,11 @@ _$ScoreDataImpl _$$ScoreDataImplFromJson(Map<String, dynamic> json) =>
       bestScore: (json['bestScore'] as List<dynamic>)
           .map((e) => (e as num).toInt())
           .toList(),
-      numSolveAdd: (json['numSolveAdd'] as num).toInt(),
-      numSolveSub: (json['numSolveSub'] as num).toInt(),
-      numSolveMul: (json['numSolveMul'] as num).toInt(),
-      numSolveDiv: (json['numSolveDiv'] as num).toInt(),
+      maxStreak: (json['maxStreak'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ScoreDataImplToJson(_$ScoreDataImpl instance) =>
     <String, dynamic>{
       'bestScore': instance.bestScore,
-      'numSolveAdd': instance.numSolveAdd,
-      'numSolveSub': instance.numSolveSub,
-      'numSolveMul': instance.numSolveMul,
-      'numSolveDiv': instance.numSolveDiv,
+      'maxStreak': instance.maxStreak,
     };

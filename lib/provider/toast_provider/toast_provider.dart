@@ -38,6 +38,22 @@ class ToastNotifier extends _$ToastNotifier {
         iconTextPadding: status.probData==null ? 0.0:12.0,
         text:status.probData?.buildColoredAnswerText(),);
       duration = const Duration(milliseconds: 1250);
+    }else if(status is StreakToast){
+      toast = ToastWidget(
+        color: Colors.greenAccent,
+        icon: Icons.check,
+        iconTextPadding: 0,
+        text: Text.rich(TextSpan(
+          children: [
+            TextSpan(
+              text: status.streak.toString(),
+              style: const TextStyle(color: Colors.white)),
+            TextSpan(
+              text: 'Streaks!',
+              style: const TextStyle(color: Colors.black))
+          ]
+        )),);
+      duration = const Duration(milliseconds: 750);
     }
     previousState.showToast(
         child: toast,

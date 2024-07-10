@@ -9,6 +9,8 @@ enum BitmanStatus{
   normal,speedUp,speedDown,powerUp,powerDown
 }
 
+// TODO: lives:6->lives3
+
 // this class represents data that only live in PlayingPage
 class PlayingState{
   PlayingState({

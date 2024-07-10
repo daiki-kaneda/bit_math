@@ -12,11 +12,33 @@ abstract class ToastStatus{
   const ToastStatus();
 }
 
-class CorrectToast extends ToastStatus{
+class InitialToast extends ToastStatus{
+}
 
+class CorrectToast extends ToastStatus{
+}
+
+class StreakToast extends ToastStatus{
+  const StreakToast(this.streak);
+
+  final int streak;
+}
+
+class NumSolvedToast extends ToastStatus{
+  const NumSolvedToast(this.numSolved);
+  
+  final int numSolved;
 }
 
 class FailedToast extends ToastStatus{
   const FailedToast(this.probData);
   final ProbData? probData;
+}
+
+class EnemyToast extends ToastStatus{
+
+}
+
+class TimerToast extends ToastStatus{
+
 }

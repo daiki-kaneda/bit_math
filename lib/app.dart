@@ -4,11 +4,13 @@ import 'package:bit_math/game.dart';
 import 'package:bit_math/global_key/game_widget_key.dart';
 import 'package:bit_math/global_key/navigator_key.dart';
 import 'package:bit_math/global_key/scaffold_messanger_key.dart';
+import 'package:bit_math/provider/toast_provider/toast_provider.dart';
 import 'package:bit_math/widgets/banner_ad_widget.dart';
 import 'package:bit_math/utils/screen_size.dart';
 import 'package:bit_math/widgets/dialog_button/remove_ad_button.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class MyApp extends StatelessWidget {
@@ -74,8 +76,10 @@ class MyApp extends StatelessWidget {
                     ],
                   ),
                   Expanded(
-                    child: RiverpodAwareGameWidget(
-                              key: gameWidgetKey, game: BitmanMath()),
+                    child: ToastProviderInitialization(
+                      RiverpodAwareGameWidget(
+                              key: gameWidgetKey, game: BitmanMath())
+                    ),
                   )
                 ],
               );
@@ -84,5 +88,17 @@ class MyApp extends StatelessWidget {
           //)
           ),
     );
+  }
+}
+
+class ToastProviderInitialization extends ConsumerWidget {
+  const ToastProviderInitialization(this.child,{super.key});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(toastNotifierProvider);
+    return child;
   }
 }

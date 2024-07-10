@@ -5,6 +5,7 @@ import 'package:bit_math/game.dart';
 import 'package:bit_math/helper/problem_generator.dart';
 import 'package:bit_math/provider/audio_provider/audio_provider.dart';
 import 'package:bit_math/provider/toast_provider/toast_provider.dart';
+import 'package:bit_math/provider/toast_provider/toast_status.dart';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/frame.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/problem/blackboard.dart';
@@ -22,6 +23,13 @@ enum ProblemStatus {
   success,
   timeup,
 }
+
+    // numSolveAdd=0;
+    // numSolveSub=0;
+    // numSolveMul=0;
+    // numSolveDiv=0;
+    // streak=0;
+    // numSolved=0;
 
 class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMixin{
   Problem(
@@ -88,9 +96,14 @@ class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMix
       if(status==ProblemStatus.success){
         //blackBoard.colorEffect(const Color.fromRGBO(60,172,215,1.0),0.7,1);
         if(playState!=null){
-          
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.solved);
-          game.gameState.score+=gameState.level*20+timer.time;
+          // update gameState
+          game.gameState=gameState.copyWith(
+            score: gameState.score + gameState.level*20+timer.time
+          );
+
+          ref.read(toastNotifierProvider.notifier).showBuilderToast(CorrectToast());
+          
           resetProblem(gameState.level);
         }
         resetTimer();
@@ -100,7 +113,7 @@ class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMix
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.gameover);
         }else{
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
-          ref.read(toastNotifierProvider.notifier).showBuilderToast();
+          ref.read(toastNotifierProvider.notifier).showBuilderToast(FailedToast());
         }
         HapticFeedback.lightImpact();
         if(playState!=null){
@@ -161,6 +174,7 @@ class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMix
       removeAll(problem);
       status = ProblemStatus.initial;
       final probData = ProbGen.generate(level: level);
+      game.gameState.currentProbData=probData;
       inputText = '';
       answer = [probData.answer];
       log('probData.choices.length:${probData.choices.length}');

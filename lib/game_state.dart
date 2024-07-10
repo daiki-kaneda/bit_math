@@ -2,24 +2,69 @@
 
 // not persisitent data
 // but shared data in whole game
-class GameState{
-  GameState();
+import 'package:bit_math/models/prob_data.dart';
 
+class GameState {
   static const int aligatorLimit = 10;
-  int score=0;
-  int numSolveAdd=0;
-  int numSolveSub=0;
-  int numSolveMul=0;
-  int numSolveDiv=0;
 
-  int numbersOfAligator = 0;
+  int score;
+  int numbersOfAligator;
+  int numSolveAdd;
+  int numSolveSub;
+  int numSolveMul;
+  int numSolveDiv;
+  int streak;
+  int numSolved;
+  ProbData? currentProbData;
 
-  
+  GameState({
+    this.score = 0,
+    this.numbersOfAligator = 0,
+    this.numSolveAdd = 0,
+    this.numSolveSub = 0,
+    this.numSolveMul = 0,
+    this.numSolveDiv = 0,
+    this.streak = 0,
+    this.numSolved = 0,
+    this.currentProbData,
+  });
 
-  void reset(){
-    score=0;
-    numbersOfAligator=0;
+  GameState copyWith({
+    int? score,
+    int? numbersOfAligator,
+    int? numSolveAdd,
+    int? numSolveSub,
+    int? numSolveMul,
+    int? numSolveDiv,
+    int? streak,
+    int? numSolved,
+    ProbData? currentProbData,
+  }) {
+    return GameState(
+      score: score ?? this.score,
+      numbersOfAligator: numbersOfAligator ?? this.numbersOfAligator,
+      numSolveAdd: numSolveAdd ?? this.numSolveAdd,
+      numSolveSub: numSolveSub ?? this.numSolveSub,
+      numSolveMul: numSolveMul ?? this.numSolveMul,
+      numSolveDiv: numSolveDiv ?? this.numSolveDiv,
+      streak: streak ?? this.streak,
+      numSolved: numSolved ?? this.numSolved,
+      currentProbData: currentProbData ?? this.currentProbData,
+    );
   }
+
+  void reset() {
+    score = 0;
+    numbersOfAligator = 0;
+    numSolveAdd = 0;
+    numSolveSub = 0;
+    numSolveMul = 0;
+    numSolveDiv = 0;
+    streak = 0;
+    numSolved = 0;
+    currentProbData = null;
+  }
+
   int get level {
     if (score < 1000) {
       return 1;
@@ -36,11 +81,6 @@ class GameState{
     }
   }
 
-// level1:10s
-// level2:9s
-// level3:8s
-// level4:7s
-// level5:6s
   int get time {
     if (level < 2) {
       return 10;
@@ -50,7 +90,7 @@ class GameState{
       return 8;
     } else if (level < 5) {
       return 7;
-    } else{
+    } else {
       return 6;
     }
   }

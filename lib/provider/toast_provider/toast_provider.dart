@@ -27,7 +27,7 @@ class ToastNotifier extends _$ToastNotifier {
     Duration duration = const Duration();
     toast = toastWidget(status);
     if (status is InitialToast) {
-      duration = const Duration(seconds: 10);
+      duration = const Duration(seconds: 5);
     } else if (status is CorrectToast) {
       duration = const Duration(milliseconds: 750);
     } else if (status is StreakToast) {

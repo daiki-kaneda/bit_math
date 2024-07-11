@@ -5,6 +5,7 @@ import 'dart:math' hide log;
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
+import 'package:bit_math/provider/app_review_provider/iar_provider.dart';
 import 'package:bit_math/provider/save_data_provider/save_data_helper_provider.dart';
 import 'package:bit_math/screens/components/stage_manager.dart';
 import 'package:bit_math/screens/playing_page/HUD/aligator_number.dart';
@@ -130,6 +131,7 @@ class PlayingPage extends Component
         state.fallDown) {
       if (!state.isGameover) {
         //side effect
+
         final gs = game.gameState;
         ref.read(saveDataNotifierProvider.notifier)
         .updateScoreData(

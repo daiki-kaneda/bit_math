@@ -13,6 +13,7 @@ _$SettingImpl _$$SettingImplFromJson(Map<String, dynamic> json) =>
       isHapticFeedback: json['isHapticFeedback'] as bool,
       isFixedJoystick: json['isFixedJoystick'] as bool,
       isLeftJoystick: json['isLeftJoystick'] as bool,
+      reviewRequested: json['reviewRequested'] as bool,
       selectedWeapon:
           $enumDecode(_$BitmanWeaponEnumMap, json['selectedWeapon']),
       selectedHelmet:
@@ -29,6 +30,7 @@ Map<String, dynamic> _$$SettingImplToJson(_$SettingImpl instance) =>
       'isHapticFeedback': instance.isHapticFeedback,
       'isFixedJoystick': instance.isFixedJoystick,
       'isLeftJoystick': instance.isLeftJoystick,
+      'reviewRequested': instance.reviewRequested,
       'selectedWeapon': _$BitmanWeaponEnumMap[instance.selectedWeapon]!,
       'selectedHelmet': _$BitmanHelmetEnumMap[instance.selectedHelmet]!,
       'color': _$BitmanColorEnumMap[instance.color]!,

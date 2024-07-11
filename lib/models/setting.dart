@@ -18,6 +18,7 @@ class Setting with _$Setting {
     required bool isHapticFeedback,
     required bool isFixedJoystick,
     required bool isLeftJoystick,
+    required bool reviewRequested,
     // bitman setting
     required BitmanWeapon selectedWeapon,
     required BitmanHelmet selectedHelmet,

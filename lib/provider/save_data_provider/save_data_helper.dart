@@ -26,6 +26,7 @@ class SaveDataHelper{
     selectedHelmet: BitmanHelmet.none,
     color: BitmanColor.normalBlue,
     removedAd: false,
+    reviewRequested: false
     );
   Setting get setting => _setting;
   set setting(Setting newSetting){

@@ -41,6 +41,13 @@ class SaveDataNotifier extends _$SaveDataNotifier {
     .copyWith(isSound: !previousState.setting.isSound);
   }
 
+    // reviewRequested 
+  Future<void> reviewRequestDone()async{
+    final previousState = await future;
+    previousState.setting = previousState.setting
+    .copyWith(reviewRequested: true);
+  }
+
   
 
 }

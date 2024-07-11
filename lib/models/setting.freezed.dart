@@ -25,7 +25,8 @@ mixin _$Setting {
   bool get isBGM => throw _privateConstructorUsedError;
   bool get isHapticFeedback => throw _privateConstructorUsedError;
   bool get isFixedJoystick => throw _privateConstructorUsedError;
-  bool get isLeftJoystick =>
+  bool get isLeftJoystick => throw _privateConstructorUsedError;
+  bool get reviewRequested =>
       throw _privateConstructorUsedError; // bitman setting
   BitmanWeapon get selectedWeapon => throw _privateConstructorUsedError;
   BitmanHelmet get selectedHelmet => throw _privateConstructorUsedError;
@@ -49,6 +50,7 @@ abstract class $SettingCopyWith<$Res> {
       bool isHapticFeedback,
       bool isFixedJoystick,
       bool isLeftJoystick,
+      bool reviewRequested,
       BitmanWeapon selectedWeapon,
       BitmanHelmet selectedHelmet,
       BitmanColor color,
@@ -74,6 +76,7 @@ class _$SettingCopyWithImpl<$Res, $Val extends Setting>
     Object? isHapticFeedback = null,
     Object? isFixedJoystick = null,
     Object? isLeftJoystick = null,
+    Object? reviewRequested = null,
     Object? selectedWeapon = null,
     Object? selectedHelmet = null,
     Object? color = null,
@@ -100,6 +103,10 @@ class _$SettingCopyWithImpl<$Res, $Val extends Setting>
       isLeftJoystick: null == isLeftJoystick
           ? _value.isLeftJoystick
           : isLeftJoystick // ignore: cast_nullable_to_non_nullable
+              as bool,
+      reviewRequested: null == reviewRequested
+          ? _value.reviewRequested
+          : reviewRequested // ignore: cast_nullable_to_non_nullable
               as bool,
       selectedWeapon: null == selectedWeapon
           ? _value.selectedWeapon
@@ -138,6 +145,7 @@ abstract class _$$SettingImplCopyWith<$Res> implements $SettingCopyWith<$Res> {
       bool isHapticFeedback,
       bool isFixedJoystick,
       bool isLeftJoystick,
+      bool reviewRequested,
       BitmanWeapon selectedWeapon,
       BitmanHelmet selectedHelmet,
       BitmanColor color,
@@ -161,6 +169,7 @@ class __$$SettingImplCopyWithImpl<$Res>
     Object? isHapticFeedback = null,
     Object? isFixedJoystick = null,
     Object? isLeftJoystick = null,
+    Object? reviewRequested = null,
     Object? selectedWeapon = null,
     Object? selectedHelmet = null,
     Object? color = null,
@@ -187,6 +196,10 @@ class __$$SettingImplCopyWithImpl<$Res>
       isLeftJoystick: null == isLeftJoystick
           ? _value.isLeftJoystick
           : isLeftJoystick // ignore: cast_nullable_to_non_nullable
+              as bool,
+      reviewRequested: null == reviewRequested
+          ? _value.reviewRequested
+          : reviewRequested // ignore: cast_nullable_to_non_nullable
               as bool,
       selectedWeapon: null == selectedWeapon
           ? _value.selectedWeapon
@@ -221,6 +234,7 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
       required this.isHapticFeedback,
       required this.isFixedJoystick,
       required this.isLeftJoystick,
+      required this.reviewRequested,
       required this.selectedWeapon,
       required this.selectedHelmet,
       required this.color,
@@ -241,6 +255,8 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
   final bool isFixedJoystick;
   @override
   final bool isLeftJoystick;
+  @override
+  final bool reviewRequested;
 // bitman setting
   @override
   final BitmanWeapon selectedWeapon;
@@ -256,7 +272,7 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Setting(isSound: $isSound, isBGM: $isBGM, isHapticFeedback: $isHapticFeedback, isFixedJoystick: $isFixedJoystick, isLeftJoystick: $isLeftJoystick, selectedWeapon: $selectedWeapon, selectedHelmet: $selectedHelmet, color: $color, bitmanName: $bitmanName, removedAd: $removedAd)';
+    return 'Setting(isSound: $isSound, isBGM: $isBGM, isHapticFeedback: $isHapticFeedback, isFixedJoystick: $isFixedJoystick, isLeftJoystick: $isLeftJoystick, reviewRequested: $reviewRequested, selectedWeapon: $selectedWeapon, selectedHelmet: $selectedHelmet, color: $color, bitmanName: $bitmanName, removedAd: $removedAd)';
   }
 
   @override
@@ -269,6 +285,7 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
       ..add(DiagnosticsProperty('isHapticFeedback', isHapticFeedback))
       ..add(DiagnosticsProperty('isFixedJoystick', isFixedJoystick))
       ..add(DiagnosticsProperty('isLeftJoystick', isLeftJoystick))
+      ..add(DiagnosticsProperty('reviewRequested', reviewRequested))
       ..add(DiagnosticsProperty('selectedWeapon', selectedWeapon))
       ..add(DiagnosticsProperty('selectedHelmet', selectedHelmet))
       ..add(DiagnosticsProperty('color', color))
@@ -289,6 +306,8 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
                 other.isFixedJoystick == isFixedJoystick) &&
             (identical(other.isLeftJoystick, isLeftJoystick) ||
                 other.isLeftJoystick == isLeftJoystick) &&
+            (identical(other.reviewRequested, reviewRequested) ||
+                other.reviewRequested == reviewRequested) &&
             (identical(other.selectedWeapon, selectedWeapon) ||
                 other.selectedWeapon == selectedWeapon) &&
             (identical(other.selectedHelmet, selectedHelmet) ||
@@ -309,6 +328,7 @@ class _$SettingImpl with DiagnosticableTreeMixin implements _Setting {
       isHapticFeedback,
       isFixedJoystick,
       isLeftJoystick,
+      reviewRequested,
       selectedWeapon,
       selectedHelmet,
       color,
@@ -336,6 +356,7 @@ abstract class _Setting implements Setting {
       required final bool isHapticFeedback,
       required final bool isFixedJoystick,
       required final bool isLeftJoystick,
+      required final bool reviewRequested,
       required final BitmanWeapon selectedWeapon,
       required final BitmanHelmet selectedHelmet,
       required final BitmanColor color,
@@ -354,6 +375,8 @@ abstract class _Setting implements Setting {
   bool get isFixedJoystick;
   @override
   bool get isLeftJoystick;
+  @override
+  bool get reviewRequested;
   @override // bitman setting
   BitmanWeapon get selectedWeapon;
   @override

@@ -16,6 +16,7 @@ enum SpriteSheets{
     normalBackground,
     helpPage,
     chimney,
+    splashIcon
   }
 
  Sprite getSprite(SpriteSheets sheet,double x,double y,double width,double height){
@@ -83,6 +84,11 @@ enum SpriteSheets{
     case SpriteSheets.chimney:
     return Sprite(
       Flame.images.fromCache('chimney.png'),
+      srcPosition: Vector2(x, y),
+      srcSize: Vector2(width, height));
+    case SpriteSheets.splashIcon:
+    return Sprite(
+      Flame.images.fromCache('icon_foreground.png'),
       srcPosition: Vector2(x, y),
       srcSize: Vector2(width, height));
   }

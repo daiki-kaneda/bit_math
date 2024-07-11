@@ -47,7 +47,8 @@ class BitmanMath extends FlameGame with HasCollisionDetection,RiverpodGameMixin 
         'backgrounds.png',
         'normal_background.png',
         'helppage.png',
-        'chimney.png'
+        'chimney.png',
+        'icon_foreground.png'
       ]
     );
     // load audio

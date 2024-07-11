@@ -23,21 +23,21 @@ class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>,Rive
       world: world);
     cameraComponet.viewfinder.anchor = Anchor.topLeft;
     addAll([world,cameraComponet]);
-    //world.addAll(StageManager.getStage(ScreenStatus.splash));
+    //world.addAll(StageManager .getStage(ScreenStatus.splash));
     // replace more math related icon
     final bitmanSprite1 = getSprite(
-      SpriteSheets.coloredTransparent,
-       308,
-       124,
-        12,
-        11);
+      SpriteSheets.splashIcon,
+       366,
+       414,
+        372,
+        288);
     
     
     cameraComponet.viewport.addAll(
       [
       SpriteComponent(
       sprite:bitmanSprite1,
-      size: Vector2.all(gameHeight/2),
+      size: Vector2(gameHeight/2,gameHeight/2*(288/372)),
       position: Vector2(gameWidth/2,gameHeight/2),
       anchor: Anchor.center
       )

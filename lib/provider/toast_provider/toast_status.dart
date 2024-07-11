@@ -24,11 +24,11 @@ class StreakToast extends ToastStatus{
   final int streak;
 }
 
-class NumSolvedToast extends ToastStatus{
-  const NumSolvedToast(this.numSolved);
+// class NumSolvedToast extends ToastStatus{
+//   const NumSolvedToast(this.numSolved);
   
-  final int numSolved;
-}
+//   final int numSolved;
+// }
 
 class FailedToast extends ToastStatus{
   const FailedToast(this.probData);
@@ -41,4 +41,17 @@ class EnemyToast extends ToastStatus{
 
 class TimerToast extends ToastStatus{
 
+}
+
+class HealToast extends ToastStatus{
+
+}
+
+class RemovedAdToast extends ToastStatus{
+
+}
+
+class MaxStreakToast extends ToastStatus{
+  const MaxStreakToast(this.maxStreak);
+  final int maxStreak;
 }

@@ -68,7 +68,7 @@ class PlayingPage extends Component
     //final timeRemaining = RemainingTime(300);
     //final attackButton = AttackButton(bitman);
 
-    final hint = HintText(x: 25, y: 2.5);
+    //final hint = HintText(x: 25, y: 2.5);
     final lifes = [
       Life(2, position: Vector2(16 * 4, 16), size: Vector2.all(16)),
       Life(4, position: Vector2(16 * 5, 16), size: Vector2.all(16)),
@@ -79,7 +79,7 @@ class PlayingPage extends Component
       //TouchDetector(),
       joystick,
       jumpButton,
-      hint,
+      //hint,
       //attackButton,
       //timeRemaining,
       BackButton(position: Vector2(2 * 16, 1 * 16), size: Vector2.all(20)),

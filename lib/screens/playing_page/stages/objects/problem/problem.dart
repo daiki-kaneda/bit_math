@@ -157,6 +157,7 @@ class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMix
         if(playState?.lives==1){
          ref.read(audioPlayerProvider.notifier).play(AudioStatus.gameover);
         }else{
+          ref.read(toastNotifierProvider.notifier).showBuilderToast(TimerToast());
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
           //update gameState
           game.gameState=gameState.copyWith(

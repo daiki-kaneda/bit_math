@@ -6,6 +6,8 @@ import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/provider/audio_provider/audio_provider.dart';
+import 'package:bit_math/provider/toast_provider/toast_provider.dart';
+import 'package:bit_math/provider/toast_provider/toast_status.dart';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:flame/components.dart';
@@ -38,6 +40,7 @@ class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameRe
     log('tapped');
     
     ref.read(audioPlayerProvider.notifier).play(AudioStatus.start);
+    ref.read(toastNotifierProvider.notifier).showBuilderToast(InitialToast());
     game.router.popUntilNamed(ScreenStatus.splash.name);
     game.router.pushRoute(PlayingRoute(PlayingPage()));
     // playing page has not ad

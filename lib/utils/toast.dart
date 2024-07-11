@@ -1,4 +1,7 @@
 import 'package:bit_math/global_key/scaffold_messanger_key.dart';
+import 'package:bit_math/provider/toast_provider/toast_status.dart';
+import 'package:bit_math/utils/sprite_util.dart';
+import 'package:flame/widgets.dart';
 import 'package:flutter/material.dart';
 
 enum SnackBarStatus{
@@ -56,12 +59,14 @@ class ToastWidget extends StatelessWidget {
     required this.color,
     this.icon,
     this.text,
-    this.iconTextPadding});
+    this.iconTextPadding,
+    this.sprite});
 
   final Color color;
   final IconData? icon;
   final Widget? text;
   final double? iconTextPadding;
+  final Widget? sprite;
 
   @override
   Widget build(BuildContext context) {
@@ -81,10 +86,107 @@ class ToastWidget extends StatelessWidget {
         SizedBox(
           width: iconTextPadding ?? 12.0,
         ),
+        if(sprite!=null)
+        sprite!,
         if(text!=null)
         text!,
       ],
     ),
   );
   }
+}
+
+Widget? toastWidget(ToastStatus status){
+  if(status is InitialToast){
+    return const ToastWidget(
+        color: Colors.blueAccent,
+        icon: Icons.help,
+        text: Text(
+          'Hit your head on correct block!',
+          style: TextStyle(color: Colors.white),),
+        iconTextPadding: 12.0,);
+  }else if(status is CorrectToast){
+    return const ToastWidget(
+        color: Colors.greenAccent,
+        icon: Icons.check,
+        iconTextPadding: 0,);
+  }else if(status is StreakToast){
+    return ToastWidget(
+        color: Colors.greenAccent,
+        icon: Icons.check,
+        iconTextPadding: 12.0,
+        text: Text.rich(TextSpan(
+          children: [
+            TextSpan(
+              text: status.streak.toString(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold)),
+            const TextSpan(
+              text: 'Streaks!',
+              style: TextStyle(color: Colors.black))
+          ]
+        )),);
+  }else if(status is FailedToast){
+    return ToastWidget(
+        color: Colors.redAccent,
+        icon: Icons.close,
+        iconTextPadding: status.probData==null ? 0.0:12.0,
+        text:status.probData?.buildColoredAnswerText(),);
+  }else if(status is TimerToast){
+    final timer = getSprite(SpriteSheets.coloredTransparentPacked, 675, 194, 10, 12);
+    return ToastWidget(
+        color: Colors.redAccent,
+        sprite: SpriteWidget(sprite:timer),
+        iconTextPadding: 0,);
+  }else if(status is EnemyToast){
+    final enemy = getSprite(SpriteSheets.coloredTransparentPacked, 465, 129, 14, 14);
+    return ToastWidget(
+        color: Colors.redAccent,
+        sprite: SpriteWidget(sprite:enemy),
+        iconTextPadding: 0,);
+  }else if(status is HealToast){
+    final healItem = getSprite(SpriteSheets.coloredTransparentPacked, 531, 290, 10, 12);
+    return ToastWidget(
+        color: Colors.greenAccent,
+        sprite: SpriteWidget(sprite:healItem),
+        iconTextPadding: 0,);
+
+  }else if(status is RemovedAdToast){
+    return const ToastWidget(
+        color: Colors.greenAccent,
+        icon: Icons.check,
+        text: Text.rich(TextSpan(
+          children: [
+            TextSpan(
+              text: 'The ad removal is complete.',
+              style: TextStyle(color: Colors.black)),
+          ]
+        ))
+          ,
+        iconTextPadding: 12.0,);
+
+  }else if(status is MaxStreakToast){
+    return ToastWidget(
+        color: Colors.blueAccent,
+        icon: Icons.description,
+        text: Text.rich(TextSpan(
+          children: [
+            const TextSpan(
+              text: 'The highest streak is ',
+              style: TextStyle(color: Colors.black)),
+            TextSpan(
+              text: status.maxStreak.toString(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold)),
+            const TextSpan(
+              text: '!',
+              style: TextStyle(color: Colors.black))
+          ]
+        ))
+          ,
+        iconTextPadding: 12.0,);
+  }
+  return null;
 }

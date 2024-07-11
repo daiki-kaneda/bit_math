@@ -23,38 +23,31 @@ class ToastNotifier extends _$ToastNotifier {
   Future<void> showBuilderToast(ToastStatus status) async{
     final previousState = await future;
     previousState.removeCustomToast();
-    late Widget toast;
-    Duration duration=const Duration();
-    if(status is CorrectToast){
-      toast = const ToastWidget(
-        color: Colors.greenAccent,
-        icon: Icons.check,
-        iconTextPadding: 0,);
+    Widget? toast;
+    Duration duration = const Duration();
+    toast = toastWidget(status);
+    if (status is InitialToast) {
+      duration = const Duration(seconds: 10);
+    } else if (status is CorrectToast) {
       duration = const Duration(milliseconds: 750);
-    }else if(status is FailedToast){
-      toast = ToastWidget(
-        color: Colors.redAccent,
-        icon: Icons.close,
-        iconTextPadding: status.probData==null ? 0.0:12.0,
-        text:status.probData?.buildColoredAnswerText(),);
+    } else if (status is StreakToast) {
       duration = const Duration(milliseconds: 1250);
-    }else if(status is StreakToast){
-      toast = ToastWidget(
-        color: Colors.greenAccent,
-        icon: Icons.check,
-        iconTextPadding: 0,
-        text: Text.rich(TextSpan(
-          children: [
-            TextSpan(
-              text: status.streak.toString(),
-              style: const TextStyle(color: Colors.white)),
-            TextSpan(
-              text: 'Streaks!',
-              style: const TextStyle(color: Colors.black))
-          ]
-        )),);
+    } else if (status is FailedToast) {
+      duration = const Duration(milliseconds: 1250);
+    } else if (status is EnemyToast) {
       duration = const Duration(milliseconds: 750);
+    } else if (status is TimerToast) {
+      duration = const Duration(milliseconds: 750);
+    } else if (status is HealToast) {
+      duration = const Duration(milliseconds: 750);
+    } else if (status is RemovedAdToast) {
+      duration = const Duration(milliseconds: 1250);
+    } else if(status is MaxStreakToast){
+      duration = const Duration(milliseconds: 1250);
+    }else{
+      print('Unknown Toast Status');
     }
+    if(toast==null) return;
     previousState.showToast(
         child: toast,
         gravity: ToastGravity.NONE,

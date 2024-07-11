@@ -4,6 +4,9 @@ import 'dart:async';
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
 import 'package:bit_math/provider/audio_provider/audio_provider.dart';
+import 'package:bit_math/provider/save_data_provider/save_data_helper_provider.dart';
+import 'package:bit_math/provider/toast_provider/toast_provider.dart';
+import 'package:bit_math/provider/toast_provider/toast_status.dart';
 import 'package:bit_math/screens/playing_page/playing_page.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/arms/helmet.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/arms/weapon.dart';
@@ -523,8 +526,19 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
         current=BitmanStatus.jumping;
         Future.delayed(const Duration(milliseconds: 500))
         .whenComplete(() =>current=BitmanStatus.normal);
-      }
-      
+      } 
+    }
+    if(screenStatus==ScreenStatus.ranking){
+      if(current!=BitmanStatus.jumping){
+        final maxStreak = ref.read(saveDataNotifierProvider).value?.scoreData.maxStreak;
+        if(maxStreak!=null){
+        ref.read(toastNotifierProvider.notifier)
+        .showBuilderToast(StreakToast(maxStreak));
+        }
+        current=BitmanStatus.jumping;
+        Future.delayed(const Duration(milliseconds: 500))
+        .whenComplete(() =>current=BitmanStatus.normal);
+      } 
     }
     super.onTapDown(event);
   }

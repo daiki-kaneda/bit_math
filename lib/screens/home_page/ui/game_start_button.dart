@@ -4,13 +4,10 @@ import 'dart:async';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
-import 'package:bit_math/provider/toast_provider/toast_provider.dart';
-import 'package:bit_math/provider/toast_provider/toast_status.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
-import 'package:flutter/material.dart';
 
 
 //SpriteButtonComponent({Sprite? button, Sprite? buttonDown, void onPressed()?, Vector2? position, Vector2? size, Vector2? scale, double? angle, Anchor? anchor, Iterable<Component>? children, int? priority})

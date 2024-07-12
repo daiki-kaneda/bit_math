@@ -11,7 +11,6 @@ import 'package:bit_math/utils/screen_size.dart';
 import 'package:bit_math/widgets/dialog_button/remove_ad_button.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

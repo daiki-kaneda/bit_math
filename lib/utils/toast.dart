@@ -34,7 +34,7 @@ Future<void> showSnackBar(SnackBarStatus status)async{
       borderRadius: BorderRadius.circular(25.0),
       color: Colors.greenAccent,
     ),
-    child: Row(
+    child: const Row(
       mainAxisSize: MainAxisSize.min,
       children: [
         Icon(Icons.check),
@@ -75,7 +75,7 @@ class ToastWidget extends StatelessWidget {
     return Container(
     padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
     decoration: BoxDecoration(
-      border: Border.all(color: Color.fromRGBO(71, 45, 60, 1)),
+      border: Border.all(color: const Color.fromRGBO(71, 45, 60, 1)),
       borderRadius: BorderRadius.circular(25.0),
       color: color,
       shape: BoxShape.rectangle
@@ -105,7 +105,7 @@ Widget? toastWidget(ToastStatus status){
         icon: Icons.help,
         text: Text(
            AppLocalizations.of(scaffoldKey.currentContext!)!.initialToast,
-          style: TextStyle(color: Colors.white),),
+          style: const TextStyle(color: Colors.white),),
         iconTextPadding: 12.0,);
   }else if(status is CorrectToast){
     return const ToastWidget(

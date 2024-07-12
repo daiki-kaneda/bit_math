@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bit_math/game.dart';
 import 'package:bit_math/global_key/game_widget_key.dart';
 import 'package:bit_math/global_key/navigator_key.dart';
+import 'package:bit_math/global_key/scaffold_key.dart';
 import 'package:bit_math/global_key/scaffold_messanger_key.dart';
 import 'package:bit_math/provider/toast_provider/toast_provider.dart';
 import 'package:bit_math/widgets/banner_ad_widget.dart';
@@ -10,8 +11,10 @@ import 'package:bit_math/utils/screen_size.dart';
 import 'package:bit_math/widgets/dialog_button/remove_ad_button.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({
@@ -21,6 +24,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       navigatorKey: navigatorKey,
       builder: FToastBuilder(),
       scaffoldMessengerKey: scaffoldMessangerKey,
@@ -29,6 +34,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(
               seedColor: const Color.fromRGBO(71, 45, 60, 1))),
       home: Scaffold(
+          key: scaffoldKey,
           backgroundColor: Colors.black,
           body: //SafeArea(child:
               LayoutBuilder(

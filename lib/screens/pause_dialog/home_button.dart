@@ -2,6 +2,7 @@
 import 'dart:async';
 
 import 'package:bit_math/game.dart';
+import 'package:bit_math/global_key/scaffold_key.dart';
 import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/screens/home_page/home_page.dart';
 import 'package:bit_math/screens/pause_dialog/pause_dialog_page.dart';
@@ -10,6 +11,7 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart' hide Route;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
 
@@ -19,7 +21,8 @@ class HomeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallback
   @override
   FutureOr<void> onLoad() {
     hint = TextComponent(
-        text: 'back to start page(current score will be lost)',
+        text: AppLocalizations.of(scaffoldKey.currentContext!)!.backToHomeHint ,
+        //'back to start page(current score will be lost)',
         textRenderer: TextPaint(
           style:const TextStyle(
             fontSize: 16,

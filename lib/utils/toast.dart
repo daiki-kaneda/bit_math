@@ -1,8 +1,10 @@
+import 'package:bit_math/global_key/scaffold_key.dart';
 import 'package:bit_math/global_key/scaffold_messanger_key.dart';
 import 'package:bit_math/provider/toast_provider/toast_status.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 enum SnackBarStatus{
   bestScoreUpdate,
@@ -98,11 +100,11 @@ class ToastWidget extends StatelessWidget {
 
 Widget? toastWidget(ToastStatus status){
   if(status is InitialToast){
-    return const ToastWidget(
+    return ToastWidget(
         color: Colors.blueAccent,
         icon: Icons.help,
         text: Text(
-          'Hit your head on correct block!',
+           AppLocalizations.of(scaffoldKey.currentContext!)!.initialToast,
           style: TextStyle(color: Colors.white),),
         iconTextPadding: 12.0,);
   }else if(status is CorrectToast){
@@ -122,9 +124,9 @@ Widget? toastWidget(ToastStatus status){
               style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold)),
-            const TextSpan(
-              text: 'Streaks!',
-              style: TextStyle(color: Colors.black))
+            TextSpan(
+              text: AppLocalizations.of(scaffoldKey.currentContext!)!.streakToast,
+              style: const TextStyle(color: Colors.black))
           ]
         )),);
   }else if(status is FailedToast){
@@ -153,14 +155,14 @@ Widget? toastWidget(ToastStatus status){
         iconTextPadding: 0,);
 
   }else if(status is RemovedAdToast){
-    return const ToastWidget(
+    return ToastWidget(
         color: Colors.greenAccent,
         icon: Icons.check,
         text: Text.rich(TextSpan(
           children: [
             TextSpan(
-              text: 'The ad removal is complete.',
-              style: TextStyle(color: Colors.black)),
+              text: AppLocalizations.of(scaffoldKey.currentContext!)!.removedAdToast,
+              style: const TextStyle(color: Colors.black)),
           ]
         ))
           ,
@@ -172,9 +174,9 @@ Widget? toastWidget(ToastStatus status){
         icon: Icons.description,
         text: Text.rich(TextSpan(
           children: [
-            const TextSpan(
-              text: 'The highest streak is ',
-              style: TextStyle(color: Colors.black)),
+            TextSpan(
+              text: '${AppLocalizations.of(scaffoldKey.currentContext!)!.maxStreakToast} ',
+              style: const TextStyle(color: Colors.black)),
             TextSpan(
               text: status.maxStreak.toString(),
               style: const TextStyle(

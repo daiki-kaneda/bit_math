@@ -1,0 +1,16 @@
+{
+    "removeAdTitle": "Remover anúncios?",
+    "removeAdYes": "Remover",
+    "removeAdNo": "Não",
+    "removeAdRestore": "Restaurar compra",
+
+    "initialToast": "Bata no bloco correto com a cabeça",
+    "streakToast": "Sequência!",
+    "removedAdToast": "Remoção de anúncios concluída",
+    "maxStreakToast": "O maior recorde de acertos consecutivos é",
+
+    "backToHomeHint": "Voltar à página inicial (o registro de pontuação atual será perdido)",
+    "resumeHint": "Retomar",
+    "retryHint": "Tentar novamente desde o início",
+    "muteHint": "Configuração de mudo"
+}

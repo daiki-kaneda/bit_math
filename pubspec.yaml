@@ -29,6 +29,9 @@ dependencies:
   flame_riverpod: ^5.4.2
   fluttertoast: ^8.2.6
   in_app_review: ^2.0.9
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +43,7 @@ dev_dependencies:
   riverpod_generator: ^2.4.2
 
 flutter:
+  generate: true
   uses-material-design: true
   assets:
     - assets/audio/

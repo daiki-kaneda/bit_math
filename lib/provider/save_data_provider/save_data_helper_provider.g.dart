@@ -6,7 +6,7 @@ part of 'save_data_helper_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$saveDataNotifierHash() => r'9795233a6bac0013d803b89ecedcfbdec260429b';
+String _$saveDataNotifierHash() => r'902cee4d42ef6ffe49c997d9d2b9db7408f05940';
 
 /// See also [SaveDataNotifier].
 @ProviderFor(SaveDataNotifier)

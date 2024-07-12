@@ -1,0 +1,17 @@
+{
+    "removeAdTitle": "広告を削除しますか？",
+    "removeAdYes": "削除する",
+    "removeAdNo": "いいえ",
+    "removeAdRestore": "購入復元",
+
+    "initialToast":"正解のブロックに頭をぶつけましょう",
+    "streakToast": "問連続正解！",
+    "removedAdToast":"広告削除が完了しました",
+    "maxStreakToast": "連続正解の最高記録は",
+
+    "backToHomeHint":"スタートページに戻る（現在のスコア記録は失われます)",
+    "resumeHint":"再開する",
+    "retryHint":"初めからやり直す",
+    "muteHint":"ミュート設定"
+
+}

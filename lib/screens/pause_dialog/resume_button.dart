@@ -2,12 +2,14 @@
 import 'dart:async';
 
 import 'package:bit_math/game.dart';
+import 'package:bit_math/global_key/scaffold_key.dart';
 import 'package:bit_math/provider/ad_provider/showing_ad_provider.dart';
 import 'package:bit_math/screens/pause_dialog/pause_dialog_page.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ResumeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
 
@@ -17,7 +19,7 @@ class ResumeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallba
   @override
   FutureOr<void> onLoad() {
     hint = TextComponent(
-        text: 'resume',
+        text: AppLocalizations.of(scaffoldKey.currentContext!)!.resumeHint,
         textRenderer: TextPaint(
           style:const TextStyle(
             fontSize: 16,

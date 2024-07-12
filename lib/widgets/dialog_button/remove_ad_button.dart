@@ -1,10 +1,12 @@
 
+import 'package:bit_math/global_key/scaffold_key.dart';
 import 'package:bit_math/provider/ad_provider/removed_ad_provider.dart';
 import 'package:bit_math/provider/iap_provider/iap_helper.dart';
 import 'package:bit_math/provider/iap_provider/iap_helper_provider.dart';
 import 'package:bit_math/widgets/dialog_button/dialog_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RemoveAdButton extends ConsumerWidget{
 
@@ -23,12 +25,12 @@ class RemoveAdButton extends ConsumerWidget{
             Padding(padding: const EdgeInsets.only(top: 10,right: 10),
             child: DialogButton(
               context: context, 
-              title: 'remove ad?', 
+              title: AppLocalizations.of(scaffoldKey.currentContext!)!.removeAdTitle, 
               subtitle: '', 
               icon: const Icon(Icons.close), 
-              primaryLabel: 'restore', 
-              secondaryLabel: 'yes', 
-              tertiaryLabel: 'no',
+              primaryLabel: AppLocalizations.of(scaffoldKey.currentContext!)!.removeAdRestore, 
+              secondaryLabel: AppLocalizations.of(scaffoldKey.currentContext!)!.removeAdYes, 
+              tertiaryLabel: AppLocalizations.of(scaffoldKey.currentContext!)!.removeAdNo,
               primaryAction: (){
                ref.read(iapHelperNotifierProvider.notifier).restore();
                  Navigator.pop(context);

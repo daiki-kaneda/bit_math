@@ -1,0 +1,16 @@
+{
+    "removeAdTitle": "Remove ads?",
+    "removeAdYes": "Remove",
+    "removeAdNo": "No",
+    "removeAdRestore": "Restore Purchase",
+
+    "initialToast": "Hit the correct block with your head",
+    "streakToast": "Streak!",
+    "removedAdToast": "Ad removal completed",
+    "maxStreakToast": "The highest consecutive correct answer record is",
+
+    "backToHomeHint": "Return to the start page (current score record will be lost)",
+    "resumeHint": "Resume",
+    "retryHint": "Retry from the beginning",
+    "muteHint": "Mute setting"
+}

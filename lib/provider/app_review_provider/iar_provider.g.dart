@@ -7,7 +7,7 @@ part of 'iar_provider.dart';
 // **************************************************************************
 
 String _$inAppReviewNotifierHash() =>
-    r'03b1af23bfe8e66a49f689229ca341dc685caf52';
+    r'ae8d2cdfd76877c3374f6c7740d2067c10be2fd6';
 
 /// See also [InAppReviewNotifier].
 @ProviderFor(InAppReviewNotifier)

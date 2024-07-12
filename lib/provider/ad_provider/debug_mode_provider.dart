@@ -5,7 +5,7 @@ part 'debug_mode_provider.g.dart';
 
 @riverpod
 bool isDebug(IsDebugRef ref) {
-  //return kDebugMode;
+  return kDebugMode;
    // when inner test 
-   return true;
+   //return true;
 }

@@ -1,5 +1,6 @@
 
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
@@ -8,6 +9,7 @@ import 'package:bit_math/utils/constants.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 
@@ -40,13 +42,22 @@ class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>,Rive
       size: Vector2(gameHeight/2,gameHeight/2*(288/372)),
       position: Vector2(gameWidth/2,gameHeight/2),
       anchor: Anchor.center
-      )
+      )..add(ScaleEffect.by(
+        Vector2.all(1.5),
+        EffectController(
+          duration: 5.0
+        ),
+        onComplete: () async{
+          Future.delayed(
+            const Duration(milliseconds: 500),
+            ()=>game.router.pushNamed(ScreenStatus.home.name));
+        },))
       ]
     );
         }
   @override
   void onTapDown(TapDownEvent event) {
-     game.router.pushNamed(ScreenStatus.home.name);
+     //game.router.pushNamed(ScreenStatus.home.name);
      // homepage has no ad
      ref.read(showingAdNotifierProvider.notifier).disableAd();
     super.onTapDown(event);

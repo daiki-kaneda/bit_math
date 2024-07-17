@@ -40,7 +40,7 @@ class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>,Rive
       [
       SpriteComponent(
       sprite:bitmanSprite1,
-      size: Vector2(gameHeight/2,gameHeight/2*(288/372)),
+      size: Vector2(gameHeight/3,gameHeight/3*(288/372)),
       position: Vector2(gameWidth/2,gameHeight/2),
       anchor: Anchor.center
       )

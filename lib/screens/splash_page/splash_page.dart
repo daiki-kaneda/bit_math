@@ -1,6 +1,7 @@
 
 import 'dart:async';
-import 'dart:ui';
+import 'dart:math';
+import 'package:flutter/animation.dart';
 
 import 'package:bit_math/game.dart';
 import 'package:bit_math/models/screen_status.dart';
@@ -42,14 +43,22 @@ class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>,Rive
       size: Vector2(gameHeight/2,gameHeight/2*(288/372)),
       position: Vector2(gameWidth/2,gameHeight/2),
       anchor: Anchor.center
-      )..add(ScaleEffect.by(
+      )
+      ..add(RotateEffect.by(
+        2*pi, 
+         EffectController(
+          curve: Curves.easeInOut,
+          duration: 0.4
+        )))
+      ..add(ScaleEffect.by(
         Vector2.all(1.5),
         EffectController(
-          duration: 5.0
+          curve: Curves.easeInOut,
+          duration: 0.4
         ),
         onComplete: () async{
           Future.delayed(
-            const Duration(milliseconds: 500),
+            const Duration(milliseconds: 450),
             ()=>game.router.pushNamed(ScreenStatus.home.name));
         },))
       ]

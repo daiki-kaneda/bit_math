@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:bit_math/provider/save_data_provider/save_data_helper.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
-//import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+//import 'package:bit_math/l10n/app_localizations.dart';
 
 // 参考：https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases#7
 

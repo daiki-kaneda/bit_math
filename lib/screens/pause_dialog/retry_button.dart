@@ -11,7 +11,7 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart' hide Route;
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bit_math/l10n/app_localizations.dart';
 
 class RetryButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
 

@@ -4,7 +4,7 @@ import 'package:bit_math/provider/toast_provider/toast_status.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bit_math/l10n/app_localizations.dart';
 
 enum SnackBarStatus{
   bestScoreUpdate,

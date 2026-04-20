@@ -6,7 +6,7 @@ import 'package:bit_math/provider/iap_provider/iap_helper_provider.dart';
 import 'package:bit_math/widgets/dialog_button/dialog_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:bit_math/l10n/app_localizations.dart';
 
 class RemoveAdButton extends ConsumerWidget{
 

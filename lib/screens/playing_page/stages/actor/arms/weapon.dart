@@ -13,6 +13,7 @@ class Weapon extends SpriteGroupComponent<BitmanWeapon>{
 
   @override
   FutureOr<void> onLoad() {
+    final noneSprite = getSprite(SpriteSheets.coloredTransparentPacked, 0, 0, 0, 0);
     final shovelSprite = getSprite(SpriteSheets.coloredTransparentPacked, 673, 81, 14, 14);
     final pickSprite = getSprite(SpriteSheets.coloredTransparentPacked, 690, 82, 12, 12);
     final swordSprite = getSprite(SpriteSheets.coloredTransparent, 545, 137, 14, 14);
@@ -21,6 +22,7 @@ class Weapon extends SpriteGroupComponent<BitmanWeapon>{
     final bombSprite = getSprite(SpriteSheets.coloredTransparentPacked, 720, 144, 16, 16);
     final dynamiteSprite = getSprite(SpriteSheets.coloredTransparentPacked, 736, 144, 16, 16);
     sprites={
+      BitmanWeapon.none:noneSprite,
       BitmanWeapon.shovel:shovelSprite,
       BitmanWeapon.pick:pickSprite,
       BitmanWeapon.sword:swordSprite,

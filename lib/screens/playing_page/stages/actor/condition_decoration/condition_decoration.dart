@@ -16,10 +16,12 @@ class ConditionDecoration extends SpriteGroupComponent<AbnormalStatus>{
 
   @override
   FutureOr<void> onLoad() {
+    final noneSprite = getSprite(SpriteSheets.coloredTransparentPacked, 0, 0, 0, 0);
     final poisonSprite = getSprite(SpriteSheets.coloredTransparent, 596, 188, 14, 14);
     final stunSprite = getSprite(SpriteSheets.coloredTransparentPacked, 576, 176, 16, 16);
      final healSprite = getSprite(SpriteSheets.coloredTransparentPacked, 624, 160, 16, 16);
     sprites={
+      AbnormalStatus.normal:noneSprite,
       AbnormalStatus.poison:poisonSprite,
       AbnormalStatus.stun:stunSprite,
       AbnormalStatus.healing:healSprite

@@ -51,7 +51,6 @@ class InputField extends PositionComponent with StageBlock implements StageObjec
 
   @override
   void onRemove() {
-     removeFromParent();
     super.onRemove();
   }
 

@@ -9,6 +9,7 @@ import 'package:bit_math/screens/splash_page/splash_page.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
+import 'package:flutter/foundation.dart';
 // import 'package:flutter/material.dart' hide Route;
 
 class BitmanMath extends FlameGame with HasCollisionDetection,RiverpodGameMixin {
@@ -31,6 +32,7 @@ class BitmanMath extends FlameGame with HasCollisionDetection,RiverpodGameMixin 
   
   @override
   FutureOr<void> onLoad() async{
+    debugMode = kDebugMode;
     //load assets
     //load sprites
     await images.loadAll(

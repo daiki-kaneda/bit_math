@@ -52,10 +52,10 @@ class ToastNotifier extends _$ToastNotifier {
       positionedToastBuilder: (context, child, gravity) {
         return Positioned(
           top:
-              getPaddingHeight(
-                MediaQuery.of(context).size.width,
-                MediaQuery.of(context).size.height,
-              ) +
+              // getPaddingHeight(
+              //   MediaQuery.of(context).size.width,
+              //   MediaQuery.of(context).size.height,
+              // ) +
               16,
           left: 16.0,
           right: 16.0,

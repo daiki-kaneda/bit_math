@@ -108,11 +108,11 @@ class Problem extends Component with HasGameReference<BitmanMath>,RiverpodCompon
           );
 
           if(gameState.currentStreak+1>=2){
-            ref.read(toastProvider.notifier).showBuilderToast(
-              StreakToast(gameState.currentStreak+1)
-              );
+            // ref.read(toastProvider.notifier).showBuilderToast(
+            //   StreakToast(gameState.currentStreak+1)
+            //   );
           }else{
-          ref.read(toastProvider.notifier).showBuilderToast(CorrectToast());
+          // ref.read(toastProvider.notifier).showBuilderToast(CorrectToast());
           }
           
           resetProblem(gameState.level);
@@ -128,9 +128,9 @@ class Problem extends Component with HasGameReference<BitmanMath>,RiverpodCompon
           game.gameState=gameState.copyWith(
             currentStreak: 0
           );
-          ref.read(toastProvider.notifier).showBuilderToast(FailedToast(
-            gameState.currentProbData
-          ));
+          // ref.read(toastProvider.notifier).showBuilderToast(FailedToast(
+          //   gameState.currentProbData
+          // ));
         }
         HapticFeedback.lightImpact();
         if(playState!=null){
@@ -157,7 +157,7 @@ class Problem extends Component with HasGameReference<BitmanMath>,RiverpodCompon
         if(playState?.lives==1){
          ref.read(audioPlayerProvider.notifier).play(AudioStatus.gameover);
         }else{
-          ref.read(toastProvider.notifier).showBuilderToast(TimerToast());
+          // ref.read(toastProvider.notifier).showBuilderToast(TimerToast());
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
           //update gameState
           game.gameState=gameState.copyWith(

@@ -273,7 +273,7 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
         if(findParent<PlayingPage>()!.state.lives==1){
           ref.read(audioPlayerProvider.notifier).play(AudioStatus.gameover);
         }else{
-           ref.read(toastProvider.notifier).showBuilderToast(EnemyToast());
+          //  ref.read(toastProvider.notifier).showBuilderToast(EnemyToast());
            ref.read(audioPlayerProvider.notifier).play(AudioStatus.failed);
         }
         findParent<PlayingPage>()!.state.lives -= other.power;
@@ -302,7 +302,7 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
     if (other is StageItem) {
       if (other is HealItem) {
         if(findParent<PlayingPage>()!.state.lives<6){
-        ref.read(toastProvider.notifier).showBuilderToast(HealToast());
+        // ref.read(toastProvider.notifier).showBuilderToast(HealToast());
         findParent<PlayingPage>()!.state.lives += other.healing;
         findParent<PlayingPage>()!.state.lives=findParent<PlayingPage>()!.state.lives.clamp(0, 6);
         condition = AbnormalStatus.healing;
@@ -534,8 +534,8 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
       if(current!=BitmanStatus.jumping){
         final maxStreak = ref.read(saveDataProvider).value?.scoreData.maxStreak;
         if(maxStreak!=null){
-        ref.read(toastProvider.notifier)
-        .showBuilderToast(MaxStreakToast(maxStreak));
+        // ref.read(toastProvider.notifier)
+        // .showBuilderToast(MaxStreakToast(maxStreak));
         }
         current=BitmanStatus.jumping;
         Future.delayed(const Duration(milliseconds: 500))

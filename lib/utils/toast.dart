@@ -101,7 +101,7 @@ class ToastWidget extends StatelessWidget {
 Widget? toastWidget(ToastStatus status){
   if(status is InitialToast){
     return ToastWidget(
-        color: Colors.blueAccent,
+        color: const Color.fromRGBO(71, 45, 60, 1),
         icon: Icons.help,
         text: Text(
            AppLocalizations.of(scaffoldKey.currentContext!)!.initialToast,

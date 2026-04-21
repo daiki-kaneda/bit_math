@@ -1,13 +1,15 @@
 
 import 'dart:async';
 
+import 'package:bit_math/provider/audio_provider/audio_provider.dart';
 import 'package:bit_math/screens/playing_page/stages/actor/bitman.dart';
 import 'package:bit_math/utils/sprite_util.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
+import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 
-class JumpButton extends ButtonComponent {
+class JumpButton extends ButtonComponent with RiverpodComponentMixin{
   JumpButton(this.bitman):super(
     button:SpriteComponent(
       sprite: getSprite(SpriteSheets.uiSprites, 569, 233, 80, 80),
@@ -29,7 +31,13 @@ class JumpButton extends ButtonComponent {
   FutureOr<void> onLoad() {
     onPressed =  (){
       if(bitman.jumpCount>=2) return;
-
+      // if(bitman.jumpCount==0){
+      //   ref.read(audioPlayerProvider.notifier)
+      //   .play(AudioStatus.jump1);
+      // }else if(bitman.jumpCount==1){
+      //   ref.read(audioPlayerProvider.notifier)
+      //   .play(AudioStatus.jump2);
+      // }
       bitman.current = BitmanStatus.jumping;
       bitman.isOnGround = false;
       bitman.jumpCount++;

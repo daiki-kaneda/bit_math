@@ -302,6 +302,7 @@ class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef
     if (other is StageItem) {
       if (other is HealItem) {
         if(findParent<PlayingPage>()!.state.lives<6){
+        ref.read(audioPlayerProvider.notifier).play(AudioStatus.heal);
         // ref.read(toastProvider.notifier).showBuilderToast(HealToast());
         findParent<PlayingPage>()!.state.lives += other.healing;
         findParent<PlayingPage>()!.state.lives=findParent<PlayingPage>()!.state.lives.clamp(0, 6);

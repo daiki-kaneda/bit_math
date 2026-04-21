@@ -10,6 +10,9 @@ part 'audio_provider.g.dart';
 
 enum AudioStatus {
   start,
+  heal,
+  jump1,
+  jump2,
   solved,
   failed,
   gameover;
@@ -18,12 +21,37 @@ enum AudioStatus {
     switch (this) {
       case start:
         return 'jingles_NES16.mp3';
+      case heal:
+        return 'powerUp5.ogg';
+      case jump1:
+        return 'phaseJump1.ogg';
+      case jump2:
+        return 'phaseJump2.ogg';
       case solved:
         return 'jingles_NES14.mp3';
       case failed:
         return 'jingles_NES15.mp3';
       case gameover:
         return 'jingles_NES00.mp3';
+    }
+  }
+
+  Codec get codec{
+        switch (this) {
+      case start:
+        return Codec.mp3;
+      case heal:
+        return Codec.vorbisOGG;
+      case jump1:
+        return Codec.vorbisOGG;
+      case jump2:
+        return Codec.vorbisOGG;
+      case solved:
+        return Codec.mp3;
+      case failed:
+        return Codec.mp3;
+      case gameover:
+        return Codec.mp3;
     }
   }
 
@@ -49,7 +77,7 @@ class AudioPlayer extends _$AudioPlayer {
     if (isSound) {
       final player = await future;
       await player.startPlayer(fromDataBuffer: await status.getAssetData(),
-      codec: Codec.mp3);
+      codec: status.codec);
     }
   }
 }

@@ -11,16 +11,16 @@ part 'iap_helper_provider.g.dart';
 class IapHelperNotifier extends _$IapHelperNotifier {
   @override
   FutureOr<IAPHelper> build() async{
-  final saveDataHelper = await ref.read(saveDataNotifierProvider.future);
+  final saveDataHelper = await ref.read(saveDataProvider.future);
   // 購入、購入復元処理は'ref'があると便利なのでコールバックで渡す
   final helper = IAPHelper(
     saveDataHelper,
     purchasedOrRestored: (item)async{
       switch(item){
         case PurchaseItem.removeAd:{
-          ref.read(removedAdNotifierProvider.notifier)
+          ref.read(removedAdProvider.notifier)
           .removedAd();
-          ref.read(toastNotifierProvider.notifier).showBuilderToast(RemovedAdToast());
+          ref.read(toastProvider.notifier).showBuilderToast(RemovedAdToast());
         }
       }
     });

@@ -41,7 +41,7 @@ class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>
   @override
   void onMount() {
     addToGameWidgetBuild(()async{
-      isSound = await ref.watch(saveDataNotifierProvider.selectAsync((data) => data.setting.isSound,));
+      isSound = await ref.watch(saveDataProvider.selectAsync((data) => data.setting.isSound,));
     });
     super.onMount();
   }
@@ -67,10 +67,10 @@ class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>
     scale = Vector2.all(1);
     if(current!){
        current = false;
-       ref.read(saveDataNotifierProvider.notifier).isSoundToggle();
+       ref.read(saveDataProvider.notifier).isSoundToggle();
     }else{
       current = true;
-      ref.read(saveDataNotifierProvider.notifier).isSoundToggle();
+      ref.read(saveDataProvider.notifier).isSoundToggle();
     }
     super.onTapUp(event);
   }

@@ -6,21 +6,49 @@ part of 'toast_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(ToastNotifier)
+final toastProvider = ToastNotifierProvider._();
+
+final class ToastNotifierProvider
+    extends $AsyncNotifierProvider<ToastNotifier, FToast> {
+  ToastNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'toastProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$toastNotifierHash();
+
+  @$internal
+  @override
+  ToastNotifier create() => ToastNotifier();
+}
+
 String _$toastNotifierHash() => r'ad6c1411137461e2510ca00535224356c7190bc3';
 
-/// See also [ToastNotifier].
-@ProviderFor(ToastNotifier)
-final toastNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<ToastNotifier, FToast>.internal(
-  ToastNotifier.new,
-  name: r'toastNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$toastNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$ToastNotifier = AutoDisposeAsyncNotifier<FToast>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+abstract class _$ToastNotifier extends $AsyncNotifier<FToast> {
+  FutureOr<FToast> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<FToast>, FToast>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<FToast>, FToast>,
+              AsyncValue<FToast>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}

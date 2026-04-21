@@ -56,7 +56,7 @@ class ResultPage extends Component with HasGameRef<BitmanMath>,RiverpodComponent
     addToGameWidgetBuild(()async{
         //review request
         Future.delayed(const Duration(seconds: 1),
-        ()=>ref.read(inAppReviewNotifierProvider.notifier).requestReview());
+        ()=>ref.read(inAppReviewProvider.notifier).requestReview());
     });
     super.onMount();
   }

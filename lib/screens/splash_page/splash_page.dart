@@ -68,7 +68,7 @@ class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>,Rive
   void onTapDown(TapDownEvent event) {
      //game.router.pushNamed(ScreenStatus.home.name);
      // homepage has no ad
-     ref.read(showingAdNotifierProvider.notifier).disableAd();
+     ref.read(showingAdProvider.notifier).disableAd();
     super.onTapDown(event);
   }
 

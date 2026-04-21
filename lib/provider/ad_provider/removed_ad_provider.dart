@@ -7,12 +7,12 @@ part 'removed_ad_provider.g.dart';
 class RemovedAdNotifier extends _$RemovedAdNotifier {
   @override
   FutureOr<bool> build() async{
-    return (await ref.read(saveDataNotifierProvider.future)).setting.removedAd;
+    return (await ref.read(saveDataProvider.future)).setting.removedAd;
   }
 
   Future<void> removedAd() async{
-    final saveData = (await ref.read(saveDataNotifierProvider.future));
-    (await ref.read(saveDataNotifierProvider.future)).setting
+    final saveData = (await ref.read(saveDataProvider.future));
+    (await ref.read(saveDataProvider.future)).setting
     = saveData.setting.copyWith(removedAd: true);
     state = const AsyncData(true);
   }

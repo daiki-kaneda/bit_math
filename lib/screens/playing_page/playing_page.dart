@@ -131,14 +131,14 @@ class PlayingPage extends Component
         //side effect
 
         final gs = game.gameState;
-        ref.read(saveDataNotifierProvider.notifier)
+        ref.read(saveDataProvider.notifier)
         .updateScoreData(
           gs.score, 
           gs.maxStreak);
         if (Random().nextDouble() < 0.4) {
-          ref.read(showingAdNotifierProvider.notifier).enableAd();
+          ref.read(showingAdProvider.notifier).enableAd();
         } else {
-          ref.read(showingAdNotifierProvider.notifier).disableAd();
+          ref.read(showingAdProvider.notifier).disableAd();
         }
 
         game.router.pushReplacementNamed(ScreenStatus.result.name);

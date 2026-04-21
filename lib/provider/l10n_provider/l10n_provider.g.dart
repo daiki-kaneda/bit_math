@@ -6,19 +6,52 @@ part of 'l10n_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$l10nHash() => r'd14160da11583059ed6ddc2c51386226ddf7f406';
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
 
-/// See also [l10n].
 @ProviderFor(l10n)
-final l10nProvider = AutoDisposeProvider<AppLocalizations?>.internal(
-  l10n,
-  name: r'l10nProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$l10nHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final l10nProvider = L10nProvider._();
 
-typedef L10nRef = AutoDisposeProviderRef<AppLocalizations?>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+final class L10nProvider
+    extends
+        $FunctionalProvider<
+          AppLocalizations?,
+          AppLocalizations?,
+          AppLocalizations?
+        >
+    with $Provider<AppLocalizations?> {
+  L10nProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'l10nProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$l10nHash();
+
+  @$internal
+  @override
+  $ProviderElement<AppLocalizations?> $createElement(
+    $ProviderPointer pointer,
+  ) => $ProviderElement(pointer);
+
+  @override
+  AppLocalizations? create(Ref ref) {
+    return l10n(ref);
+  }
+
+  /// {@macro riverpod.override_with_value}
+  Override overrideWithValue(AppLocalizations? value) {
+    return $ProviderOverride(
+      origin: this,
+      providerOverride: $SyncValueProvider<AppLocalizations?>(value),
+    );
+  }
+}
+
+String _$l10nHash() => r'0e58d7d6f145f5852806c6f1d2269c523b323542';

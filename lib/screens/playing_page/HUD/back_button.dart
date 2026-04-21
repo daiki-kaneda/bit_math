@@ -22,7 +22,7 @@ class BackButton extends SpriteButtonComponent with HasGameRef<BitmanMath>,River
     button = getSprite(SpriteSheets.coloredTransparentPacked, 40*16, 13*16, 16, 16);
     buttonDown = button..paint.color.withOpacity(0.5);
     onPressed =() {
-      ref.read(showingAdNotifierProvider.notifier).enableAd();
+      ref.read(showingAdProvider.notifier).enableAd();
       game.router.pushRoute(PauseDialogRoute());
       //game.router.pushReplacementNamed(ScreenStatus.result.name);
     };

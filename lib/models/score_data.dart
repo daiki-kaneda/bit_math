@@ -9,7 +9,7 @@ part 'score_data.freezed.dart';
 part 'score_data.g.dart';
 
 @freezed
-class ScoreData with _$ScoreData {
+abstract class ScoreData with _$ScoreData {
   @JsonSerializable(includeIfNull: false)
   const factory ScoreData({
     required List<int> bestScore,

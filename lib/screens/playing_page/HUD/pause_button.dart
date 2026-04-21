@@ -29,7 +29,7 @@ class PauseButton extends ButtonComponent with HasGameRef<BitmanMath>,RiverpodCo
       bitmanGame.router.pushNamed('pause-dialog');
       };
       // pause page has ad
-      ref.read(showingAdNotifierProvider.notifier).enableAd();
+      ref.read(showingAdProvider.notifier).enableAd();
     return super.onLoad();
   }
 

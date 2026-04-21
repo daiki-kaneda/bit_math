@@ -6,7 +6,7 @@ import 'package:bit_math/l10n/app_localizations.dart';
 part 'l10n_provider.g.dart';
 
 @riverpod
-AppLocalizations? l10n(L10nRef ref) {
+AppLocalizations? l10n(Ref ref) {
   final context = scaffoldKey.currentContext;
   if(context!=null){
     return AppLocalizations.of(context);

@@ -32,7 +32,7 @@ class AudioPlayer extends _$AudioPlayer {
   }
 
   Future<void> play(AudioStatus status)async{
-    final isSound = (await ref.read(saveDataNotifierProvider.future)).setting.isSound;
+    final isSound = (await ref.read(saveDataProvider.future)).setting.isSound;
     if(isSound)FlameAudio.play(status.path);
   }
 }

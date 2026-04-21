@@ -10,7 +10,7 @@ part 'setting.freezed.dart';
 part 'setting.g.dart';
 
 @freezed
-class Setting with _$Setting {
+abstract class Setting with _$Setting {
   const factory Setting({
     // environment,ui setting
     required bool isSound,

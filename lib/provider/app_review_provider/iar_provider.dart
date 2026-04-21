@@ -12,11 +12,11 @@ class InAppReviewNotifier extends _$InAppReviewNotifier {
   }
 
   Future<void> requestReview()async{
-    final isRequested = (await ref.read(saveDataNotifierProvider.future)).setting.reviewRequested;
+    final isRequested = (await ref.read(saveDataProvider.future)).setting.reviewRequested;
     if (!isRequested&&await state.isAvailable()) {
     print('request review');
     state.requestReview();
-    ref.read(saveDataNotifierProvider.notifier)
+    ref.read(saveDataProvider.notifier)
     .reviewRequestDone();
 }
   }

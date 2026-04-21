@@ -31,7 +31,7 @@ class RankingButton extends SpriteButtonComponent with HasGameRef<BitmanMath>,Ri
         RotateEffect.by(2*pi, EffectController(
           duration: 0.3
         ),onComplete: () {
-          ref.read(showingAdNotifierProvider.notifier).enableAd();
+          ref.read(showingAdProvider.notifier).enableAd();
           game.router.pushRoute(Route(() => RankingPage()));
         },)
       );

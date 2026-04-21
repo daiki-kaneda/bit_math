@@ -7,7 +7,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'unit_id_provider.g.dart';
 
 @riverpod
-String unitId(UnitIdRef ref,AdStatus status) {
+String unitId(Ref ref,AdStatus status) {
   final isDebug =ref.read(isDebugProvider);
     switch (status) {
       case AdStatus.banner:

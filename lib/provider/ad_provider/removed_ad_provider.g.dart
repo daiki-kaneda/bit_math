@@ -6,21 +6,49 @@ part of 'removed_ad_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
+// GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint, type=warning
+
+@ProviderFor(RemovedAdNotifier)
+final removedAdProvider = RemovedAdNotifierProvider._();
+
+final class RemovedAdNotifierProvider
+    extends $AsyncNotifierProvider<RemovedAdNotifier, bool> {
+  RemovedAdNotifierProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'removedAdProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$removedAdNotifierHash();
+
+  @$internal
+  @override
+  RemovedAdNotifier create() => RemovedAdNotifier();
+}
+
 String _$removedAdNotifierHash() => r'f734ca72c6f70f61a0ef174a6aee7571a0f64cbf';
 
-/// See also [RemovedAdNotifier].
-@ProviderFor(RemovedAdNotifier)
-final removedAdNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<RemovedAdNotifier, bool>.internal(
-  RemovedAdNotifier.new,
-  name: r'removedAdNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$removedAdNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$RemovedAdNotifier = AutoDisposeAsyncNotifier<bool>;
-// ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+abstract class _$RemovedAdNotifier extends $AsyncNotifier<bool> {
+  FutureOr<bool> build();
+  @$mustCallSuper
+  @override
+  void runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<bool>, bool>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<bool>, bool>,
+              AsyncValue<bool>,
+              Object?,
+              Object?
+            >;
+    element.handleCreate(ref, build);
+  }
+}

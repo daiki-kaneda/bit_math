@@ -14,6 +14,7 @@ import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class RankingPage extends Component with HasGameRef<BitmanMath>,RiverpodComponentMixin{
 
@@ -55,8 +56,8 @@ class RankingPage extends Component with HasGameRef<BitmanMath>,RiverpodComponen
   @override
   void onMount() {
     addToGameWidgetBuild(()async{
-      if((ref.read(saveDataNotifierProvider)).hasValue){
-      topScores = ref.read(saveDataNotifierProvider).value!.scoreData.bestScore;
+      if((ref.read(saveDataProvider).hasValue)){
+      topScores = ref.read(saveDataProvider).value!.scoreData.bestScore;
       }
       cameraComponent.viewport.addAll(
         [

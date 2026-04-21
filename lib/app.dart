@@ -103,7 +103,7 @@ class ToastProviderInitialization extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(toastNotifierProvider);
+    ref.watch(toastProvider);
     return child;
   }
 }

@@ -14,7 +14,7 @@ class RemoveAdButton extends ConsumerWidget{
     super.key,});
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    final removedAd = ref.watch(removedAdNotifierProvider);
+    final removedAd = ref.watch(removedAdProvider);
     // final iapHelper = ref.watch(iapHelperNotifierProvider);
 
     if(removedAd.hasValue
@@ -32,11 +32,11 @@ class RemoveAdButton extends ConsumerWidget{
               secondaryLabel: AppLocalizations.of(scaffoldKey.currentContext!)!.removeAdYes, 
               tertiaryLabel: AppLocalizations.of(scaffoldKey.currentContext!)!.removeAdNo,
               primaryAction: (){
-               ref.read(iapHelperNotifierProvider.notifier).restore();
+               ref.read(iapHelperProvider.notifier).restore();
                  Navigator.pop(context);
               }, 
               secondaryAction: (){
-                ref.read(iapHelperNotifierProvider.notifier).purchase(PurchaseItem.removeAd);
+                ref.read(iapHelperProvider.notifier).purchase(PurchaseItem.removeAd);
                 Navigator.pop(context);
               },
               tertiaryAction: () {

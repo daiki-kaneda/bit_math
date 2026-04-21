@@ -34,12 +34,12 @@ class _EagerInitialization extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(saveDataNotifierProvider);
-    ref.watch(iapHelperNotifierProvider);
+    ref.watch(saveDataProvider);
+    ref.watch(iapHelperProvider);
     ref.watch(connectivityProvider);
-    ref.watch(bannerAdNotifierProvider);
+    ref.watch(bannerAdProvider);
     ref.watch(audioPlayerProvider);
-    ref.watch(removedAdNotifierProvider);
+    ref.watch(removedAdProvider);
     return child;
   }
 }

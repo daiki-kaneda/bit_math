@@ -35,7 +35,7 @@ class PushHomeRouteButton extends PositionComponent with TapCallbacks, HasGameRe
   @override
   void onTapDown(TapDownEvent event) {
     log('tapped');
-    ref.read(showingAdNotifierProvider.notifier).disableAd();
+    ref.read(showingAdProvider.notifier).disableAd();
     game.router.pushRoute(Route(() => HomePage()));
     super.onTapDown(event);
   }

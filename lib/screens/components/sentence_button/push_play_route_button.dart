@@ -40,11 +40,11 @@ class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameRe
     log('tapped');
     
     ref.read(audioPlayerProvider.notifier).play(AudioStatus.start);
-    ref.read(toastNotifierProvider.notifier).showBuilderToast(InitialToast());
+    ref.read(toastProvider.notifier).showBuilderToast(InitialToast());
     game.router.popUntilNamed(ScreenStatus.splash.name);
     game.router.pushRoute(PlayingRoute(PlayingPage()));
     // playing page has not ad
-    ref.read(showingAdNotifierProvider.notifier).disableAd();
+    ref.read(showingAdProvider.notifier).disableAd();
     super.onTapDown(event);
   }
 

@@ -50,7 +50,7 @@ class ResumeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallba
   void onTapUp(TapUpEvent event) {
     hint.removeFromParent();
     scale = Vector2.all(1);
-    ref.read(showingAdNotifierProvider.notifier).disableAd();
+    ref.read(showingAdProvider.notifier).disableAd();
     game.router.pop();
     super.onTapUp(event);
   }

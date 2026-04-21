@@ -55,8 +55,8 @@ class _BannerAdWidgetState extends ConsumerState<BannerAdWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final removeAd = ref.watch(removedAdNotifierProvider).value ?? true;
-    final showingAd = ref.watch(showingAdNotifierProvider);
+    final removeAd = ref.watch(removedAdProvider).value ?? true;
+    final showingAd = ref.watch(showingAdProvider);
   
     return Stack(
       children: [

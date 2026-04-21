@@ -54,7 +54,7 @@ class HomeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallback
 
   @override
   void onTapUp(TapUpEvent event) {
-    ref.read(showingAdNotifierProvider.notifier).disableAd();
+    ref.read(showingAdProvider.notifier).disableAd();
     scale = Vector2.all(1);
      game.router.pushReplacement(Route(() => HomePage()));
     super.onTapUp(event);

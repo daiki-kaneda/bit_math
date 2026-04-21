@@ -57,7 +57,7 @@ class RetryButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbac
     // retry logic
     game.router.pop();
     game.router.pushReplacement(Route(() => PlayingPage()));
-    ref.read(showingAdNotifierProvider.notifier).disableAd();
+    ref.read(showingAdProvider.notifier).disableAd();
     super.onTapUp(event);
   }
 }

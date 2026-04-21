@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
               seedColor: const Color.fromRGBO(71, 45, 60, 1))),
       home: Scaffold(
           key: scaffoldKey,
-          backgroundColor: Colors.black,
+          backgroundColor: const Color.fromRGBO(71, 45, 60, 1),
           body: //SafeArea(child:
               LayoutBuilder(
             builder: (context, constraints) {

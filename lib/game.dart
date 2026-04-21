@@ -32,7 +32,7 @@ class BitmanMath extends FlameGame with HasCollisionDetection,RiverpodGameMixin 
   
   @override
   FutureOr<void> onLoad() async{
-    debugMode = kDebugMode;
+    // debugMode = kDebugMode;
     //load assets
     //load sprites
     await images.loadAll(

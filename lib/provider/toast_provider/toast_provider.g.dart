@@ -33,7 +33,7 @@ final class ToastNotifierProvider
   ToastNotifier create() => ToastNotifier();
 }
 
-String _$toastNotifierHash() => r'0c8699c2be9319f2c84dbfea73b9c4a04441f879';
+String _$toastNotifierHash() => r'4de74e02c2bd6dee17f833b92ddf1e6e4cd24194';
 
 abstract class _$ToastNotifier extends $AsyncNotifier<FToast> {
   FutureOr<FToast> build();

@@ -13,7 +13,7 @@ part of 'audio_provider.dart';
 final audioPlayerProvider = AudioPlayerProvider._();
 
 final class AudioPlayerProvider
-    extends $AsyncNotifierProvider<AudioPlayer, void> {
+    extends $AsyncNotifierProvider<AudioPlayer, FlutterSoundPlayer> {
   AudioPlayerProvider._()
     : super(
         from: null,
@@ -33,19 +33,20 @@ final class AudioPlayerProvider
   AudioPlayer create() => AudioPlayer();
 }
 
-String _$audioPlayerHash() => r'936e02d0d918dfa22030f7a08e1fbabfa7367bf9';
+String _$audioPlayerHash() => r'c032602b1ad899aadb26e02f6e795c3d6590b21d';
 
-abstract class _$AudioPlayer extends $AsyncNotifier<void> {
-  FutureOr<void> build();
+abstract class _$AudioPlayer extends $AsyncNotifier<FlutterSoundPlayer> {
+  FutureOr<FlutterSoundPlayer> build();
   @$mustCallSuper
   @override
   void runBuild() {
-    final ref = this.ref as $Ref<AsyncValue<void>, void>;
+    final ref =
+        this.ref as $Ref<AsyncValue<FlutterSoundPlayer>, FlutterSoundPlayer>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<AsyncValue<void>, void>,
-              AsyncValue<void>,
+              AnyNotifier<AsyncValue<FlutterSoundPlayer>, FlutterSoundPlayer>,
+              AsyncValue<FlutterSoundPlayer>,
               Object?,
               Object?
             >;

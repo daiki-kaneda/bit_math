@@ -6,49 +6,21 @@ part of 'banner_ad_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint, type=warning
+String _$bannerAdNotifierHash() => r'558ea24060ff4920e0145868ee9a2876ab52ed88';
 
+/// See also [BannerAdNotifier].
 @ProviderFor(BannerAdNotifier)
-final bannerAdProvider = BannerAdNotifierProvider._();
+final bannerAdNotifierProvider =
+    AutoDisposeAsyncNotifierProvider<BannerAdNotifier, BannerAd?>.internal(
+  BannerAdNotifier.new,
+  name: r'bannerAdNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$bannerAdNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-final class BannerAdNotifierProvider
-    extends $AsyncNotifierProvider<BannerAdNotifier, BannerAd?> {
-  BannerAdNotifierProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'bannerAdProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$bannerAdNotifierHash();
-
-  @$internal
-  @override
-  BannerAdNotifier create() => BannerAdNotifier();
-}
-
-String _$bannerAdNotifierHash() => r'8ca79d0ee2a95094d1bdc82af5ece8269ea7ce3a';
-
-abstract class _$BannerAdNotifier extends $AsyncNotifier<BannerAd?> {
-  FutureOr<BannerAd?> build();
-  @$mustCallSuper
-  @override
-  void runBuild() {
-    final ref = this.ref as $Ref<AsyncValue<BannerAd?>, BannerAd?>;
-    final element =
-        ref.element
-            as $ClassProviderElement<
-              AnyNotifier<AsyncValue<BannerAd?>, BannerAd?>,
-              AsyncValue<BannerAd?>,
-              Object?,
-              Object?
-            >;
-    element.handleCreate(ref, build);
-  }
-}
+typedef _$BannerAdNotifier = AutoDisposeAsyncNotifier<BannerAd?>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

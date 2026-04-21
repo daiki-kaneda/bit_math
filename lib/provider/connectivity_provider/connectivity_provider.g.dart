@@ -6,38 +6,19 @@ part of 'connectivity_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-// GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: type=lint, type=warning
+String _$connectivityHash() => r'4df3422fc90b38b37ac4ae765641a01b58ed41ed';
 
+/// See also [connectivity].
 @ProviderFor(connectivity)
-final connectivityProvider = ConnectivityProvider._();
+final connectivityProvider = AutoDisposeStreamProvider<bool>.internal(
+  connectivity,
+  name: r'connectivityProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$connectivityHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
-final class ConnectivityProvider
-    extends $FunctionalProvider<AsyncValue<bool>, bool, Stream<bool>>
-    with $FutureModifier<bool>, $StreamProvider<bool> {
-  ConnectivityProvider._()
-    : super(
-        from: null,
-        argument: null,
-        retry: null,
-        name: r'connectivityProvider',
-        isAutoDispose: true,
-        dependencies: null,
-        $allTransitiveDependencies: null,
-      );
-
-  @override
-  String debugGetCreateSourceHash() => _$connectivityHash();
-
-  @$internal
-  @override
-  $StreamProviderElement<bool> $createElement($ProviderPointer pointer) =>
-      $StreamProviderElement(pointer);
-
-  @override
-  Stream<bool> create(Ref ref) {
-    return connectivity(ref);
-  }
-}
-
-String _$connectivityHash() => r'01776940144cac9d64ea1743c970e2062a420898';
+typedef ConnectivityRef = AutoDisposeStreamProviderRef<bool>;
+// ignore_for_file: type=lint
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

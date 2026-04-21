@@ -8,6 +8,7 @@ import 'package:bit_math/screens/result_page/result_page.dart';
 import 'package:bit_math/screens/splash_page/splash_page.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flame/image_composition.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/foundation.dart';
 // import 'package:flutter/material.dart' hide Route;
@@ -100,6 +101,9 @@ class BitmanMath extends FlameGame with HasCollisionDetection,RiverpodGameMixin 
     add(router);
     return super.onLoad();
   }
+
+  @override
+  Color backgroundColor() => const Color.fromRGBO(71, 45, 60, 1);
 
   @override
   void onRemove() {

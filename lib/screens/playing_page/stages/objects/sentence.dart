@@ -1,7 +1,5 @@
-
 import 'dart:async';
 import 'dart:ui';
-
 
 import 'package:bit_math/screens/playing_page/stages/has_path_effect.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/letter.dart';
@@ -9,19 +7,26 @@ import 'package:bit_math/screens/playing_page/stages/objects/problem/input_field
 import 'package:bit_math/screens/playing_page/stages/stage_object.dart';
 import 'package:flame/components.dart';
 
-enum SentenceDirection{
-  horizontal,vertical,upward,downward
-}
+enum SentenceDirection { horizontal, vertical, upward, downward }
 
-class Sentence extends PositionComponent implements StageObject,HasPathEffect{
-  Sentence(double x,double y,{required this.str,required this.direction,this.letterSize=16,
-  this.path,this.pathAlternate=true,this.pathDuration=2.5}):gridPosition=Vector2(x, y);
+class Sentence extends PositionComponent implements StageObject, HasPathEffect {
+  Sentence(
+    double x,
+    double y, {
+    required this.str,
+    required this.direction,
+    this.letterSize = 16,
+    this.path,
+    this.pathAlternate = true,
+    this.pathDuration = 2.5,
+    this.color,
+  }) : gridPosition = Vector2(x, y);
 
   @override
   final Vector2 gridPosition;
 
   @override
-  final Vector2 velocity=Vector2.zero();
+  final Vector2 velocity = Vector2.zero();
 
   @override
   Path? path;
@@ -36,28 +41,37 @@ class Sentence extends PositionComponent implements StageObject,HasPathEffect{
 
   final double letterSize;
 
+  final Color? color;
+
   @override
   FutureOr<void> onLoad() {
-
-    Vector2 nextPosition(int i){
-      switch(direction){
+    Vector2 nextPosition(int i) {
+      switch (direction) {
         case SentenceDirection.horizontal:
-        return Vector2(gridPosition.x+i, gridPosition.y);
+          return Vector2(gridPosition.x + i, gridPosition.y);
         case SentenceDirection.vertical:
-        return Vector2(gridPosition.x, gridPosition.y+i);
+          return Vector2(gridPosition.x, gridPosition.y + i);
         case SentenceDirection.upward:
-        return Vector2(gridPosition.x+i, gridPosition.y-i);
+          return Vector2(gridPosition.x + i, gridPosition.y - i);
         case SentenceDirection.downward:
-        return Vector2(gridPosition.x+i, gridPosition.y+i);
+          return Vector2(gridPosition.x + i, gridPosition.y + i);
       }
     }
-    for(var i=0;i<str.length;i++){
-      if(str[i]=='#'){
+
+    for (var i = 0; i < str.length; i++) {
+      if (str[i] == '#') {
         // this is coveneint for problem sentence
         add(InputField(nextPosition(i).x, nextPosition(i).y));
       }
-      if(LetterStatus.supportedChar.contains(str[i])){
-      add(LetterTile.fromChar(nextPosition(i).x, nextPosition(i).y, char: str[i]));
+      if (LetterStatus.supportedChar.contains(str[i])) {
+        add(
+          LetterTile.fromChar(
+            nextPosition(i).x,
+            nextPosition(i).y,
+            char: str[i],
+            color: color,
+          ),
+        );
       }
       //    path: path,pathAlternate: pathAlternate,pathDuration: pathDuration));
       // switch(str[i]){
@@ -154,10 +168,10 @@ class Sentence extends PositionComponent implements StageObject,HasPathEffect{
       //   case 'x':
       //   add(LetterTile(nextPosition(i).x, nextPosition(i).y, status: LetterStatus.x,letterSize: letterSize,
       //   path: path,pathAlternate: pathAlternate,pathDuration: pathDuration));
-      //   case '(': 
+      //   case '(':
       //    add(LetterTile(nextPosition(i).x, nextPosition(i).y, status: LetterStatus.rParen,letterSize: letterSize,
       //    path: path,pathAlternate: pathAlternate,pathDuration: pathDuration));
-      //   case ')': 
+      //   case ')':
       //    add(LetterTile(nextPosition(i).x, nextPosition(i).y, status: LetterStatus.lParen,letterSize: letterSize,
       //    path: path,pathAlternate: pathAlternate,pathDuration: pathDuration));
       //   case '{':  //top paren
@@ -176,16 +190,19 @@ class Sentence extends PositionComponent implements StageObject,HasPathEffect{
 
     return super.onLoad();
   }
-  factory Sentence.fromPosition(Vector2 position,{required String str,required SentenceDirection direction}){
-      return Sentence(0, 0, str: str, direction: direction)
-      ..children.map((tile){
-        if(tile is PositionComponent){
+
+  factory Sentence.fromPosition(
+    Vector2 position, {
+    required String str,
+    required SentenceDirection direction,
+  }) {
+    return Sentence(0, 0, str: str, direction: direction)
+      ..children.map((tile) {
+        if (tile is PositionComponent) {
           return tile..position += position;
-        }else{
+        } else {
           return tile;
         }
-      } ).toList();
-    }
-
+      }).toList();
+  }
 }
-

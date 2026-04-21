@@ -75,24 +75,85 @@ enum LetterStatus {
   crown,
   aligator;
 
-  static List<String> get supportedChar=>[
-    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-    '+', '-', '*', '/', '=', '~', '.', '!', '?',
-    '>', '<', '%', 'X', 'Y', 'Z', '→', '↓', '←', '↑',
-    'o', 'x', '(', ')', '{', '}', 'u',
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-    'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
-    '@', ':','c','a'
+  static List<String> get supportedChar => [
+    '0',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '+',
+    '-',
+    '*',
+    '/',
+    '=',
+    '~',
+    '.',
+    '!',
+    '?',
+    '>',
+    '<',
+    '%',
+    'X',
+    'Y',
+    'Z',
+    '→',
+    '↓',
+    '←',
+    '↑',
+    'o',
+    'x',
+    '(',
+    ')',
+    '{',
+    '}',
+    'u',
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    '@',
+    ':',
+    'c',
+    'a',
   ];
 
-  static String convertNormalChar(String char){
-    if(!supportedChar.contains(char)) return char;
-    switch(char){
-      case '*':return '×';
-      case '/':return '÷';
-      case 'o':return '⚪︎';
-      case 'x':return '×';
-      default:return char;
+  static String convertNormalChar(String char) {
+    if (!supportedChar.contains(char)) return char;
+    switch (char) {
+      case '*':
+        return '×';
+      case '/':
+        return '÷';
+      case 'o':
+        return '⚪︎';
+      case 'x':
+        return '×';
+      default:
+        return char;
     }
   }
 }
@@ -100,14 +161,17 @@ enum LetterStatus {
 class LetterTile extends SpriteComponent
     with StageBlock
     implements StageObject, HasPathEffect {
-  LetterTile(double x, double y,
-      {required this.status,
-      this.letterSize = 16,
-      this.path,
-      this.pathAlternate = true,
-      this.pathDuration = 2.5})
-      : gridPosition = Vector2(x, y),
-        super(size: Vector2.all(16));
+  LetterTile(
+    double x,
+    double y, {
+    required this.status,
+    this.letterSize = 16,
+    this.path,
+    this.pathAlternate = true,
+    this.pathDuration = 2.5,
+    this.color,
+  }) : gridPosition = Vector2(x, y),
+       super(size: Vector2.all(16));
 
   @override
   final Vector2 gridPosition;
@@ -128,6 +192,8 @@ class LetterTile extends SpriteComponent
 
   final double letterSize;
 
+  final Color? color;
+
   @override
   FutureOr<void> onLoad() {
     position = Vector2(gridPosition.x * 16, gridPosition.y * 16);
@@ -135,233 +201,566 @@ class LetterTile extends SpriteComponent
     switch (status) {
       case LetterStatus.dig0:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 35 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          35 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.dig1:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 36 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          36 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.dig2:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 37 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          37 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.dig3:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 38 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          38 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.dig4:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 39 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          39 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.dig5:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 40 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          40 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.dig6:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 41 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          41 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.dig7:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 42 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          42 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.dig8:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 43 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          43 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.dig9:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 44 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          44 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.add:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 36 * 16, 20 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          36 * 16,
+          20 * 16,
+          16,
+          16,
+        );
       case LetterStatus.sub:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 37 * 16, 20 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          37 * 16,
+          20 * 16,
+          16,
+          16,
+        );
       case LetterStatus.mul:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 38 * 16, 20 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          38 * 16,
+          20 * 16,
+          16,
+          16,
+        );
       case LetterStatus.div:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 39 * 16, 20 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          39 * 16,
+          20 * 16,
+          16,
+          16,
+        );
       case LetterStatus.eq:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 40 * 16, 20 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          40 * 16,
+          20 * 16,
+          16,
+          16,
+        );
       case LetterStatus.vEq:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 40 * 16, 20 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          40 * 16,
+          20 * 16,
+          16,
+          16,
+        );
         anchor = Anchor.center;
         angle = pi / 2;
-        position = position =
-            Vector2(gridPosition.x * 16 + 8, gridPosition.y * 16 + 8);
+        position = position = Vector2(
+          gridPosition.x * 16 + 8,
+          gridPosition.y * 16 + 8,
+        );
       case LetterStatus.period:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 46 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          46 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.bang:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 35 * 16, 13 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          35 * 16,
+          13 * 16,
+          16,
+          16,
+        );
       case LetterStatus.question:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 37 * 16, 13 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          37 * 16,
+          13 * 16,
+          16,
+          16,
+        );
       case LetterStatus.greaterThan:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 24 * 16, 20 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          24 * 16,
+          20 * 16,
+          16,
+          16,
+        );
       case LetterStatus.lessThan:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 26 * 16, 20 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          26 * 16,
+          20 * 16,
+          16,
+          16,
+        );
       case LetterStatus.percent:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 47 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          47 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letA:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 35 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          35 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letB:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 36 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          36 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letC:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 37 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          37 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letD:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 38 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          38 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letE:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 39 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          39 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letF:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 40 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          40 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letG:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 41 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          41 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letH:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 42 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          42 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letI:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 43 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          43 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letJ:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 44 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          44 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letK:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 45 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          45 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letL:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 46 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          46 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letM:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 47 * 16, 18 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          47 * 16,
+          18 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letN:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 35 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          35 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letO:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 36 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          36 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letP:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 37 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          37 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letQ:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 38 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          38 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letR:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 39 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          39 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letS:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 40 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          40 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letT:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 41 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          41 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letU:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 42 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          42 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letV:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 43 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          43 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letW:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 44 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          44 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letX:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 45 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          45 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letY:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 46 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          46 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.letZ:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 47 * 16, 19 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          47 * 16,
+          19 * 16,
+          16,
+          16,
+        );
       case LetterStatus.tArrow:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 24 * 16, 12 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          24 * 16,
+          12 * 16,
+          16,
+          16,
+        );
       case LetterStatus.bArrow:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 24 * 16, 12 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          24 * 16,
+          12 * 16,
+          16,
+          16,
+        );
         anchor = Anchor.center;
         scale = Vector2(1, -1);
-        position = position =
-            Vector2(gridPosition.x * 16 + 8, gridPosition.y * 16 + 8);
+        position = position = Vector2(
+          gridPosition.x * 16 + 8,
+          gridPosition.y * 16 + 8,
+        );
       case LetterStatus.rArrow:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 24 * 16, 12 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          24 * 16,
+          12 * 16,
+          16,
+          16,
+        );
         anchor = Anchor.center;
         angle = pi / 2;
-        position = position =
-            Vector2(gridPosition.x * 16 + 8, gridPosition.y * 16 + 8);
+        position = position = Vector2(
+          gridPosition.x * 16 + 8,
+          gridPosition.y * 16 + 8,
+        );
       case LetterStatus.lArrow:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 24 * 16, 12 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          24 * 16,
+          12 * 16,
+          16,
+          16,
+        );
         anchor = Anchor.center;
         angle = -pi / 2;
-        position = position =
-            Vector2(gridPosition.x * 16 + 8, gridPosition.y * 16 + 8);
+        position = position = Vector2(
+          gridPosition.x * 16 + 8,
+          gridPosition.y * 16 + 8,
+        );
       case LetterStatus.o:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 39 * 16, 13 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          39 * 16,
+          13 * 16,
+          16,
+          16,
+        );
       case LetterStatus.x:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 40 * 16, 13 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          40 * 16,
+          13 * 16,
+          16,
+          16,
+        );
       case LetterStatus.rParen:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 39 * 16, 13 * 16, 10, 16);
+          SpriteSheets.coloredTransparentPacked,
+          39 * 16,
+          13 * 16,
+          10,
+          16,
+        );
         size = Vector2(14, 16);
       case LetterStatus.lParen:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 39 * 16, 13 * 16, 10, 16);
+          SpriteSheets.coloredTransparentPacked,
+          39 * 16,
+          13 * 16,
+          10,
+          16,
+        );
         anchor = Anchor.center;
         scale = Vector2(-1, 1);
         size = Vector2(14, 16);
         position = Vector2(gridPosition.x * 16 + 8, gridPosition.y * 16 + 8);
       case LetterStatus.tParren:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 39 * 16, 13 * 16, 8, 16);
+          SpriteSheets.coloredTransparentPacked,
+          39 * 16,
+          13 * 16,
+          8,
+          16,
+        );
         anchor = Anchor.center;
         angle = pi / 2;
         size = Vector2(16, 14);
         position = Vector2(gridPosition.x * 16 + 8, gridPosition.y * 16 + 8);
       case LetterStatus.bParren:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 39 * 16, 13 * 16, 8, 16);
+          SpriteSheets.coloredTransparentPacked,
+          39 * 16,
+          13 * 16,
+          8,
+          16,
+        );
         anchor = Anchor.center;
         angle = -pi / 2;
         size = Vector2(16, 14);
         position = Vector2(gridPosition.x * 16 + 8, gridPosition.y * 16 + 8);
       case LetterStatus.undo:
-        sprite =
-            getSprite(SpriteSheets.coloredTransparentPacked, 352, 320, 16, 16);
+        sprite = getSprite(
+          SpriteSheets.coloredTransparentPacked,
+          352,
+          320,
+          16,
+          16,
+        );
       case LetterStatus.home:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 41 * 16, 16 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          41 * 16,
+          16 * 16,
+          16,
+          16,
+        );
       case LetterStatus.colon:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 45 * 16, 17 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          45 * 16,
+          17 * 16,
+          16,
+          16,
+        );
       case LetterStatus.crown:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 43 * 16, 2 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          43 * 16,
+          2 * 16,
+          16,
+          16,
+        );
       case LetterStatus.aligator:
         sprite = getSprite(
-            SpriteSheets.coloredTransparentPacked, 29 * 16, 8 * 16, 16, 16);
+          SpriteSheets.coloredTransparentPacked,
+          29 * 16,
+          8 * 16,
+          16,
+          16,
+        );
     }
     if (path != null) {
-      add(MoveAlongPathEffect(
+      add(
+        MoveAlongPathEffect(
           path!,
           EffectController(
             duration: pathDuration,
             alternate: pathAlternate,
             infinite: true,
-          )));
+          ),
+        ),
+      );
     }
     add(RectangleHitbox(collisionType: CollisionType.passive));
+    if (color != null) {
+      paint = Paint()
+        ..colorFilter = ColorFilter.mode(
+          color!, // 半透明の赤
+          BlendMode.srcATop,
+        );
+    }
     return super.onLoad();
   }
 
@@ -377,7 +776,12 @@ class LetterTile extends SpriteComponent
     super.onRemove();
   }
 
-  factory LetterTile.fromChar(double x, double y, {required String char}) {
+  factory LetterTile.fromChar(
+    double x,
+    double y, {
+    required String char,
+    Color? color,
+  }) {
     LetterStatus status;
     switch (char) {
       case '0':
@@ -568,6 +972,6 @@ class LetterTile extends SpriteComponent
       default:
         status = LetterStatus.dig0;
     }
-    return LetterTile(x, y, status: status);
+    return LetterTile(x, y, status: status, color: color);
   }
 }

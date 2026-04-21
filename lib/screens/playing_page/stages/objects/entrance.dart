@@ -12,7 +12,7 @@ enum EntranceBlockStatus{
   locked,open
 }
 //Entranceは他の75✖️20のタイルのステージに飛ばすブロック
-class Entrance extends SpriteGroupComponent<EntranceBlockStatus> with StageBlock,CollisionCallbacks,HasGameRef<BitmanMath> implements StageObject{
+class Entrance extends SpriteGroupComponent<EntranceBlockStatus> with StageBlock,CollisionCallbacks,HasGameReference<BitmanMath> implements StageObject{
   Entrance(double x,double y,{required this.stageIndex,required this.status}):
   gridPosition=Vector2(x, y),super(size: Vector2.all(16));
 

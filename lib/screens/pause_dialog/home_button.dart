@@ -13,7 +13,7 @@ import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:bit_math/l10n/app_localizations.dart';
 
-class HomeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
+class HomeButton extends SpriteComponent with HasGameReference<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
 
   HomeButton({super.sprite,});
 

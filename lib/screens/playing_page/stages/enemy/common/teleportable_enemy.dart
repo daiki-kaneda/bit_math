@@ -18,7 +18,7 @@ import 'package:flame/effects.dart';
 enum TeleportableEnemyStatus{
   miniWitch,
 }
-class TeleportableEnemy extends SpriteComponent with StageBlock,EnemyCondition,HasGameRef<BitmanMath> implements Enemy,StageObject{
+class TeleportableEnemy extends SpriteComponent with StageBlock,EnemyCondition,HasGameReference<BitmanMath> implements Enemy,StageObject{
  TeleportableEnemy
 (double x,double y,{required this.status,required this.interval,this.abnormalStatus = AbnormalStatus.normal,this.targetPoints=const []}):gridPosition = Vector2(x, y),
   super(size: Vector2.all(16),anchor: Anchor.center);

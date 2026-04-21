@@ -16,7 +16,7 @@ import 'package:flame/components.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class RankingPage extends Component with HasGameRef<BitmanMath>,RiverpodComponentMixin{
+class RankingPage extends Component with HasGameReference<BitmanMath>,RiverpodComponentMixin{
 
   List<int> topScores=[];
   final world = World();

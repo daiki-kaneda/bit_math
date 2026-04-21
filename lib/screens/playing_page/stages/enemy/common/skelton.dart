@@ -19,7 +19,7 @@ enum SkeltonStatus{
   normal,horn,helmet,bug,propeller,parachute,
   normalDead,hornDead,helmetDead,bugDead,propellerDead,parachuteDead,
 }
-class Skelton extends SpriteAnimationGroupComponent<SkeltonStatus> with StageBlock,EnemyCondition,EnemyHoming,HasGameRef<BitmanMath> implements Enemy,StageObject{
+class Skelton extends SpriteAnimationGroupComponent<SkeltonStatus> with StageBlock,EnemyCondition,EnemyHoming,HasGameReference<BitmanMath> implements Enemy,StageObject{
  Skelton
 (double x,double y,{required this.status,required this.interval,this.abnormalStatus = AbnormalStatus.normal}):gridPosition = Vector2(x, y),
   super(size: Vector2.all(16),anchor: Anchor.center);

@@ -7,7 +7,7 @@ import 'package:flame/components.dart';
 import 'package:flame/input.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 
-class PauseButton extends ButtonComponent with HasGameRef<BitmanMath>,RiverpodComponentMixin{
+class PauseButton extends ButtonComponent with HasGameReference<BitmanMath>,RiverpodComponentMixin{
   PauseButton():super(
     button:SpriteComponent(
       sprite: getSprite(SpriteSheets.uiSprites, 1, 101, 48, 48),

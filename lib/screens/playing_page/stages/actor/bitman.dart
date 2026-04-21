@@ -52,7 +52,7 @@ enum BitmanHelmet{
 }
 
 
-class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameRef<BitmanMath>,CollisionCallbacks,TapCallbacks,RiverpodComponentMixin{
+class Bitman extends SpriteAnimationGroupComponent<BitmanStatus> with HasGameReference<BitmanMath>,CollisionCallbacks,TapCallbacks,RiverpodComponentMixin{
   Bitman({
     required this.joystick,
     required this.screenStatus}):super(size: Vector2.all(24),anchor: Anchor.center);

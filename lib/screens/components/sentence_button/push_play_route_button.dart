@@ -15,7 +15,7 @@ import 'package:flame/events.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 
 // onPressedを渡して柔軟なボタンを実装したいが、不具合が出る
-class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameRef<BitmanMath>,RiverpodComponentMixin{
+class PushPlayRouteButton extends PositionComponent with TapCallbacks, HasGameReference<BitmanMath>,RiverpodComponentMixin{
   PushPlayRouteButton({
     required this.gridPosition,
     required this.str,

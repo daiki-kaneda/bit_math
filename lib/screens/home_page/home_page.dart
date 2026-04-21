@@ -12,7 +12,7 @@ import 'package:bit_math/utils/constants.dart';
 import 'package:flame/components.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 
-class HomePage extends Component with HasGameRef<BitmanMath>,RiverpodComponentMixin{
+class HomePage extends Component with HasGameReference<BitmanMath>,RiverpodComponentMixin{
 
   @override
   FutureOr<void> onLoad() {

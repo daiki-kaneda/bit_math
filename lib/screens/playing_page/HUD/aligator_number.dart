@@ -6,7 +6,7 @@ import 'package:bit_math/game_state.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:flame/components.dart';
 
-class AligatorNumber extends PositionComponent with HasGameRef<BitmanMath>{
+class AligatorNumber extends PositionComponent with HasGameReference<BitmanMath>{
 
   Sentence aligatorText = Sentence(
     9, 1, 

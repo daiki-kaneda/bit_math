@@ -21,7 +21,7 @@ import 'package:flame/components.dart';
   4. resume button
 */
 
-class PauseDialogPage extends Component with HasGameRef<BitmanMath>{
+class PauseDialogPage extends Component with HasGameReference<BitmanMath>{
 
   
   @override

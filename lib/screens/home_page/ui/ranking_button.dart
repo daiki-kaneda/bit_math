@@ -15,7 +15,7 @@ import 'package:flame_riverpod/flame_riverpod.dart';
 
 
 //SpriteButtonComponent({Sprite? button, Sprite? buttonDown, void onPressed()?, Vector2? position, Vector2? size, Vector2? scale, double? angle, Anchor? anchor, Iterable<Component>? children, int? priority})
-class RankingButton extends SpriteButtonComponent with HasGameRef<BitmanMath>,RiverpodComponentMixin{
+class RankingButton extends SpriteButtonComponent with HasGameReference<BitmanMath>,RiverpodComponentMixin{
   RankingButton({
     super.position,super.size
   });

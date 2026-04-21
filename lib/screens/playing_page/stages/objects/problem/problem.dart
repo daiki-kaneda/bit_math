@@ -31,7 +31,7 @@ enum ProblemStatus {
     // streak=0;
     // numSolved=0;
 
-class Problem extends Component with HasGameRef<BitmanMath>,RiverpodComponentMixin{
+class Problem extends Component with HasGameReference<BitmanMath>,RiverpodComponentMixin{
   Problem(
       {required this.id,
       this.status = ProblemStatus.initial,

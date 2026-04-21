@@ -12,7 +12,7 @@ import 'package:flame/game.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 
 // onPressedを渡して柔軟なボタンを実装したいが、不具合が出る
-class PushHomeRouteButton extends PositionComponent with TapCallbacks, HasGameRef<BitmanMath>,RiverpodComponentMixin{
+class PushHomeRouteButton extends PositionComponent with TapCallbacks, HasGameReference<BitmanMath>,RiverpodComponentMixin{
   PushHomeRouteButton({
     required this.gridPosition,
     required this.str,

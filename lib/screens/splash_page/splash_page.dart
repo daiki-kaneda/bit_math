@@ -15,7 +15,7 @@ import 'package:flame/events.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 
 //Powered by Flameなど書くべきかも？
-class SplashPage extends Component with TapCallbacks,HasGameRef<BitmanMath>,RiverpodComponentMixin{
+class SplashPage extends Component with TapCallbacks,HasGameReference<BitmanMath>,RiverpodComponentMixin{
 
    @override
   FutureOr<void> onLoad() {

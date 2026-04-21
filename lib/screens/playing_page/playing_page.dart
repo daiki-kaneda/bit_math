@@ -24,7 +24,7 @@ import 'package:flame/game.dart';
 import 'package:flame_riverpod/flame_riverpod.dart';
 
 class PlayingRoute extends Route
-    with HasGameRef<BitmanMath>, RiverpodComponentMixin {
+    with HasGameReference<BitmanMath>, RiverpodComponentMixin {
   PlayingRoute(this.page) : super(() => page, maintainState: false);
 
   PlayingPage page;
@@ -37,7 +37,7 @@ class PlayingRoute extends Route
 }
 
 class PlayingPage extends Component
-    with HasGameRef<BitmanMath>, RiverpodComponentMixin {
+    with HasGameReference<BitmanMath>, RiverpodComponentMixin {
   PlayingState state = PlayingState();
 
   late Bitman bitman;

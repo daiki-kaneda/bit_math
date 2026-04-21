@@ -12,7 +12,7 @@ import 'package:flame/input.dart';
 
 
 //SpriteButtonComponent({Sprite? button, Sprite? buttonDown, void onPressed()?, Vector2? position, Vector2? size, Vector2? scale, double? angle, Anchor? anchor, Iterable<Component>? children, int? priority})
-class ShopButton extends SpriteButtonComponent with HasGameRef<BitmanMath>{
+class ShopButton extends SpriteButtonComponent with HasGameReference<BitmanMath>{
   ShopButton({
     super.position,super.size
   });

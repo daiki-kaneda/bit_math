@@ -11,7 +11,7 @@ import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:bit_math/l10n/app_localizations.dart';
 
-class ResumeButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
+class ResumeButton extends SpriteComponent with HasGameReference<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
 
   ResumeButton({super.sprite,});
 

@@ -11,7 +11,7 @@ import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:bit_math/l10n/app_localizations.dart';
 
-class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
+class SoundToggle extends SpriteGroupComponent<bool> with HasGameReference<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
 
   late TextComponent hint;
 

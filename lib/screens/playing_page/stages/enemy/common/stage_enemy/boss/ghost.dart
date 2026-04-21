@@ -20,7 +20,7 @@ import 'package:flutter/material.dart';
 
 
 
-class Ghost extends SpriteComponent with StageBlock,EnemyCondition,EnemyHoming,HasGameRef<BitmanMath> implements Enemy,StageObject,HasPathEffect{
+class Ghost extends SpriteComponent with StageBlock,EnemyCondition,EnemyHoming,HasGameReference<BitmanMath> implements Enemy,StageObject,HasPathEffect{
 Ghost(double x,double y,{this.abnormalStatus = AbnormalStatus.normal,this.path,this.pathDuration=2.5,this.pathAlternate=true}):gridPosition = Vector2(x, y),
   super(size: Vector2.all(24),anchor: Anchor.center);
   

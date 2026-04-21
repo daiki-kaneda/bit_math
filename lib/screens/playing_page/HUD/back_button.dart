@@ -11,7 +11,7 @@ import 'package:flame_riverpod/flame_riverpod.dart';
 
 
 //SpriteButtonComponent({Sprite? button, Sprite? buttonDown, void onPressed()?, Vector2? position, Vector2? size, Vector2? scale, double? angle, Anchor? anchor, Iterable<Component>? children, int? priority})
-class BackButton extends SpriteButtonComponent with HasGameRef<BitmanMath>,RiverpodComponentMixin{
+class BackButton extends SpriteButtonComponent with HasGameReference<BitmanMath>,RiverpodComponentMixin{
   BackButton({
     super.position,super.size
   });

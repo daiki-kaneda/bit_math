@@ -13,7 +13,7 @@ import 'package:flame_riverpod/flame_riverpod.dart';
 import 'package:flutter/material.dart' hide Route;
 import 'package:bit_math/l10n/app_localizations.dart';
 
-class RetryButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
+class RetryButton extends SpriteComponent with HasGameReference<BitmanMath>,TapCallbacks,RiverpodComponentMixin{
 
   RetryButton({super.sprite,});
 

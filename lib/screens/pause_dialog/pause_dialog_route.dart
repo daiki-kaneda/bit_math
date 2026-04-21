@@ -19,7 +19,7 @@ import 'package:flame_riverpod/flame_riverpod.dart';
             disable ad
   
 */
-class PauseDialogRoute extends Route with HasGameRef<BitmanMath>,RiverpodComponentMixin{
+class PauseDialogRoute extends Route with HasGameReference<BitmanMath>,RiverpodComponentMixin{
   PauseDialogRoute():super(PauseDialogPage.new,transparent: true);
 
    @override

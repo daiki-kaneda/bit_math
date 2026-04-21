@@ -5,7 +5,7 @@ import 'package:bit_math/game.dart';
 import 'package:bit_math/screens/playing_page/stages/objects/sentence.dart';
 import 'package:flame/components.dart';
 
-class Score extends PositionComponent with HasGameRef<BitmanMath>{
+class Score extends PositionComponent with HasGameReference<BitmanMath>{
 
   Sentence scoreText = Sentence(
     34, 1, 

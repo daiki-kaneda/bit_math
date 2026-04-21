@@ -5,7 +5,7 @@ import 'package:bit_math/game.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 
-class UIButton extends SpriteComponent with HasGameRef<BitmanMath>,TapCallbacks{
+class UIButton extends SpriteComponent with HasGameReference<BitmanMath>,TapCallbacks{
 
   UIButton({
     super.sprite,

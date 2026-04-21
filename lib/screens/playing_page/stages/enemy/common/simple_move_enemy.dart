@@ -20,7 +20,7 @@ import 'package:flutter/material.dart';
 enum SimpleMoveEnemyStatus{
   aligator,bat,slime,skelton,ghost1,ghost2
 }
-class SimpleMoveEnemy extends SpriteGroupComponent<SimpleMoveEnemyStatus> with StageBlock,EnemyCondition,HasGameRef<BitmanMath> implements Enemy,StageObject,HasPathEffect{
+class SimpleMoveEnemy extends SpriteGroupComponent<SimpleMoveEnemyStatus> with StageBlock,EnemyCondition,HasGameReference<BitmanMath> implements Enemy,StageObject,HasPathEffect{
  SimpleMoveEnemy(
   double x,
   double y,

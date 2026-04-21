@@ -21,7 +21,7 @@ import 'package:flutter/material.dart';
 
 
 
-class Witch extends SpriteComponent with StageBlock,EnemyCondition,EnemyHoming,HasGameRef<BitmanMath> implements Enemy,StageObject{
+class Witch extends SpriteComponent with StageBlock,EnemyCondition,EnemyHoming,HasGameReference<BitmanMath> implements Enemy,StageObject{
 Witch(double x,double y,{this.abnormalStatus = AbnormalStatus.normal,required this.normalTargetPoints,required this.angryTargetPoints,required this.crazyTargetPoints}):gridPosition = Vector2(x, y),
   super(size: Vector2.all(24),anchor: Anchor.center);
   

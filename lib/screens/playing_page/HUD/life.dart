@@ -14,7 +14,6 @@ class Life extends SpriteGroupComponent<LifeStatus>{
 
   @override
   FutureOr<void> onLoad() {
-    current = LifeStatus.full;
     final lifeSprite1 = getSprite(SpriteSheets.coloredTransparent,715, 172, 14, 12 );
     final lifeSprite2 = getSprite(SpriteSheets.coloredTransparent,681, 172, 14, 12);
     final lifeSprite3 = getSprite(SpriteSheets.coloredTransparent,698, 172, 14, 12);
@@ -24,6 +23,7 @@ class Life extends SpriteGroupComponent<LifeStatus>{
       LifeStatus.lost:lifeSprite2,
       LifeStatus.half:lifeSprite3
     };
+    current = LifeStatus.full;
     return super.onLoad();
   }
 

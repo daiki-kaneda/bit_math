@@ -26,12 +26,12 @@ with StageBlock implements StageObject,Ridable{
 
   @override
   FutureOr<void> onLoad() {
-    current = status;
     sprites={
       MassBlockStatus.xBlock:getSprite(SpriteSheets.coloredTransparent, 391, 34,16, 16),
       MassBlockStatus.normal:getSprite(SpriteSheets.coloredTransparent, 171, 290,14, 14),
       MassBlockStatus.roughBlock:getSprite(SpriteSheets.coloredTransparent, 391, 51,16, 16),
     };
+    current = status;
     position = Vector2(gridPosition.x*16, gridPosition.y*16);
 
     add(RectangleHitbox());

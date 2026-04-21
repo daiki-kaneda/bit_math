@@ -20,13 +20,13 @@ class ThrowWeapon extends SpriteGroupComponent<ThrowWeaponStatus> with Collision
   BitmanWeapon? weapon;
   @override
   FutureOr<void> onLoad() {
-    current = status;
     final bombSprite = getSprite(SpriteSheets.coloredTransparentPacked, 720, 144, 16, 16);
     final dynamiteSprite = getSprite(SpriteSheets.coloredTransparentPacked, 736, 144, 16, 16);
     sprites={
       ThrowWeaponStatus.bomb:bombSprite,
       ThrowWeaponStatus.dynamite:dynamiteSprite
     };
+    current = status;
     final bitman = findParent<World>()!.firstChild<Bitman>()!;
     switch(status){
       case ThrowWeaponStatus.bomb:weapon = BitmanWeapon.bomb;

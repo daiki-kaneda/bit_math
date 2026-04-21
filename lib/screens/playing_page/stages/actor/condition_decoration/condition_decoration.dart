@@ -16,7 +16,6 @@ class ConditionDecoration extends SpriteGroupComponent<AbnormalStatus>{
 
   @override
   FutureOr<void> onLoad() {
-    current = AbnormalStatus.normal;
     final poisonSprite = getSprite(SpriteSheets.coloredTransparent, 596, 188, 14, 14);
     final stunSprite = getSprite(SpriteSheets.coloredTransparentPacked, 576, 176, 16, 16);
      final healSprite = getSprite(SpriteSheets.coloredTransparentPacked, 624, 160, 16, 16);
@@ -25,6 +24,7 @@ class ConditionDecoration extends SpriteGroupComponent<AbnormalStatus>{
       AbnormalStatus.stun:stunSprite,
       AbnormalStatus.healing:healSprite
     };
+    current = AbnormalStatus.normal;
     final bitman = findParent<World>()!.firstChild<Bitman>()!;
     priority = bitman.priority+1;
     return super.onLoad();

@@ -32,7 +32,6 @@ with StageBlock,CollisionCallbacks implements StageObject{
 
   @override
   FutureOr<void> onLoad() {
-    current = status;
     sprites={
       DecorationStatus.grass:getSprite(SpriteSheets.coloredTransparentPacked, 0, 32, 16, 16),
       DecorationStatus.purpleGrass:getSprite(SpriteSheets.coloredTransparentPacked, 336, 32, 16, 16),
@@ -55,6 +54,7 @@ with StageBlock,CollisionCallbacks implements StageObject{
       DecorationStatus.yellowTorch:getSprite(SpriteSheets.coloredTransparentPacked, 64, 240, 16, 16),
       DecorationStatus.candle:getSprite(SpriteSheets.coloredTransparentPacked, 80, 240, 16, 16),
     };
+    current = status;
     anchor=Anchor.center;
     position = Vector2(gridPosition.x*16+8, gridPosition.y*16+8);
     if(status==DecorationStatus.grass){

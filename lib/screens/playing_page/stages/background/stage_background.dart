@@ -22,7 +22,6 @@ class StageBackground extends SpriteGroupComponent<BackgroundStatus> implements 
   
   @override
   FutureOr<void> onLoad() {
-    current = status;
     sprites = {
       BackgroundStatus.normal:getSprite(SpriteSheets.normalBackground,0, 0, gameWidth, gameHeight),
       BackgroundStatus.cave:getSprite(SpriteSheets.background,10, 10, 1200, 320),
@@ -36,6 +35,7 @@ class StageBackground extends SpriteGroupComponent<BackgroundStatus> implements 
       BackgroundStatus.sky:getSprite(SpriteSheets.background, 10, 1370, 1200, 320),
       BackgroundStatus.green:getSprite(SpriteSheets.background, 1230, 1370, 1200, 320),
     };
+    current = status;
     
     position=Vector2(gridPosition.x*16,gridPosition.y*16);
     return super.onLoad();

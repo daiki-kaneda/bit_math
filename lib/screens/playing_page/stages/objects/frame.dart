@@ -56,7 +56,6 @@ class FrameTile extends SpriteGroupComponent<FrameDirection> with StageBlock imp
   ),opacityTo: 0.75);
   @override
   FutureOr<void> onLoad() {
-    current = direction;
     switch(status){
       case FrameStatus.soft:
       sprites = {
@@ -103,6 +102,7 @@ class FrameTile extends SpriteGroupComponent<FrameDirection> with StageBlock imp
         FrameDirection.bottomRight:getSprite(SpriteSheets.coloredTransparentPacked, 16*2, 256+16*2, 16, 16)
       };
     }
+    current = direction;
     position = Vector2(16*gridPosition.x, 16*gridPosition.y);
     return super.onLoad();
   }

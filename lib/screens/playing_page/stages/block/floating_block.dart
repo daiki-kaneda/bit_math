@@ -61,7 +61,6 @@ with StageBlock implements StageObject,Ridable,HasPathEffect,HasRotateEffect{
 
   @override
   FutureOr<void> onLoad() {
-    current = status;
       sprites={
         FloatingBlockStatus.rhombus:getSprite(SpriteSheets.platforms, 176, 16, 96, 96),
         FloatingBlockStatus.rectangle:getSprite(SpriteSheets.platforms, 32, 64, 96, 96),
@@ -76,6 +75,7 @@ with StageBlock implements StageObject,Ridable,HasPathEffect,HasRotateEffect{
         FloatingBlockStatus.triangle:getSprite(SpriteSheets.platforms, 688, 96, 160, 96),
         FloatingBlockStatus.rrect:getSprite(SpriteSheets.platforms, 896, 48, 80, 80),
     };
+    current = status;
     position = Vector2(gridPosition.x*16 +48 , gridPosition.y*16 +48);
     switch(status){
         case FloatingBlockStatus.rhombus:{

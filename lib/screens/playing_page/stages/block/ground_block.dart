@@ -34,7 +34,6 @@ with StageBlock,CollisionCallbacks implements StageObject,Ridable{
 
   @override
   FutureOr<void> onLoad() {
-    current = status;
     if(isSolid){
       sprites={
       GroundStatus.normal:getSprite(SpriteSheets.coloredPacked, 0, 0, 16, 16),
@@ -88,6 +87,7 @@ with StageBlock,CollisionCallbacks implements StageObject,Ridable{
     }else{
      add(RectangleHitbox(collisionType: CollisionType.passive));
     }
+    current = status;
     return super.onLoad();
   }
 

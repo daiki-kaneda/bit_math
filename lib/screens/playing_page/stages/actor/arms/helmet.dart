@@ -11,7 +11,6 @@ class Helmet extends SpriteGroupComponent<BitmanHelmet>{
   int durability = 1;
   @override
   FutureOr<void> onLoad() {
-    current = BitmanHelmet.none;
     final strawHatSprite = getSprite(SpriteSheets.coloredTransparentPacked, 16*46, 32, 16, 16);
     final capeSprite = getSprite(SpriteSheets.coloredTransparentPacked, 16*47, 32, 16, 16);
     final hardHatSprite = getSprite(SpriteSheets.coloredTransparent, 647, 1, 14, 14);
@@ -28,9 +27,8 @@ class Helmet extends SpriteGroupComponent<BitmanHelmet>{
     };
     final bitman = findParent<World>()!.firstChild<Bitman>()!;
     priority = bitman.priority+1;
-
     
-    
+    current = BitmanHelmet.none;
     return super.onLoad();
   }
 

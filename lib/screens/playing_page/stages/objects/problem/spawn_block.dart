@@ -21,13 +21,12 @@ class SpawnBlock extends SpriteGroupComponent<ProblemStatus> with StageBlock imp
 
   @override
   FutureOr<void> onLoad() {
-    current = ProblemStatus.initial;
     sprites = {
       ProblemStatus.initial:getSprite(SpriteSheets.coloredTransparent, 647, 205, 14, 14),
       ProblemStatus.failure:getSprite(SpriteSheets.coloredTransparent, 647, 205, 14, 14),
       ProblemStatus.success:getSprite(SpriteSheets.coloredTransparent, 816, 187, 16, 16),
     };
-
+    current = ProblemStatus.initial;
     position = Vector2(gridPosition.x*16, gridPosition.y*16);
     return super.onLoad();
   }

@@ -69,7 +69,6 @@ class SimpleMoveEnemy extends SpriteGroupComponent<SimpleMoveEnemyStatus> with S
 
   @override
   FutureOr<void> onLoad() {
-    current = status;
     sprites ={
       SimpleMoveEnemyStatus.aligator:getSprite(SpriteSheets.coloredTransparent, 494, 137, 14, 14),
       SimpleMoveEnemyStatus.bat:getSprite(SpriteSheets.coloredTransparentPacked, 416, 128, 16, 16),
@@ -78,6 +77,7 @@ class SimpleMoveEnemy extends SpriteGroupComponent<SimpleMoveEnemyStatus> with S
       SimpleMoveEnemyStatus.ghost1:getSprite(SpriteSheets.coloredTransparentPacked, 416, 96, 16, 16),
       SimpleMoveEnemyStatus.ghost2:getSprite(SpriteSheets.coloredTransparentPacked, 432, 96, 16, 16),
     } ;
+    current = status;
     switch(status){
      case  SimpleMoveEnemyStatus.aligator:{
        add(MoveEffect.by(Vector2(16*interval.toDouble(), 0),EffectController(

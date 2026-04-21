@@ -29,11 +29,11 @@ class SoundToggle extends SpriteGroupComponent<bool> with HasGameRef<BitmanMath>
         position: Vector2(game.canvasSize.x/2,game.canvasSize.y*1/5),
         anchor: Anchor.center,
         );
-    current = isSound;
     sprites = {
       true: getSprite(SpriteSheets.uiSprites, 767, 51, 48, 48),
       false:getSprite(SpriteSheets.uiSprites, 51, 101, 48, 48)
     };
+    current = isSound;
     anchor = Anchor.center;
     return super.onLoad();
   }

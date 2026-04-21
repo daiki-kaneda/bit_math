@@ -37,13 +37,13 @@ with StageBlock implements StageObject,Ridable,HasPathEffect{
 
   @override
   FutureOr<void> onLoad() {
-    current = status;
     sprites={
       PlatformStatus.left:getSprite(SpriteSheets.coloredTransparentPacked, 336, 96,16, 16),
       PlatformStatus.normal:getSprite(SpriteSheets.coloredTransparentPacked, 352, 96,16, 16),
       PlatformStatus.right:getSprite(SpriteSheets.coloredTransparentPacked, 368, 96,16, 16),
       PlatformStatus.fallable:getSprite(SpriteSheets.coloredTransparentPacked, 288, 80,16, 16),
     };
+    current = status;
     position = Vector2(gridPosition.x*16, gridPosition.y*16);
     add(PolygonHitbox.relative([
          Vector2(-1, -1),Vector2(-1, 0),Vector2(1, 0),Vector2(1, -1)

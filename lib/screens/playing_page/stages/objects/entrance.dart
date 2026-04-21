@@ -27,11 +27,11 @@ class Entrance extends SpriteGroupComponent<EntranceBlockStatus> with StageBlock
 
   @override
   FutureOr<void> onLoad() {
-    current = status;
     sprites = {
       EntranceBlockStatus.open:getSprite(SpriteSheets.coloredTransparent, 35, 154, 14, 14),
       EntranceBlockStatus.locked:getSprite(SpriteSheets.coloredTransparent, 1, 154, 14, 14)
     };
+    current = status;
     position = Vector2(gridPosition.x*16, gridPosition.y*16);
     add(RectangleHitbox(collisionType: CollisionType.passive));
     return super.onLoad();
